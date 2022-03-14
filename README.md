@@ -2,9 +2,9 @@
 
 # First setup
 
+Download samples and put them to public folder
+
 ```
-git fetch --all
-git checkout examples
 bundle install
 yarn
 rails db:migrate
@@ -14,7 +14,6 @@ rails db:seed
 # Update
 
 ```
-git checkout examples
-git pull origin examples
+git pull origin main
 rails db:seed
 ```

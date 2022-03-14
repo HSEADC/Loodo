@@ -1,0 +1,2 @@
+class InteractiveModule < ApplicationRecord
+end

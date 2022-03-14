@@ -4,7 +4,7 @@ import Button from "../control_components/Button";
 // import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
 
 import WelcomeScreen from "../views/WelcomeScreen";
-import TrigerModule from "../views/TrigerModule";
+import ToneSynthModule from "../views/ToneSynthModule";
 
 export default class TrigerContainer extends PureComponent {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class TrigerContainer extends PureComponent {
   startWebAudio = async () => {
     await Tone.start();
     this.initInstruments();
+    console.log("/// Instruments have been initialized ///");
 
     this.setState({
       webAudioStarted: true,
@@ -94,9 +95,10 @@ export default class TrigerContainer extends PureComponent {
     const melodySynthNode1 = new Tone.Synth(
       melodySynthSettings
     ).toDestination();
-    const melodySynthNode2 = new Tone.Synth(
-      melodySynthSettings
-    ).toDestination();
+
+    // const melodySynthNode2 = new Tone.Synth(
+    //   melodySynthSettings
+    // ).toDestination();
 
     // melodySynthNode.triggerAttackRelease("C4", "8n");
 
@@ -110,32 +112,32 @@ export default class TrigerContainer extends PureComponent {
         node: melodySynthNode1,
         settings: melodySynthSettings,
       },
-      {
-        id: this.generateUniqId(),
-        name: "Melody Synth",
-        type: "ToneSynth",
-        node: melodySynthNode2,
-        settings: melodySynthSettings,
-      },
+      // {
+      //   id: this.generateUniqId(),
+      //   name: "Melody Synth",
+      //   type: "ToneSynth",
+      //   node: melodySynthNode2,
+      //   settings: melodySynthSettings,
+      // },
     ];
 
     // console.log(instruments);
 
     // prettier-ignore
-    // const seq = new Tone.Sequence(
-    //   (time, note) => {
-    //     melodySynthNode.triggerAttackRelease(note, 0.8, time)
-    //   },
-    //   [
-    //     'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4',
-    //     'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3'
-    //   ]
-    // ).start(0)
+    const seq = new Tone.Sequence(
+      (time, note) => {
+        instruments[0].node.triggerAttackRelease(note, 0.8, time)
+      },
+      [
+        'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4',
+        'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3'
+      ]
+    ).start(0)
     //
     // Tone.Transport.start();
 
     this.setState({
-      instruments
+      instruments,
     });
   };
 
@@ -154,15 +156,24 @@ export default class TrigerContainer extends PureComponent {
     synth.triggerAttackRelease(note, dur);
   };
 
+  playSequence = (isPressed) => {
+    if (isPressed) {
+      Tone.Transport.start();
+    } else {
+      Tone.Transport.stop();
+    }
+  };
+
   renderRoom = () => {
     const { instruments } = this.state;
 
     return (
-      <TrigerModule
+      <ToneSynthModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
         handleCheckState={this.checkState}
-        handleInitInstruments={this.initInstruments}
+        handlePlaySequence={this.playSequence}
+        // handleInitInstruments={this.initInstruments}
         handlePlayNote={this.playNote}
       />
     );

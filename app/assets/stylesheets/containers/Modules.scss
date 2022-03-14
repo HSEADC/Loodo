@@ -1,0 +1,119 @@
+.SynthMelodyModule {
+  width: 600px;
+}
+
+.moduleHeaderText {
+  background-color: #000;
+  height: 50px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.moduleHeaderButton {
+  position: relative;
+  background-color: #000;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moduleHeaderButton span {
+  color: #fff;
+}
+
+.moduleHeaderButton .headerButton {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.synthModule {
+}
+
+.synthModuleSettings {
+  background-color: #e1e1e1;
+}
+
+.synthModuleSettingsContainer {
+  display: flex;
+}
+
+.synthModuleSettingsContainerADSR {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  border-top-width: 0.5px;
+  border-top-style: solid;
+  border-color: #999999;
+
+  border-left-width: 0.5px;
+  border-left-style: solid;
+  border-color: #999999;
+}
+
+.synthModuleSettingsContainerBlock {
+  border-left-width: 0.5px;
+  border-left-style: solid;
+  border-color: #999999;
+
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
+  border-color: #999999;
+
+  height: 188px;
+}
+
+.synthModuleSettingsContainerADSR .ADSRSlider {
+  margin-bottom: 32px;
+}
+
+.synthModuleSettingsContainerADSR .ADSRSlider:last-of-type {
+  margin-bottom: 0px;
+}
+
+.sliderLargeContainer {
+  height: 94px;
+  width: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.knobContainerDetune {
+  width: 160px;
+  height: 188px;
+
+  border-bottom-width: 0.5px;
+  border-bottom-style: solid;
+  border-color: #999999;
+
+  border-right-width: 0.5px;
+  border-right-style: solid;
+  border-color: #999999;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.knobContainerPortamento {
+  border-top-width: 0.5px;
+  border-top-style: solid;
+  border-color: #999999;
+
+  border-right-width: 0.5px;
+  border-right-style: solid;
+  border-color: #999999;
+
+  width: 160px;
+  height: 272px;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

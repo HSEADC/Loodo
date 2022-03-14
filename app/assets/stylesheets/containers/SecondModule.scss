@@ -1,0 +1,125 @@
+// .secondModuleContainer {
+//   display: none;
+// }
+
+.keyboardContainer {
+  display: flex;
+  // width: 600px;
+  height: 180px;
+}
+
+.PianoWhiteKey {
+  position: absolute;
+  z-index: 1;
+  width: 85px;
+  height: 180px;
+  background: #000000;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  // margin-top: 224px;
+  // margin-left: 28px;
+
+  &.on {
+    background-color: #79fd38;
+    width: 400px;
+  }
+}
+
+.PianoBlackKey {
+  position: absolute;
+  width: 52px;
+  height: 120px;
+  background: #000230;
+  flex-wrap: wrap;
+  z-index: 2;
+  // position: absolute;
+  // margin-top: 224px;
+  // background: #000000;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  &.on {
+    background-color: #79fd38;
+    width: 400px;
+  }
+}
+
+// #PianoKey0 {
+//   margin-left: 0px;
+// }
+
+#PianoKey1 {
+  left: 58px;
+}
+
+#PianoKey2 {
+  left: 85px;
+}
+
+#PianoKey3 {
+  left: 145px;
+}
+
+#PianoKey4 {
+  left: 171px;
+}
+
+#PianoKey5 {
+  left: 256px;
+}
+
+#PianoKey6 {
+  left: 319px;
+}
+
+#PianoKey7 {
+  left: 343px;
+}
+
+#PianoKey8 {
+  left: 402px;
+}
+
+#PianoKey9 {
+  left: 429px;
+}
+
+#PianoKey10 {
+  left: 488px;
+}
+
+#PianoKey11 {
+  left: 514px;
+}
+
+// #PianoKey3 {
+//   left: 241px;
+// }
+// #PianoKey6 {
+//   left: 489px;
+// }
+// #PianoKey8 {
+//   left: 612px;
+// }
+// #PianoKey10 {
+//   left: 735px;
+// }
+// #PianoKey13 {
+//   left: 983px;
+// }
+// #PianoKey15 {
+//   left: 1106px;
+// }
+
+.Button {
+  // display: inline-block;
+  // width: 150px;
+  // margin-left: 50px;
+  // background: white;
+  // &.on {
+  //   background: red;
+  // }
+}

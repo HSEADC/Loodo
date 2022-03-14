@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TrigerContainer from '../containers/TrigerContainer'
+import MelodySynthEffectContainer from '../containers/MelodySynthEffectContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <TrigerContainer />,
+    <MelodySynthEffectContainer />,
     document.body.appendChild(document.createElement('div'))
   )
 })

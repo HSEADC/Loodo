@@ -1,4 +1,10 @@
-html,
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
 body {
-  height: 100%;
+  font-family: "PT Root UI";
+  // background: var(--black);
+  // color: var(--white);
 }

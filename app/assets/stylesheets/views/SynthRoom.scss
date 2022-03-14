@@ -1,0 +1,42 @@
+.SynthRoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // & > div {
+  //   display: flex;
+  //   flex-direction: column;
+  //   width: 220px;
+  //   border: 3px solid white;
+  //   border-right: none;
+  //
+  //   &:last-child {
+  //     border-right: 3px solid white;
+  //   }
+  //
+  //   h1 {
+  //     padding: 0 20px;
+  //     line-height: 60px;
+  //     font-weight: bold;
+  //     text-align: center;
+  //     text-transform: uppercase;
+  //     border-bottom: 1px solid var(--white);
+  //   }
+  //
+  //   h2 {
+  //     padding: 0 20px;
+  //     line-height: 60px;
+  //     text-align: center;
+  //     text-transform: uppercase;
+  //     border-bottom: 1px solid var(--white);
+  //   }
+  //
+  //   .Slider,
+  //   .Knob,
+  //   .ButtonSet {
+  //     // margin: 40px 0;
+  //     padding: 20px;
+  //     border-bottom: 1px solid var(--white);
+  //   }
+  // }
+}

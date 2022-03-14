@@ -22,6 +22,10 @@
   {
     name: '6',
     description: 'About'
+  },
+  {
+    name: '7',
+    description: 'About'
   }
 ]
 

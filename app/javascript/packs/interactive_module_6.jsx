@@ -5,6 +5,6 @@ import MelodySynthEffectContainer from '../containers/MelodySynthEffectContainer
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <MelodySynthEffectContainer />,
-    document.body.appendChild(document.createElement('div'))
+    document.body.getElementsByClassName('interactive_module_6')[0]
   )
 })

@@ -29,9 +29,17 @@
   }
 ]
 
+@lessons_data = [
+  {
+    name: '1',
+    description: 'About'
+  }
+]
+
 def seed
   reset_db
   create_interactive_modules
+  create_lessons
 end
 
 def reset_db
@@ -44,6 +52,13 @@ def create_interactive_modules
   @interactive_modules_data.each do |interactive_module_data|
     interactive_module = InteractiveModule.create!(interactive_module_data)
     puts "#{interactive_module.name} interactive_module just created"
+  end
+end
+
+def create_lessons
+  @lessons_data.each do |lesson_data|
+    lesson = Lesson.create!(lesson_data)
+    puts "#{lesson.name} lesson just created"
   end
 end
 

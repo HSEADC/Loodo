@@ -5,6 +5,6 @@ import SequencerContainer from '../containers/SequencerContainer'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <SequencerContainer />,
-    document.body.appendChild(document.createElement('div'))
+    document.body.getElementsByClassName('interactive_module_4')[0]
   )
 })

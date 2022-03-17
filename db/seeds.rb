@@ -26,6 +26,10 @@
   {
     name: '7',
     description: 'About'
+  },
+  {
+    name: '8',
+    description: 'First Code Game'
   }
 ]
 

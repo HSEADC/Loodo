@@ -88,25 +88,27 @@ const chorusNode = new Tone.Chorus(chorusSettings).start()
 // const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings);
 // const tremoloNode = new Tone.Tremolo(tremoloSettings);
 // const vibratoNode = new Tone.Vibrato(vibratoSettings)
-const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings).toDestination()
-const distortionNode = new Tone.Distortion(distortionSettings).toDestination()
+// const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings).toDestination()
+const distortionNode = new Tone.Distortion(distortionSettings)
 const channelNode = new Tone.Channel(channelSettings).toDestination()
-console.log(pitchShiftNode)
+// console.log(pitchShiftNode)
 
 synthNode.chain(chorusNode, channelNode)
 
-let effectArray = [channelNode, chorusNode, distortionNode]
+let effectArray = [chorusNode]
 
-function addEffect(effectArray) {
-  effectArray.forEach((effect, i) => {
-    synthNode.chain(effect)
-  })
+function addEffect(effectArray, newEffect) {
+  let newEffectArray = [...effectArray]
+  newEffectArray.push(newEffect)
+  newEffectArray.push(channelNode)
+
+  synthNode.chain(...newEffectArray)
 
   console.log('Effects added')
   console.log(synthNode)
 }
 
-setTimeout(addEffect, 10000, effectArray)
+setTimeout(() => addEffect(effectArray, distortionNode), 10000)
 
 // setTimeout(addEffect, 10000, vibratoNode)
 

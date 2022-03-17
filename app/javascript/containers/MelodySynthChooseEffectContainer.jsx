@@ -1,13 +1,13 @@
 import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
-import * as toneMelodyEffectSynth from '../tunes/tone_melody_effect_synth'
+import * as toneMelodyEffectSynth from '../tunes/tone_melody_chooseeffect_synth'
 
 import Button from '../control_components/Button'
 // import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
 
 import WelcomeScreen from '../views/WelcomeScreen'
-import MelodySynthEffectModule from '../views/MelodySynthEffectModule'
+import MelodySynthChooseEffectModule from '../views/MelodySynthChooseEffectModule'
 
 export default class MelodySynthEffectContainer extends PureComponent {
   constructor(props) {
@@ -113,6 +113,8 @@ export default class MelodySynthEffectContainer extends PureComponent {
     return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
   }
 
+  addEffect = () => {}
+
   playSequence = (isPressed) => {
     if (isPressed) {
       Tone.Transport.start()
@@ -125,11 +127,12 @@ export default class MelodySynthEffectContainer extends PureComponent {
     const { instruments } = this.state
 
     return (
-      <MelodySynthEffectModule
+      <MelodySynthChooseEffectModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
         handleCheckState={this.checkState}
         handlePlaySequence={this.playSequence}
+        addEffect={this.addEffect}
         // handleInitInstruments={this.initInstruments}
       />
     )

@@ -25,7 +25,7 @@ const synthSettings = {
 }
 
 const chorusSettings = {
-  wet: 0,
+  wet: 0.5,
   type: 'sine',
   frequency: 1.5,
   delayTime: 3.5,
@@ -33,12 +33,12 @@ const chorusSettings = {
   spread: 180
 }
 
-// const freeverbSettings = {
-//   wet: 0.55,
-//   roomSize: 0.23,
-//   dampening: 40,
-// };
-//
+const freeverbSettings = {
+  wet: 0.55,
+  roomSize: 0.23,
+  dampening: 40
+}
+
 // const pingPongDelaySettings = {
 //   wet: 0,
 //   delayTime: 0.25,
@@ -53,13 +53,26 @@ const chorusSettings = {
 //   spread: 180,
 // };
 //
-// const vibratoSettings = {
-//   wet: 0,
-//   maxDelay: 0.005,
-//   frequency: 5,
-//   depth: 0.1,
-//   type: "sine",
-// };
+const vibratoSettings = {
+  wet: 1,
+  maxDelay: 0.005,
+  frequency: 5,
+  depth: 0.1,
+  type: 'sine'
+}
+
+const pitchShiftSettings = {
+  wet: 1,
+  pitch: -12,
+  windowSize: 12,
+  feedback: 0
+}
+
+const distortionSettings = {
+  wet: 1,
+  distortion: 10,
+  oversample: 'none'
+}
 
 const channelSettings = {
   volume: -14,
@@ -71,13 +84,31 @@ const channelSettings = {
 // function instrument() {
 const synthNode = new Tone.Synth(synthSettings)
 const chorusNode = new Tone.Chorus(chorusSettings).start()
-// const freeverbNode = new Tone.Freeverb(freeverbSettings);
+// const freeverbNode = new Tone.Freeverb(freeverbSettings)
 // const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings);
 // const tremoloNode = new Tone.Tremolo(tremoloSettings);
-// const vibratoNode = new Tone.Vibrato(vibratoSettings);
+// const vibratoNode = new Tone.Vibrato(vibratoSettings)
+const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings).toDestination()
+const distortionNode = new Tone.Distortion(distortionSettings).toDestination()
 const channelNode = new Tone.Channel(channelSettings).toDestination()
+console.log(pitchShiftNode)
 
 synthNode.chain(chorusNode, channelNode)
+
+let effectArray = [channelNode, chorusNode, distortionNode]
+
+function addEffect(effectArray) {
+  effectArray.forEach((effect, i) => {
+    synthNode.chain(effect)
+  })
+
+  console.log('Effects added')
+  console.log(synthNode)
+}
+
+setTimeout(addEffect, 10000, effectArray)
+
+// setTimeout(addEffect, 10000, vibratoNode)
 
 const instrument = [
   {
@@ -100,7 +131,35 @@ const instrument = [
     type: 'Channel',
     node: channelNode,
     settings: channelSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Distortion',
+    type: 'DistortionEffect',
+    node: distortionNode,
+    settings: distortionSettings
   }
+  // {
+  //   id: generateUniqId(),
+  //   name: 'Freeverb',
+  //   type: 'FreeverbEffect',
+  //   node: freeverbNode,
+  //   settings: freeverbSettings
+  // },
+  // {
+  //   id: generateUniqId(),
+  //   name: 'Vibrato',
+  //   type: 'VibratoEffect',
+  //   node: vibratoNode,
+  //   settings: vibratoSettings
+  // },
+  // {
+  //   id: generateUniqId(),
+  //   name: 'PitchShift',
+  //   type: 'PitchShiftEffect',
+  //   node: pitchShiftNode,
+  //   settings: pitchShiftSettings
+  // }
 ]
 
 const v = 1

@@ -1,2 +1,16 @@
 .interactive_module_6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .SynthContainer {
+    width: 600px;
+  }
+  .InteractiveBlocks {
+    .ToneSynth {
+      display: none;
+    }
+
+    .ChorusEffect {
+    }
+  }
 }

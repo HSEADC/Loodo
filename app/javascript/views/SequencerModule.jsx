@@ -1,49 +1,49 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 
-import Button from "../control_components/Button";
-import ToggleButton from "../control_components/ToggleButton";
+import Button from '../control_components/Button'
+import ToggleButton from '../control_components/ToggleButton'
 
-import ToneSynth from "../module_components/ToneSynth";
-import Sampler from "../module_components/Sampler";
-import Sequencer from "../module_components/Sequencer";
+import ToneSynth from '../module_components/ToneSynth'
+import Sampler from '../module_components/Sampler'
+import Sequencer from '../module_components/Sequencer'
 
-// import AutoFilterEffect from "../module_components/AutoFilterEffect";
-// import AutoPannerEffect from "../module_components/AutoPannerEffect";
-// import AutoWahEffect from "../module_components/AutoWahEffect";
-// import BitCrusherEffect from "../module_components/BitCrusherEffect";
-// import ChebyshevEffect from "../module_components/ChebyshevEffect";
-// import ChorusEffect from "../module_components/ChorusEffect";
-// import DistortionEffect from "../module_components/DistortionEffect";
-// import FeedbackDelayEffect from "../module_components/FeedbackDelayEffect";
-// import FreeverbEffect from "../module_components/FreeverbEffect";
-// import FrequencyShifterEffect from "../module_components/FrequencyShifterEffect";
-// import JCReverbEffect from "../module_components/JCReverbEffect";
-// import MidSideEffect from "../module_components/MidSideEffect";
-// import PhaserEffect from "../module_components/PhaserEffect";
-// import PingPongDelayEffect from "../module_components/PingPongDelayEffect";
-// import PitchShiftEffect from "../module_components/PitchShiftEffect";
-// import ReverbEffect from "../module_components/ReverbEffect";
-// import StereoWidenerEffect from "../module_components/StereoWidenerEffect";
-// import TremoloEffect from "../module_components/TremoloEffect";
-// import VibratoEffect from "../module_components/VibratoEffect";
+import AutoFilterEffect from '../module_components/AutoFilterEffect'
+import AutoPannerEffect from '../module_components/AutoPannerEffect'
+import AutoWahEffect from '../module_components/AutoWahEffect'
+import BitCrusherEffect from '../module_components/BitCrusherEffect'
+import ChebyshevEffect from '../module_components/ChebyshevEffect'
+import ChorusEffect from '../module_components/ChorusEffect'
+import DistortionEffect from '../module_components/DistortionEffect'
+import FeedbackDelayEffect from '../module_components/FeedbackDelayEffect'
+import FreeverbEffect from '../module_components/FreeverbEffect'
+import FrequencyShifterEffect from '../module_components/FrequencyShifterEffect'
+import JCReverbEffect from '../module_components/JCReverbEffect'
+import MidSideEffect from '../module_components/MidSideEffect'
+import PhaserEffect from '../module_components/PhaserEffect'
+import PingPongDelayEffect from '../module_components/PingPongDelayEffect'
+import PitchShiftEffect from '../module_components/PitchShiftEffect'
+import ReverbEffect from '../module_components/ReverbEffect'
+import StereoWidenerEffect from '../module_components/StereoWidenerEffect'
+import TremoloEffect from '../module_components/TremoloEffect'
+import VibratoEffect from '../module_components/VibratoEffect'
 
-import Channel from "../module_components/Channel";
+import Channel from '../module_components/Channel'
 
 export default class SequencerModule extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   render() {
-    const { instruments, handlePropertyValueChange } = this.props;
-    const instrumentElements = [];
+    const { instruments, handlePropertyValueChange } = this.props
+    const instrumentElements = []
 
     instruments.forEach((instrument, i) => {
-      const instrumentModuleElements = [];
+      const instrumentModuleElements = []
 
       instrument.forEach((instrumentModule, i) => {
-        const { id, name, type, node, settings } = instrumentModule;
+        const { id, name, type, node, settings } = instrumentModule
 
         const components = {
           ToneSynth: ToneSynth,
@@ -68,10 +68,10 @@ export default class SequencerModule extends PureComponent {
           // StereoWidenerEffect: StereoWidenerEffect,
           // TremoloEffect: TremoloEffect,
           // VibratoEffect: VibratoEffect,
-          Channel: Channel,
-        };
+          Channel: Channel
+        }
 
-        const ComponentType = components[type];
+        const ComponentType = components[type]
 
         instrumentModuleElements.push(
           <ComponentType
@@ -82,15 +82,15 @@ export default class SequencerModule extends PureComponent {
             handlePropertyValueChange={handlePropertyValueChange}
             key={i}
           />
-        );
-      });
+        )
+      })
 
       instrumentElements.push(
         <div className="Row" key={i}>
           {instrumentModuleElements}
         </div>
-      );
-    });
+      )
+    })
 
     return (
       <div>
@@ -108,11 +108,11 @@ export default class SequencerModule extends PureComponent {
         <div>стрелка</div>
         <div className="moduleHeaderText">Синтезатор</div>
       </div>
-    );
+    )
   }
 }
 
 SequencerModule.propTypes = {
   instruments: PropTypes.array.isRequired,
-  handlePropertyValueChange: PropTypes.func.isRequired,
-};
+  handlePropertyValueChange: PropTypes.func.isRequired
+}

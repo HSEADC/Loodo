@@ -2,20 +2,25 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
 import ToggleButton from '../control_components/ToggleButton'
+import Button from '../control_components/Button'
 
 import ToneMelodyEffectSynth from '../module_components/ToneMelodyEffectSynth'
 
 import ChorusEffect from '../module_components/ChorusEffect'
+import FreeverbEffect from '../module_components/FreeverbEffect'
+import VibratoEffect from '../module_components/VibratoEffect'
+import PitchShiftEffect from '../module_components/PitchShiftEffect'
+import DistortionEffect from '../module_components/DistortionEffect'
 
 import Channel from '../module_components/Channel'
 
-export default class MelodySynthEffectModule extends PureComponent {
+export default class MelodySynthChooseEffectModule extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
-    const { instruments, handlePropertyValueChange } = this.props
+    const { instruments, handlePropertyValueChange, addEffect } = this.props
     const instrumentElements = []
 
     instruments.forEach((instrument, i) => {
@@ -27,7 +32,11 @@ export default class MelodySynthEffectModule extends PureComponent {
         const components = {
           ToneMelodyEffectSynth: ToneMelodyEffectSynth,
           ChorusEffect: ChorusEffect,
-          Channel: Channel
+          FreeverbEffect: FreeverbEffect,
+          Channel: Channel,
+          VibratoEffect: VibratoEffect,
+          PitchShiftEffect: PitchShiftEffect,
+          DistortionEffect: DistortionEffect
         }
 
         const ComponentType = components[type]
@@ -64,18 +73,22 @@ export default class MelodySynthEffectModule extends PureComponent {
           <span>Мелодия</span>
         </div>
         <div>стрелка</div>
-        <div class="moduleHeaderText">Синтезатор</div>
+        <div className="moduleHeaderText">Синтезатор</div>
         <div>стрелка</div>
         <div className="InteractiveBlocks">
           <div className="moduleHeaderText">Эффект</div>
           {instrumentElements}
+        </div>
+
+        <div>
+          <Button text="Start" handleClick={addEffect} />
         </div>
       </div>
     )
   }
 }
 
-MelodySynthEffectModule.propTypes = {
+MelodySynthChooseEffectModule.propTypes = {
   instruments: PropTypes.array.isRequired,
   handlePropertyValueChange: PropTypes.func.isRequired
 }

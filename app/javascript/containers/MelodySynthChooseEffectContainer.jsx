@@ -116,10 +116,14 @@ export default class MelodySynthEffectContainer extends PureComponent {
   addEffect = () => {}
 
   playSequence = (isPressed) => {
+    const { postMessageToWindow } = this.props
+
     if (isPressed) {
       Tone.Transport.start()
+      postMessageToWindow('synth started', { somedata: 'yoyoyo' })
     } else {
       Tone.Transport.stop()
+      postMessageToWindow('synth stopped', { somedata: 'yoyoyo' })
     }
   }
 

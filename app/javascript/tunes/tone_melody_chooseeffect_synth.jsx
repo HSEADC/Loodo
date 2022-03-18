@@ -45,14 +45,14 @@ const freeverbSettings = {
 //   maxDelayTime: 1,
 // };
 //
-// const tremoloSettings = {
-//   wet: 0,
-//   frequency: 10,
-//   type: "sine",
-//   depth: 0.5,
-//   spread: 180,
-// };
-//
+const tremoloSettings = {
+  wet: 1,
+  frequency: 100,
+  type: 'sine',
+  depth: 0.5,
+  spread: 180
+}
+
 const vibratoSettings = {
   wet: 1,
   maxDelay: 0.005,
@@ -65,7 +65,8 @@ const pitchShiftSettings = {
   wet: 1,
   pitch: -12,
   windowSize: 12,
-  feedback: 0
+  feedback: 0,
+  delayTime: 0
 }
 
 const distortionSettings = {
@@ -86,10 +87,11 @@ const synthNode = new Tone.Synth(synthSettings)
 const chorusNode = new Tone.Chorus(chorusSettings).start()
 // const freeverbNode = new Tone.Freeverb(freeverbSettings)
 // const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings);
-// const tremoloNode = new Tone.Tremolo(tremoloSettings);
 // const vibratoNode = new Tone.Vibrato(vibratoSettings)
-// const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings).toDestination()
-const distortionNode = new Tone.Distortion(distortionSettings)
+const tremoloNode = new Tone.Tremolo(tremoloSettings)
+const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings)
+const distortionNode1 = new Tone.Distortion(distortionSettings)
+const distortionNode2 = new Tone.Distortion(distortionSettings)
 const channelNode = new Tone.Channel(channelSettings).toDestination()
 // console.log(pitchShiftNode)
 
@@ -105,10 +107,9 @@ function addEffect(effectArray, newEffect) {
   synthNode.chain(...newEffectArray)
 
   console.log('Effects added')
-  console.log(synthNode)
 }
 
-setTimeout(() => addEffect(effectArray, distortionNode), 10000)
+// setTimeout(() => addEffect(effectArray, distortionNode), 10000)
 
 // setTimeout(addEffect, 10000, vibratoNode)
 
@@ -138,7 +139,7 @@ const instrument = [
     id: generateUniqId(),
     name: 'Distortion',
     type: 'DistortionEffect',
-    node: distortionNode,
+    node: distortionNode1,
     settings: distortionSettings
   }
   // {
@@ -254,4 +255,13 @@ const part = new Tone.Part(
 part.loopEnd = '4m'
 part.loop = true
 
-export { instrument, part }
+export {
+  instrument,
+  part,
+  effectArray,
+  synthNode,
+  tremoloSettings,
+  pitchShiftSettings,
+  distortionSettings,
+  channelNode
+}

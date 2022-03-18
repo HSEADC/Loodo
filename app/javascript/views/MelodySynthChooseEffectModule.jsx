@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 
 import ToggleButton from '../control_components/ToggleButton'
 import Button from '../control_components/Button'
+import Select from '../control_components/Select'
 
 import ToneMelodyEffectSynth from '../module_components/ToneMelodyEffectSynth'
 
@@ -11,6 +12,7 @@ import FreeverbEffect from '../module_components/FreeverbEffect'
 import VibratoEffect from '../module_components/VibratoEffect'
 import PitchShiftEffect from '../module_components/PitchShiftEffect'
 import DistortionEffect from '../module_components/DistortionEffect'
+import TremoloEffect from '../module_components/TremoloEffect'
 
 import Channel from '../module_components/Channel'
 
@@ -22,6 +24,8 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
   render() {
     const { instruments, handlePropertyValueChange, addEffect } = this.props
     const instrumentElements = []
+
+    let possibleEffects = []
 
     instruments.forEach((instrument, i) => {
       const instrumentModuleElements = []
@@ -36,7 +40,8 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
           Channel: Channel,
           VibratoEffect: VibratoEffect,
           PitchShiftEffect: PitchShiftEffect,
-          DistortionEffect: DistortionEffect
+          DistortionEffect: DistortionEffect,
+          TremoloEffect: TremoloEffect
         }
 
         const ComponentType = components[type]
@@ -81,7 +86,17 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
         </div>
 
         <div>
-          <Button text="Start" handleClick={addEffect} />
+          <Button
+            text="Add effect"
+            handleClick={() => {
+              this.props.addEffect(this.props.effectArray, this.props.newEffect)
+            }}
+          />
+          <Select
+            text="Добавить эффект"
+            options={this.props.possibleEffects}
+            addEffect={this.props.addEffect}
+          />
         </div>
       </div>
     )

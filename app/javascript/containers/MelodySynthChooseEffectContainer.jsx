@@ -1,7 +1,8 @@
 import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
-import * as toneMelodyEffectSynth from '../tunes/tone_melody_chooseeffect_synth'
+import * as tone_melody_chooseeffect_synth from '../tunes/tone_melody_chooseeffect_synth'
+import { generateUniqId } from '../utilities'
 
 import Button from '../control_components/Button'
 // import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
@@ -15,7 +16,9 @@ export default class MelodySynthEffectContainer extends PureComponent {
 
     this.state = {
       webAudioStarted: false,
-      instruments: []
+      instruments: [],
+      effectArray: tone_melody_chooseeffect_synth.effectArray,
+      newEffect: []
     }
   }
 
@@ -87,7 +90,7 @@ export default class MelodySynthEffectContainer extends PureComponent {
   }
 
   initInstruments = () => {
-    const instruments = [toneMelodyEffectSynth.instrument]
+    const instruments = [tone_melody_chooseeffect_synth.instrument]
 
     // prettier-ignore
     const seq = new Tone.Sequence(
@@ -113,22 +116,107 @@ export default class MelodySynthEffectContainer extends PureComponent {
     return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
   }
 
-  addEffect = () => {}
+  generateEffect = (effectType) => {
+    let {
+      distortionSettings,
+      tremoloSettings,
+      pitchShiftSettings
+    } = tone_melody_chooseeffect_synth
+
+    let effect
+
+    switch (effectType) {
+      case 'Distortion':
+        const newDistortionNode = new Tone.Distortion(distortionSettings)
+        const newDistortionEffect = {
+          id: generateUniqId(),
+          name: 'Distortion',
+          type: 'DistortionEffect',
+          settings: distortionSettings,
+          node: newDistortionNode
+        }
+
+        effect = newDistortionEffect
+        console.log('Added ${effectType}')
+
+        break
+
+      case 'Tremolo':
+        const newTremoloNode = new Tone.Tremolo(tremoloSettings)
+        const newTremoloEffect = {
+          id: generateUniqId(),
+          name: 'Tremolo',
+          type: 'TremoloEffect',
+          settings: tremoloSettings,
+          node: newTremoloNode
+        }
+
+        effect = newTremoloEffect
+        console.log('Added ${effectType}')
+
+        break
+
+      case 'Pitch Shift':
+        const newPitchShiftNode = new Tone.PitchShift(pitchShiftSettings)
+        const newPitchShiftEffect = {
+          id: generateUniqId(),
+          name: 'PitchShift',
+          type: 'PitchShiftEffect',
+          settings: pitchShiftSettings,
+          node: newPitchShiftNode
+        }
+
+        effect = newPitchShiftEffect
+        console.log('Added ${effectType}')
+
+        break
+    }
+
+    return effect
+  }
+
+  addEffect = (choosenEffect) => {
+    let { synthNode, channelNode } = tone_melody_chooseeffect_synth
+
+    let { effectArray, instruments } = this.state
+
+    let newEffectArray = [...effectArray]
+    let newInstrumentsArray = [...instruments[0]]
+
+    let newEffect = this.generateEffect(choosenEffect)
+
+    newEffectArray.push(newEffect.node)
+    newEffectArray.push(channelNode)
+    synthNode.chain(...newEffectArray)
+    newEffectArray.pop()
+
+    newInstrumentsArray.push(newEffect)
+    console.log(instruments)
+    console.log(newInstrumentsArray)
+
+    // console.log(newInstrumentsArray)
+
+    this.setState({
+      effectArray: newEffectArray,
+      instruments: [newInstrumentsArray]
+    })
+  }
 
   playSequence = (isPressed) => {
     const { postMessageToWindow } = this.props
 
     if (isPressed) {
       Tone.Transport.start()
-      postMessageToWindow('synth started', { somedata: 'yoyoyo' })
+      // postMessageToWindow('Пойдем гулять?', { somedata: 'yoyoyo' })
     } else {
       Tone.Transport.stop()
-      postMessageToWindow('synth stopped', { somedata: 'yoyoyo' })
+      // postMessageToWindow('Пойдем!', { somedata: 'yoyoyo' })
     }
   }
 
   renderRoom = () => {
     const { instruments } = this.state
+    let possibleEffects = ['Distortion', 'Tremolo', 'Pitch Shift']
 
     return (
       <MelodySynthChooseEffectModule
@@ -137,6 +225,7 @@ export default class MelodySynthEffectContainer extends PureComponent {
         handleCheckState={this.checkState}
         handlePlaySequence={this.playSequence}
         addEffect={this.addEffect}
+        possibleEffects={possibleEffects}
         // handleInitInstruments={this.initInstruments}
       />
     )

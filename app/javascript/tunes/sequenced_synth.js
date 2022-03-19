@@ -1,5 +1,5 @@
-import * as Tone from "tone";
-import { generateUniqId } from "../utilities";
+import * as Tone from 'tone'
+import { generateUniqId } from '../utilities'
 
 const synthSettings = {
   volume: 0.8,
@@ -7,22 +7,22 @@ const synthSettings = {
   portamento: 0.05,
   envelope: {
     attack: 0.05,
-    attackCurve: "exponential",
+    attackCurve: 'exponential',
     decay: 0.2,
-    decayCurve: "exponential",
+    decayCurve: 'exponential',
     sustain: 0.2,
     release: 1.5,
-    releaseCurve: "exponential",
+    releaseCurve: 'exponential'
   },
   oscillator: {
-    type: "amtriangle",
-    modulationType: "sine",
+    type: 'amtriangle',
+    modulationType: 'sine',
     // partialCount: 0,
     // partials: [],
     phase: 0,
-    harmonicity: 0.5,
-  },
-};
+    harmonicity: 0.5
+  }
+}
 
 // const chorusSettings = {
 //   wet: 0,
@@ -65,16 +65,16 @@ const channelSettings = {
   volume: -14,
   pan: 0,
   mute: false,
-  solo: false,
-};
+  solo: false
+}
 
-const synthNode = new Tone.Synth(synthSettings);
+const synthNode = new Tone.Synth(synthSettings)
 // const chorusNode = new Tone.Chorus(chorusSettings).start()
 // const freeverbNode = new Tone.Freeverb(freeverbSettings)
 // const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings)
 // const tremoloNode = new Tone.Tremolo(tremoloSettings)
 // const vibratoNode = new Tone.Vibrato(vibratoSettings)
-const channelNode = new Tone.Channel(channelSettings).toDestination();
+const channelNode = new Tone.Channel(channelSettings).toDestination()
 
 synthNode.chain(
   // chorusNode,
@@ -83,9 +83,9 @@ synthNode.chain(
   // tremoloNode,
   // vibratoNode,
   channelNode
-);
+)
 
-const v = 1;
+const v = 1
 
 // prettier-ignore
 const partSettings = {
@@ -103,24 +103,24 @@ const partSettings = {
     'C3', 'B3', 'A3', 'G3', 'F3', 'E3', 'D3','C4',
   ],
   sequence: [
-    {
-      time: '0:0:0',
-      noteName: 'C3',
-      duration: '1n',
-      velocity: v
-    },
-    {
-      time: '0:1:0',
-      noteName: 'A3',
-      duration: '1n',
-      velocity: v
-    },
-    {
-      time: '0:2:0',
-      noteName: 'F4',
-      duration: '1n',
-      velocity: v
-    }
+    // {
+    //   time: '0:0:0',
+    //   noteName: 'C3',
+    //   duration: '1n',
+    //   velocity: v
+    // },
+    // {
+    //   time: '0:1:0',
+    //   noteName: 'A3',
+    //   duration: '1n',
+    //   velocity: v
+    // },
+    // {
+    //   time: '0:2:0',
+    //   noteName: 'F4',
+    //   duration: '1n',
+    //   velocity: v
+    // }
   ]
 }
 
@@ -130,19 +130,19 @@ const partNode = new Tone.Part(function (time, note) {
     note.duration,
     time,
     note.velocity
-  );
-}, []);
+  )
+}, [])
 
-partNode.loopEnd = "2m";
-partNode.loop = true;
+partNode.loopEnd = '2m'
+partNode.loop = true
 
 const instrument = [
   {
     id: generateUniqId(),
-    name: "Melody Synth",
-    type: "ToneSynth",
+    name: 'Melody Synth',
+    type: 'ToneSynth',
     node: synthNode,
-    settings: synthSettings,
+    settings: synthSettings
   },
   // {
   //   id: generateUniqId(),
@@ -181,18 +181,18 @@ const instrument = [
   // },
   {
     id: generateUniqId(),
-    name: "Channel",
-    type: "Channel",
+    name: 'Channel',
+    type: 'Channel',
     node: channelNode,
-    settings: channelSettings,
+    settings: channelSettings
   },
   {
     id: generateUniqId(),
-    name: "Sequencer",
-    type: "Sequencer",
+    name: 'Sequencer',
+    type: 'Sequencer',
     node: partNode,
-    settings: partSettings,
-  },
-];
+    settings: partSettings
+  }
+]
 
-export { instrument };
+export { instrument }

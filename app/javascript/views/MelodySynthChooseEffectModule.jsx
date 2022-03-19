@@ -86,12 +86,6 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
         </div>
 
         <div>
-          <Button
-            text="Add effect"
-            handleClick={() => {
-              this.props.addEffect(this.props.effectArray, this.props.newEffect)
-            }}
-          />
           <Select
             text="Добавить эффект"
             options={this.props.possibleEffects}

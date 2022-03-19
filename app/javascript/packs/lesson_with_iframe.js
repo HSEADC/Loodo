@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
-    console.log('message sent')
+    console.log('Connecting...')
     const iframes = document.getElementsByTagName('iframe')
     console.log(iframes)
     iframes[0].contentWindow.postMessage('hello there!', '*')
@@ -11,32 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
     (event) => {
       const { type, data } = event.data
 
-      if (type === 'connection done') {
-        console.log('connection done')
+      if (type === 'Connection done') {
+        console.log('Connection done')
       } else if (type === 'synth started') {
         console.log('synth started')
 
-        const container = document.getElementsByClassName(
-          'interactive_module_1'
-        )[0]
+        // const container = document.getElementsByClassName(
+        //   'interactive_module_1'
+        // )[0]
+        //
+        // const error = document.createElement('div')
+        // error.classList.add('error')
+        // error.innerText = 'synth started, you gained 1 point'
+        // container.appendChild(error)
+      } else if (type === 'success') {
+        console.log('You done the task succesefully')
 
-        const error = document.createElement('div')
-        error.classList.add('error')
-        error.innerText = 'synth started, you gained 1 point'
-        container.appendChild(error)
-      } else if (type === 'synth stopped') {
-        console.log('synth stopped')
-
-        const container = document.getElementsByClassName(
-          'interactive_module_1'
-        )[0]
+        const container = document.getElementsByClassName('support_module')[0]
 
         container.innerHTML = ''
 
+        console.log(data)
+
         const success = document.createElement('div')
-        success.classList.add('success')
-        success.innerText = 'synth stopped'
+        success.classList.add('SuccessBlock')
+        success.innerText = 'Молодец! ты заработал ' + data.points + ' очков'
         container.appendChild(success)
+      } else if (type === '') {
       }
     },
     false

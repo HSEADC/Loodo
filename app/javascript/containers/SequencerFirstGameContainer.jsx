@@ -3,7 +3,7 @@ import * as Tone from 'tone'
 // import * as bassSynth from '../tunes/bass_synth'
 // import * as spaceSynth from '../tunes/space_synth'
 // import * as allEffectsSynth from '../tunes/all_effects_synth'
-import * as drumSampler from '../tunes/drum_sampler'
+import * as drumSampler from '../tunes/drum_sampler_game1'
 import * as sequencedSynth from '../tunes/sequenced_synth'
 
 import React, { PureComponent } from 'react'
@@ -11,7 +11,7 @@ import React, { PureComponent } from 'react'
 import WelcomeScreen from '../views/WelcomeScreen'
 import SequencerModule from '../views/SequencerModule'
 
-export default class SecuencerContainer extends PureComponent {
+export default class SecuencerFirstGameContainer extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -30,10 +30,48 @@ export default class SecuencerContainer extends PureComponent {
     })
   }
 
+  gameApp = () => {
+    let { instruments } = this.state
+
+    let choosedSequence = instruments[0][2].settings.sequence
+    let choosedTime = []
+    let winCondition = 0
+
+    choosedSequence.forEach((sequence, i) => {
+      choosedTime.push(sequence.time)
+    })
+
+    function suits(element, index, array) {
+      if (element === '0:0:0') {
+        return true
+      } else if (element === '0:2:0') {
+        return true
+      } else if (element === '1:0:0') {
+        return true
+      } else if (element === '1:2:0') {
+        return true
+      } else {
+        return false
+      }
+    }
+
+    if (choosedTime.every(suits)) {
+      if (choosedTime.length == 4) {
+        this.props.postMessageToWindow('success', {
+          points: 2000
+        })
+      }
+    }
+  }
+
   playSequence = (isPressed) => {
     if (isPressed) {
+      this.props.postMessageToWindow('synth started', 123)
       Tone.Transport.start()
     } else {
+      this.props.postMessageToWindow('success', {
+        points: 2000
+      })
       Tone.Transport.stop()
     }
   }
@@ -56,8 +94,7 @@ export default class SecuencerContainer extends PureComponent {
       // bassSynth.instrument
       // spaceSynth.instrument
       // allEffectsSynth.instrument
-      // drumSampler.instrument,
-      sequencedSynth.instrument
+      drumSampler.instrument
     ]
 
     this.setState({ instruments })
@@ -110,6 +147,8 @@ export default class SecuencerContainer extends PureComponent {
 
       instruments.push(newInstrument)
     })
+
+    this.gameApp()
 
     this.setState({
       instruments

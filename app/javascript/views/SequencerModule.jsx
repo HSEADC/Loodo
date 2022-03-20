@@ -7,6 +7,7 @@ import ToggleButton from '../control_components/ToggleButton'
 import ToneSynth from '../module_components/ToneSynth'
 import Sampler from '../module_components/Sampler'
 import Sequencer from '../module_components/Sequencer'
+import CodeModule from '../module_components/CodeModule'
 
 import AutoFilterEffect from '../module_components/AutoFilterEffect'
 import AutoPannerEffect from '../module_components/AutoPannerEffect'
@@ -107,6 +108,8 @@ export default class SequencerModule extends PureComponent {
         <div className="SequencerModule">{instrumentElements}</div>
         <div>стрелка</div>
         <div className="moduleHeaderText">Синтезатор</div>
+
+        <CodeModule />
       </div>
     )
   }

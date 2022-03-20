@@ -8,6 +8,20 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
+    last_lesson_id = Lesson.last.id
+    next_lesson_id = @lesson.id + 1
+
+    unless next_lesson_id > last_lesson_id
+      @next_lesson = Lesson.find(next_lesson_id)
+    end
+
+    if @lesson.id === 1
+      render 'lesson_1'
+    elsif @lesson.id === 2
+      render 'lesson_2'
+    else
+      render :show
+    end
   end
 
   # GET /lessons/new

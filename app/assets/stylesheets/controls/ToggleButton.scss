@@ -1,4 +1,4 @@
-.ToggleButton {
+.SequencerToggleButton {
   // margin: 0 4px 4px 0;
   padding: 8px 10px;
   font-size: 14px;
@@ -13,7 +13,8 @@
     filter: brightness(90%);
   }
 
-  &.active {
+  &.active,
+  &.grey.active {
     font-weight: 800;
     color: var(--black);
     background-color: var(--dark-green);

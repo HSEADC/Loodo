@@ -102,6 +102,7 @@ const partSettings = {
   scale: [
     'C3', 'B3', 'A3', 'G3', 'F3', 'E3', 'D3','C4',
   ],
+
   sequence: [
     // {
     //   time: '0:0:0',

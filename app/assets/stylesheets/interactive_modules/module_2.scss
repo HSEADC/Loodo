@@ -1,2 +1,60 @@
 .interactive_module_2 {
+  // .secondModuleContainer {
+  //   display: none;
+  // }
+
+  .keyboardContainer {
+    display: flex;
+    // width: 600px;
+    height: 180px;
+
+    .whiteContainer {
+      width: 600px;
+      display: flex;
+    }
+
+    .blackContainer {
+      width: 482px;
+      position: absolute;
+      left: 58px;
+    }
+  }
+
+  .PianoWhiteKey {
+    z-index: 1;
+    background: #e1e1e1;
+    width: 16.6%;
+    border: 1px solid #505050;
+
+    &.on {
+      background-color: #79fd38;
+      width: 400px;
+    }
+  }
+
+  .PianoBlackKey {
+    position: absolute;
+    width: 52px;
+    height: 120px;
+    background: #505050;
+    z-index: 2;
+
+    &.on {
+      background-color: #79fd38;
+      width: 400px;
+    }
+  }
+
+  #BlackPianoKey1 {
+    left: 88px;
+  }
+  #BlackPianoKey2 {
+    left: 261px;
+  }
+  #BlackPianoKey3 {
+    left: 346px;
+  }
+  #BlackPianoKey4 {
+    left: 431px;
+  }
 }

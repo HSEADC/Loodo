@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import ToggleButton from './ToggleButton'
+import SequencerToggleButton from './SequencerToggleButton'
 
 export default class SequencerRow extends PureComponent {
   constructor(props) {
@@ -32,10 +32,11 @@ export default class SequencerRow extends PureComponent {
 
     options.forEach((option, i) => {
       buttonElements.push(
-        <ToggleButton
-          text={option}
-          isOn={this.checkToggleState(option, value)}
-          handleClick={() => this.handleChange(option)}
+        <SequencerToggleButton
+          text={option.position}
+          sectionStyle={option.style}
+          isOn={this.checkToggleState(option.position, value)}
+          handleClick={() => this.handleChange(option.position)}
           key={i}
         />
       )
@@ -48,7 +49,5 @@ export default class SequencerRow extends PureComponent {
 SequencerRow.propTypes = {
   name: PropTypes.string.isRequired,
   property: PropTypes.array.isRequired,
-  // value: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SequencerContainer from '../containers/SequencerContainer'
+import TrigerCodeContainer from '../containers/TrigerCodeContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <SequencerContainer />,
+    <TrigerCodeContainer />,
     document.body.getElementsByClassName('interactive_module_3')[0]
   )
 })

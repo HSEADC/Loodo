@@ -4,9 +4,9 @@ import React, { PureComponent } from 'react'
 import { generateUniqId } from '../utilities'
 
 import WelcomeScreen from '../views/WelcomeScreen'
-import TrigerModule from '../views/TrigerModule'
+import TrigerCodeModule from '../views/TrigerCodeModule'
 
-export default class TrigerContainer extends PureComponent {
+export default class TrigerCodeContainer extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -99,7 +99,10 @@ export default class TrigerContainer extends PureComponent {
     const { instruments, togglePlay } = this.state
 
     return (
-      <TrigerModule togglePlay={togglePlay} handlePlayNote={this.playNote} />
+      <TrigerCodeModule
+        togglePlay={togglePlay}
+        handlePlayNote={this.playNote}
+      />
     )
   }
 

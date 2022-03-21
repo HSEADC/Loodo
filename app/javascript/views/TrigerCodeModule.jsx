@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import Triger from '../module_components/Triger'
+import TrigerCode from '../module_components/TrigerCode'
 
-export default class TrigerModule extends PureComponent {
+export default class TrigerCodeModule extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <Triger
+      <TrigerCode
         togglePlay={this.props.togglePlay}
         handlePlayNote={this.props.handlePlayNote}
       />
@@ -18,6 +18,6 @@ export default class TrigerModule extends PureComponent {
   }
 }
 
-TrigerModule.propTypes = {
+TrigerCodeModule.propTypes = {
   handlePlayNote: PropTypes.func.isRequired
 }

@@ -1,28 +1,23 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
-import Slider from "../control_components/Slider";
-import Knob from "../control_components/Knob";
-import ToggleButton from "../control_components/ToggleButton";
+import Slider from '../control_components/Slider'
+import Knob from '../control_components/Knob'
+import PlayButton from '../control_components/PlayButton'
 
 export default class ToneMelodySynth extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      sequenceIsPlaying: true,
-    };
+      sequenceIsPlaying: true
+    }
   }
 
-  // Можно спользовать обновление тут, так как
-  // componentDidUpdate() {
-  // this.updateNodeParams()
-  // }
-
   updateNodeParams = () => {
-    const { node, settings } = this.props;
-    const { volume, detune, portamento, envelope, oscillator } = settings;
-    const { type, phase, harmonicity } = oscillator;
+    const { node, settings } = this.props
+    const { volume, detune, portamento, envelope, oscillator } = settings
+    const { type, phase, harmonicity } = oscillator
 
     const {
       attack,
@@ -31,37 +26,67 @@ export default class ToneMelodySynth extends Component {
       decayCurve,
       sustain,
       release,
-      releaseCurve,
-    } = envelope;
+      releaseCurve
+    } = envelope
 
-    node.volume.value = volume;
-    node.detune.value = detune;
-    node.portamento = portamento;
+    node.volume.value = volume
+    node.detune.value = detune
+    node.portamento = portamento
 
-    node.oscillator.type = type;
-    node.oscillator.phase = phase;
+    node.oscillator.type = type
+    node.oscillator.phase = phase
 
     if (node.oscillator.harmonicity) {
-      node.oscillator.harmonicity.value = harmonicity;
+      node.oscillator.harmonicity.value = harmonicity
     }
 
-    node.envelope.attack = attack;
-    node.envelope.attackCurve = attackCurve;
-    node.envelope.decay = decay;
-    node.envelope.decayCurve = decayCurve;
-    node.envelope.sustain = sustain;
-    node.envelope.release = release;
-    node.envelope.releaseCurve = releaseCurve;
-  };
+    node.envelope.attack = attack
+    node.envelope.attackCurve = attackCurve
+    node.envelope.decay = decay
+    node.envelope.decayCurve = decayCurve
+    node.envelope.sustain = sustain
+    node.envelope.release = release
+    node.envelope.releaseCurve = releaseCurve
+  }
 
   handlePropertyValueChange = (property, value) => {
-    const { id, handlePropertyValueChange } = this.props;
-    handlePropertyValueChange(id, property, value);
-  };
+    const { id, handlePropertyValueChange } = this.props
+    handlePropertyValueChange(id, property, value)
+  }
 
   render() {
-    const { id, name, settings } = this.props;
-    const { volume, detune, portamento, envelope, oscillator } = settings;
+    const { id, name, settings, disabled } = this.props
+    const { volume, detune, portamento, envelope, oscillator } = settings
+
+    let adsrStyle = ''
+    let portStyle = ''
+    let phaseStyle = ''
+    let freqStyle = ''
+
+    switch (disabled) {
+      case 4:
+        adsrStyle = 'Disabled'
+        portStyle = 'Disabled'
+        phaseStyle = 'Disabled'
+        freqStyle = 'Disabled'
+
+        break
+      case 3:
+        adsrStyle = 'Disabled'
+        portStyle = 'Disabled'
+        phaseStyle = 'Disabled'
+
+        break
+      case 2:
+        adsrStyle = 'Disabled'
+        portStyle = 'Disabled'
+
+        break
+      case 1:
+        adsrStyle = 'Disabled'
+
+        break
+    }
 
     const {
       type,
@@ -69,8 +94,8 @@ export default class ToneMelodySynth extends Component {
       // partialCount,
       // partials,
       phase,
-      harmonicity,
-    } = oscillator;
+      harmonicity
+    } = oscillator
 
     // Type
     // The type of the oscillator. Can be any of the basic types: sine, square, triangle, sawtooth. Or prefix the basic types with "fm", "am", or "fat" to use the FMOscillator, AMOscillator or FatOscillator types. The oscillator could also be set to "pwm" or "pulse". All of the parameters of the oscillator's class are accessible when the oscillator is set to that type, but throws an error when it's not.
@@ -79,23 +104,22 @@ export default class ToneMelodySynth extends Component {
     // Modulation Type
     // The type of the modulator oscillator. Only if the oscillator is set to "am" or "fm" types. See AMOscillator or FMOscillator
 
-    const { attack, decay, sustain, release } = envelope;
+    const { attack, decay, sustain, release } = envelope
 
-    this.updateNodeParams();
+    this.updateNodeParams()
 
     return (
       <div className="SynthMelodyModule">
         <div className="moduleHeaderButton">
           <div className="headerButton">
-            <ToggleButton
-              className="trigerButton"
-              text="Start"
+            <PlayButton
+              on={this.props.togglePlay}
               handleClick={this.props.handlePlaySequence}
             />
           </div>
           <span>Мелодия</span>
         </div>
-        <div>стрелка</div>
+        <div className="Arrow"></div>
 
         <div className="synthModule">
           <div className="moduleHeaderText">Синтезатор</div>
@@ -104,7 +128,7 @@ export default class ToneMelodySynth extends Component {
               <div className="knobContainerDetune">
                 <Knob
                   name="Detune"
-                  property={["detune"]}
+                  property={['detune']}
                   min={-100}
                   max={100}
                   value={detune}
@@ -113,10 +137,10 @@ export default class ToneMelodySynth extends Component {
               </div>
 
               <div className="synthModuleSettingsContainerBlock">
-                <div className="sliderLargeContainer">
+                <div className={'sliderLargeContainer' + freqStyle}>
                   <Slider
                     name="Frequency"
-                    property={["frequency"]}
+                    property={['frequency']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -124,10 +148,10 @@ export default class ToneMelodySynth extends Component {
                     handleChange={this.handlePropertyValueChange}
                   />
                 </div>
-                <div className="sliderLargeContainer">
+                <div className={'sliderLargeContainer' + phaseStyle}>
                   <Slider
                     name="Phase"
-                    property={["oscillator", "type"]}
+                    property={['oscillator', 'type']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -138,21 +162,21 @@ export default class ToneMelodySynth extends Component {
               </div>
             </div>
             <div className="synthModuleSettingsContainer">
-              <div className="knobContainerPortamento">
+              <div className={'knobContainerPortamento' + portStyle}>
                 <Knob
                   name="Portamento"
-                  property={["portamento"]}
-                  min={-100}
+                  property={['portamento']}
+                  min={0}
                   max={100}
                   value={portamento}
                   handleChange={this.handlePropertyValueChange}
                 />
               </div>
-              <div className="synthModuleSettingsContainerADSR">
+              <div className={'synthModuleSettingsContainerADSR' + adsrStyle}>
                 <div className="ADSRSlider">
                   <Slider
                     name="Attack"
-                    property={["envelope", "attack"]}
+                    property={['envelope', 'attack']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -164,7 +188,7 @@ export default class ToneMelodySynth extends Component {
                 <div className="ADSRSlider">
                   <Slider
                     name="Decay"
-                    property={["envelope", "decay"]}
+                    property={['envelope', 'decay']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -175,7 +199,7 @@ export default class ToneMelodySynth extends Component {
                 <div className="ADSRSlider">
                   <Slider
                     name="Sustain"
-                    property={["envelope", "sustain"]}
+                    property={['envelope', 'sustain']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -186,7 +210,7 @@ export default class ToneMelodySynth extends Component {
                 <div className="ADSRSlider">
                   <Slider
                     name="Release"
-                    property={["envelope", "release"]}
+                    property={['envelope', 'release']}
                     min={0}
                     max={1}
                     step={0.01}
@@ -199,7 +223,7 @@ export default class ToneMelodySynth extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -208,5 +232,5 @@ ToneMelodySynth.propTypes = {
   name: PropTypes.string.isRequired,
   node: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired,
-  handlePropertyValueChange: PropTypes.func.isRequired,
-};
+  handlePropertyValueChange: PropTypes.func.isRequired
+}

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
 import Button from '../control_components/Button'
-import ToggleButton from '../control_components/ToggleButton'
+import PlayButton from '../control_components/PlayButton'
 
 import ToneSynth from '../module_components/ToneSynth'
 import Sampler from '../module_components/Sampler'
@@ -94,22 +94,19 @@ export default class SequencerModule extends PureComponent {
     })
 
     return (
-      <div>
+      <div className="mainSequencerContainer">
         <div className="moduleHeaderButton">
           <div className="headerButton">
-            <ToggleButton
-              className="trigerButton"
-              text="Start"
+            <PlayButton
+              on={this.props.togglePlay}
               handleClick={this.props.handlePlaySequence}
             />
           </div>
           <span>Мелодия</span>
         </div>
         <div className="SequencerModule">{instrumentElements}</div>
-        <div>стрелка</div>
+        <div className="Arrow"></div>
         <div className="moduleHeaderText">Синтезатор</div>
-
-        <CodeModule />
       </div>
     )
   }

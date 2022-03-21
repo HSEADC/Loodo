@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 
 import PlayButton from '../control_components/PlayButton'
 
-export default class Triger extends PureComponent {
+export default class TrigerCode extends PureComponent {
   constructor(props) {
     super(props)
   }
@@ -24,12 +24,7 @@ export default class Triger extends PureComponent {
           </div>
           <div className="trigerBodyContainer">
             <div className="wrapper">
-              <div>Нота:</div>
-              <h4>C4</h4>
-            </div>
-            <div className="wrapper">
-              <div>Длитиельность:</div>
-              <h4>1 секунда</h4>
+              <div>synth.triggerAttackRelease("C4", "2");</div>
             </div>
           </div>
         </div>
@@ -41,6 +36,6 @@ export default class Triger extends PureComponent {
   }
 }
 
-Triger.propTypes = {
+TrigerCode.propTypes = {
   handlePlayNote: PropTypes.func.isRequired
 }

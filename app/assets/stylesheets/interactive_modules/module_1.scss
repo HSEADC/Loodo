@@ -29,7 +29,23 @@
 
   .trigerBodyContainer {
     background-color: #e1e1e1;
-    height: 150px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 20px 20px 20px 20px;
+
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      height: 25px;
+    }
+
+    h4 {
+      font-weight: 700;
+      margin-left: 8px;
+    }
   }
 
   .trigerButton {
@@ -38,16 +54,5 @@
     background-repeat: no-repeat;
     width: 26px;
     height: 26px;
-  }
-
-  .oscilatorContainer {
-    background-color: var(--black);
-    color: var(--white);
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 50px;
   }
 }

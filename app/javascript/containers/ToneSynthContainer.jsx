@@ -1,72 +1,56 @@
-import * as Tone from "tone";
-import React, { PureComponent } from "react";
-import Button from "../control_components/Button";
-// import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
+import * as Tone from 'tone'
+import React, { PureComponent } from 'react'
 
-import WelcomeScreen from "../views/WelcomeScreen";
-import ToneSynthModule from "../views/ToneSynthModule";
+import { generateUniqId } from '../utilities'
+
+import WelcomeScreen from '../views/WelcomeScreen'
+import ToneSynthModule from '../views/ToneSynthModule'
 
 export default class TrigerContainer extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       webAudioStarted: false,
       instruments: [],
-    };
+      togglePlay: false
+    }
   }
 
   startWebAudio = async () => {
-    await Tone.start();
-    this.initInstruments();
-    console.log("/// Instruments have been initialized ///");
+    await Tone.start()
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
 
     this.setState({
-      webAudioStarted: true,
-    });
-  };
-
-  generateUniqId = () => {
-    return Math.floor(Math.random() * Date.now());
-  };
+      webAudioStarted: true
+    })
+  }
 
   handlePropertyValueChange = (id, property, value) => {
-    // Звук лагает при изменении параметров
-    // const { instruments } = this.state
-    //
-    // instruments.forEach((instrument, i) => {
-    //   if (instrument.id === id) {
-    //     const propertyLevel1 = property[0]
-    //     instrument.settings[propertyLevel1] = value
-    //   }
-    //
-    //   instruments.push(instrument)
-    // })
-
-    // Иммутабельный способ, звук не лагает
-    const instruments = [];
+    const instruments = []
 
     this.state.instruments.forEach((instrument, i) => {
-      const newInstrument = Object.assign({}, instrument);
+      const newInstrument = Object.assign({}, instrument)
 
       if (instrument.id === id) {
         if (property.length === 1) {
-          const propertyName = property[0];
-          newInstrument.settings[propertyName] = value;
+          const propertyName = property[0]
+          newInstrument.settings[propertyName] = value
         } else if (property.length === 2) {
-          const scopeName = property[0];
-          const propertyName = property[1];
-          newInstrument.settings[scopeName][propertyName] = value;
+          const scopeName = property[0]
+          const propertyName = property[1]
+          newInstrument.settings[scopeName][propertyName] = value
         }
       }
 
-      instruments.push(newInstrument);
-    });
+      instruments.push(newInstrument)
+    })
 
     this.setState({
-      instruments,
-    });
-  };
+      instruments
+    })
+  }
 
   initInstruments = () => {
     const melodySynthSettings = {
@@ -75,53 +59,34 @@ export default class TrigerContainer extends PureComponent {
       portamento: 0.05,
       envelope: {
         attack: 0.05,
-        attackCurve: "exponential",
+        attackCurve: 'exponential',
         decay: 0.2,
-        decayCurve: "exponential",
+        decayCurve: 'exponential',
         sustain: 0.2,
         release: 1.5,
-        releaseCurve: "exponential",
+        releaseCurve: 'exponential'
       },
       oscillator: {
-        type: "amtriangle",
-        modulationType: "sine",
+        type: 'amtriangle',
+        modulationType: 'sine',
         // partialCount: 0,
         // partials: [],
         phase: 0,
-        harmonicity: 0.5,
-      },
-    };
+        harmonicity: 0.5
+      }
+    }
 
-    const melodySynthNode1 = new Tone.Synth(
-      melodySynthSettings
-    ).toDestination();
-
-    // const melodySynthNode2 = new Tone.Synth(
-    //   melodySynthSettings
-    // ).toDestination();
-
-    // melodySynthNode.triggerAttackRelease("C4", "8n");
-
-    let a = 1;
+    const melodySynthNode = new Tone.Synth(melodySynthSettings).toDestination()
 
     const instruments = [
       {
-        id: this.generateUniqId(),
-        name: "Melody Synth",
-        type: "ToneSynth",
-        node: melodySynthNode1,
-        settings: melodySynthSettings,
-      },
-      // {
-      //   id: this.generateUniqId(),
-      //   name: "Melody Synth",
-      //   type: "ToneSynth",
-      //   node: melodySynthNode2,
-      //   settings: melodySynthSettings,
-      // },
-    ];
-
-    // console.log(instruments);
+        id: generateUniqId(),
+        name: 'Melody Synth',
+        type: 'ToneSynth',
+        node: melodySynthNode,
+        settings: melodySynthSettings
+      }
+    ]
 
     // prettier-ignore
     const seq = new Tone.Sequence(
@@ -133,54 +98,47 @@ export default class TrigerContainer extends PureComponent {
         'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3'
       ]
     ).start(0)
-    //
-    // Tone.Transport.start();
 
     this.setState({
-      instruments,
-    });
-  };
-
-  checkState = () => {
-    console.log(this.state);
-  };
+      instruments
+    })
+  }
 
   renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />;
-  };
+    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
+  }
 
-  playNote = (synth, note, dur) => {
-    console.log(synth);
-    console.log(note);
-    console.log(dur);
-    synth.triggerAttackRelease(note, dur);
-  };
+  playSequence = () => {
+    let { togglePlay } = this.state
 
-  playSequence = (isPressed) => {
-    if (isPressed) {
-      Tone.Transport.start();
+    if (togglePlay == false) {
+      Tone.Transport.start()
+      this.setState({
+        togglePlay: !togglePlay
+      })
     } else {
-      Tone.Transport.stop();
+      Tone.Transport.stop()
+      this.setState({
+        togglePlay: !togglePlay
+      })
     }
-  };
+  }
 
   renderRoom = () => {
-    const { instruments } = this.state;
+    const { instruments } = this.state
 
     return (
       <ToneSynthModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
-        handleCheckState={this.checkState}
         handlePlaySequence={this.playSequence}
-        // handleInitInstruments={this.initInstruments}
-        handlePlayNote={this.playNote}
+        togglePlay={this.state.togglePlay}
       />
-    );
-  };
+    )
+  }
 
   render() {
-    const { webAudioStarted } = this.state;
+    const { webAudioStarted } = this.state
 
     return (
       <div className="SynthContainer">
@@ -188,6 +146,6 @@ export default class TrigerContainer extends PureComponent {
           ? this.renderRoom()
           : this.renderWelcomeScreen()}
       </div>
-    );
+    )
   }
 }

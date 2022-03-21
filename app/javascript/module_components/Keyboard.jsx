@@ -1,58 +1,32 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import PropTypes from 'prop-types'
+import React, { PureComponent } from 'react'
 
-import ToneSynth from "../module_components/ToneSynth";
-import Button from "../control_components/Button";
+import ToneSynth from '../module_components/ToneSynth'
+import Button from '../control_components/Button'
 
 export default class Keyboard extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
   }
-
-  thiggerAttackRelease = () => {
-    const {
-      synth,
-      steps,
-      currentPattern,
-      patterns,
-      currentQuarter,
-    } = this.props;
-
-    const currentPatternSteps = patterns[currentPattern];
-
-    currentPatternSteps.forEach((patternStep, i) => {
-      if (patternStep.step == currentQuarter) {
-        synth.webaudio.triggerAttackRelease(
-          patternStep.note + patternStep.octave,
-          "4n"
-        );
-      }
-    });
-  };
 
   render() {
     return (
-      <div>
+      <div className="mainContainer">
         <div>
+          <div class="moduleHeaderText">Клавиатура</div>
           <div className="keyboardContainer">
-            {this.props.renderNoteButtons()}
+            <div className="whiteContainer">
+              {this.props.renderNoteButtons('White')}
+            </div>
+            <div className="blackContainer">
+              {this.props.renderNoteButtons('Black')}
+            </div>
           </div>
         </div>
 
-        <div>стрелка</div>
+        <div className="Arrow"></div>
         <div className="oscilatorContainer">Осцилятор</div>
       </div>
-    );
+    )
   }
 }
-
-Keyboard.propTypes = {
-  // id: PropTypes.number.isRequired,
-  // name: PropTypes.string.isRequired,
-  // node: PropTypes.object.isRequired,
-  // settings: PropTypes.object.isRequired,
-  // handlePropertyValueChange: PropTypes.func.isRequired,
-  instruments: PropTypes.array.isRequired,
-  handleInitInstruments: PropTypes.func.isRequired,
-  handlePlayNote: PropTypes.func.isRequired,
-};

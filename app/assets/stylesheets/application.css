@@ -19,4 +19,6 @@
  *= require_tree ./controls
  *= require_tree ./views
  *= require_tree ./interactive_modules
+ *= require_tree ./lessons
+
  */

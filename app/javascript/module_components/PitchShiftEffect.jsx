@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
+import { generateUniqId } from '../utilities'
+
 import Slider from '../control_components/Slider'
 import Knob from '../control_components/Knob'
 import ButtonSet from '../control_components/ButtonSet'
@@ -27,66 +29,79 @@ export default class PitchShiftEffect extends Component {
   }
 
   render() {
-    const { name, settings } = this.props
+    const { name, settings, newEffect } = this.props
     const { wet, pitch, windowSize, delayTime, feedback } = settings
+
+    let newArrow = []
+
+    if (newEffect) {
+      newArrow.push(
+        <div className="ArrowHorizontal" key={generateUniqId()}></div>
+      )
+    }
 
     this.updateNodeParams()
 
     return (
       <div className="PitchShiftEffect">
-        <div className="moduleHeaderText">Эффект: Pitch Shift</div>
-        <div className="PartManage">
-          <div className="LeftPart">
-            <div className="firstModuleSettingsContainer">
-              <div className="sliderLargeContainerBlock">
-                <div className="sliderLargeContainer">
-                  <Slider
-                    name="Wet"
-                    property={['wet']}
-                    min={0}
-                    max={1}
-                    step={0.01}
-                    value={wet}
-                    handleChange={this.handlePropertyValueChange}
-                  />
+        <div className="newEffectContainer">
+          {newArrow}
+          <div>
+            <div className="moduleHeaderText">Эффект: Pitch Shift</div>
+            <div className="PartManage">
+              <div className="LeftPart">
+                <div className="firstModuleSettingsContainer">
+                  <div className="sliderLargeContainerBlock">
+                    <div className="sliderLargeContainer">
+                      <Slider
+                        name="Wet"
+                        property={['wet']}
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={wet}
+                        handleChange={this.handlePropertyValueChange}
+                      />
+                    </div>
+                    <div className="sliderLargeContainer">
+                      <Slider
+                        name="Window Size"
+                        property={['windowSize']}
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={windowSize}
+                        handleChange={this.handlePropertyValueChange}
+                      />
+                    </div>
+                  </div>
                 </div>
+
                 <div className="sliderLargeContainer">
                   <Slider
-                    name="Window Size"
-                    property={['windowSize']}
+                    name="Feedback"
+                    property={['feedback']}
                     min={0}
                     max={1}
-                    step={0.01}
-                    value={windowSize}
+                    step={0.001}
+                    value={feedback}
                     handleChange={this.handlePropertyValueChange}
                   />
                 </div>
               </div>
-            </div>
 
-            <div className="sliderLargeContainer">
-              <Slider
-                name="Feedback"
-                property={['feedback']}
-                min={0}
-                max={1}
-                step={0.001}
-                value={feedback}
-                handleChange={this.handlePropertyValueChange}
-              />
-            </div>
-          </div>
-
-          <div className="RightPart">
-            <div className="knobContainer">
-              <Knob
-                name="Pitch"
-                property={['pitch']}
-                min={-24}
-                max={24}
-                value={pitch}
-                handleChange={this.handlePropertyValueChange}
-              />
+              <div className="RightPart">
+                <div className="knobContainer">
+                  <Knob
+                    name="Pitch"
+                    property={['pitch']}
+                    min={-24}
+                    max={24}
+                    value={pitch}
+                    handleChange={this.handlePropertyValueChange}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

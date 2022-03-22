@@ -1,10 +1,16 @@
 .interactive_module_7 {
-  .moduleWidth {
-    width: 600px;
+  .mainSequencerContainer {
+    display: block;
+  }
+
+  .flexBlock {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .moduleWidth {
+    width: 600px;
   }
 
   .ToneSynth {
@@ -12,6 +18,16 @@
   }
 
   .InteractiveBlocks {
-    width: 600px;
+    width: auto;
+
+    .Row {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .addEffectContainer {
+    display: flex;
+    flex-direction: row;
   }
 }

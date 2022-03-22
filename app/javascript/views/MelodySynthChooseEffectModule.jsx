@@ -19,19 +19,24 @@ import Channel from '../module_components/Channel'
 export default class MelodySynthChooseEffectModule extends PureComponent {
   constructor(props) {
     super(props)
+
+    this.state = {
+      newEffect: false
+    }
   }
 
   render() {
     const { instruments, handlePropertyValueChange, addEffect } = this.props
     const instrumentElements = []
+    let possibleEffects = ['Distortion', 'Tremolo', 'Pitch Shift']
 
-    let possibleEffects = []
+    console.log(instruments)
 
     instruments.forEach((instrument, i) => {
       const instrumentModuleElements = []
 
       instrument.forEach((instrumentModule, i) => {
-        const { id, name, type, node, settings } = instrumentModule
+        const { id, name, type, node, settings, newEffect } = instrumentModule
 
         const components = {
           ToneMelodyEffectSynth: ToneMelodyEffectSynth,
@@ -54,38 +59,52 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
             settings={settings}
             handlePropertyValueChange={handlePropertyValueChange}
             key={i}
+            newEffect={newEffect}
           />
         )
       })
 
-      instrumentElements.push(
-        <div className="Row" key={i}>
-          {instrumentModuleElements}
-        </div>
-      )
+      if (this.state.newEffect) {
+        instrumentElements.push(
+          <div className="NewEffect" id={'NewEffect' + name}>
+            <div className="Arrow"> </div>
+            <div className="Row" key={i}>
+              {instrumentModuleElements}
+            </div>
+          </div>
+        )
+      } else {
+        instrumentElements.push(
+          <div className="Row" key={i}>
+            {instrumentModuleElements}
+          </div>
+        )
+      }
     })
 
     return (
       <div className="mainSequencerContainer">
         <div className="moduleWidth">
-          <div className="moduleHeaderButton">
-            <div className="headerButton">
-              <PlayButton
-                on={this.props.togglePlay}
-                handleClick={this.props.handlePlaySequence}
-              />
+          <div className="flexBlock">
+            <div className="moduleHeaderButton">
+              <div className="headerButton">
+                <PlayButton
+                  on={this.props.togglePlay}
+                  handleClick={this.props.handlePlaySequence}
+                />
+              </div>
+              <span>Мелодия</span>
             </div>
-            <span>Мелодия</span>
+            <div className="Arrow"></div>
+            <div className="moduleHeaderText">Синтезатор</div>
+            <div className="Arrow"></div>
           </div>
-          <div className="Arrow"></div>
-          <div className="moduleHeaderText">Синтезатор</div>
-          <div className="Arrow"></div>
-          <div className="InteractiveBlocks">{instrumentElements}</div>
+          <div className="addEffectContainer">
+            <div className="InteractiveBlocks">{instrumentElements}</div>
 
-          <div>
             <Select
               text="Добавить эффект"
-              options={this.props.possibleEffects}
+              options={possibleEffects}
               addEffect={this.props.addEffect}
             />
           </div>

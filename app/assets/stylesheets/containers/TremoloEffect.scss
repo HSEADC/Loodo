@@ -1,4 +1,8 @@
 .TremoloEffect {
+  .newEffectContainer {
+    display: flex;
+    flex-direction: row;
+  }
   .PartManage {
     display: flex;
     flex-direction: row;

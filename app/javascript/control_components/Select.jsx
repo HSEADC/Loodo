@@ -54,9 +54,10 @@ export default class Select extends PureComponent {
 
     return (
       <div className={classes}>
-        <div onClick={() => this.selectOptions()} className="selectCurrent">
-          {text}
-        </div>
+        <div
+          onClick={() => this.selectOptions()}
+          className="selectCurrent"
+        ></div>
         <div className="openedList">{optionsList}</div>
       </div>
     )

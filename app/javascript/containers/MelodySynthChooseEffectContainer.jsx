@@ -17,7 +17,8 @@ export default class MelodySynthEffectContainer extends PureComponent {
       webAudioStarted: false,
       instruments: [],
       effectArray: tone_melody_chooseeffect_synth.effectArray,
-      newEffect: []
+      newEffect: [],
+      togglePlay: false
     }
   }
 
@@ -29,10 +30,6 @@ export default class MelodySynthEffectContainer extends PureComponent {
     this.setState({
       webAudioStarted: true
     })
-  }
-
-  generateUniqId = () => {
-    return Math.floor(Math.random() * Date.now())
   }
 
   handlePropertyValueChange = (id, property, value) => {
@@ -132,11 +129,11 @@ export default class MelodySynthEffectContainer extends PureComponent {
           name: 'Distortion',
           type: 'DistortionEffect',
           settings: distortionSettings,
-          node: newDistortionNode
+          node: newDistortionNode,
+          newEffect: true
         }
 
         effect = newDistortionEffect
-        console.log('Added ${effectType}')
 
         break
 
@@ -147,11 +144,11 @@ export default class MelodySynthEffectContainer extends PureComponent {
           name: 'Tremolo',
           type: 'TremoloEffect',
           settings: tremoloSettings,
-          node: newTremoloNode
+          node: newTremoloNode,
+          newEffect: true
         }
 
         effect = newTremoloEffect
-        console.log('Added ${effectType}')
 
         break
 
@@ -162,11 +159,11 @@ export default class MelodySynthEffectContainer extends PureComponent {
           name: 'PitchShift',
           type: 'PitchShiftEffect',
           settings: pitchShiftSettings,
-          node: newPitchShiftNode
+          node: newPitchShiftNode,
+          newEffect: true
         }
 
         effect = newPitchShiftEffect
-        console.log('Added ${effectType}')
 
         break
     }
@@ -201,21 +198,24 @@ export default class MelodySynthEffectContainer extends PureComponent {
     })
   }
 
-  playSequence = (isPressed) => {
-    const { postMessageToWindow } = this.props
+  playSequence = () => {
+    let { togglePlay } = this.state
 
-    if (isPressed) {
+    if (togglePlay == false) {
       Tone.Transport.start()
-      // postMessageToWindow('Пойдем гулять?', { somedata: 'yoyoyo' })
+      this.setState({
+        togglePlay: !togglePlay
+      })
     } else {
       Tone.Transport.stop()
-      // postMessageToWindow('Пойдем!', { somedata: 'yoyoyo' })
+      this.setState({
+        togglePlay: !togglePlay
+      })
     }
   }
 
   renderRoom = () => {
     const { instruments } = this.state
-    let possibleEffects = ['Distortion', 'Tremolo', 'Pitch Shift']
 
     return (
       <MelodySynthChooseEffectModule
@@ -223,7 +223,7 @@ export default class MelodySynthEffectContainer extends PureComponent {
         handlePropertyValueChange={this.handlePropertyValueChange}
         handlePlaySequence={this.playSequence}
         addEffect={this.addEffect}
-        possibleEffects={possibleEffects}
+        togglePlay={this.state.togglePlay}
       />
     )
   }

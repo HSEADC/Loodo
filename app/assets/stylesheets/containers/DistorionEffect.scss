@@ -1,4 +1,8 @@
 .DistortionEffect {
+  .newEffectContainer {
+    display: flex;
+    flex-direction: row;
+  }
   .firstModuleSettingsContainer {
     display: flex;
     flex-direction: row;

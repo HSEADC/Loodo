@@ -20,11 +20,13 @@
 
     &.active:hover {
       background-color: #79ff39;
+      cursor: default;
     }
   }
 
   .ToggleButton:hover {
     background-color: #9f9f9f;
+    cursor: pointer;
   }
 
   .ButtonSetWrapper {

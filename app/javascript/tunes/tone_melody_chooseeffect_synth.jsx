@@ -90,28 +90,11 @@ const chorusNode = new Tone.Chorus(chorusSettings).start()
 // const vibratoNode = new Tone.Vibrato(vibratoSettings)
 const tremoloNode = new Tone.Tremolo(tremoloSettings)
 const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings)
-const distortionNode1 = new Tone.Distortion(distortionSettings)
-const distortionNode2 = new Tone.Distortion(distortionSettings)
 const channelNode = new Tone.Channel(channelSettings).toDestination()
-// console.log(pitchShiftNode)
 
 synthNode.chain(chorusNode, channelNode)
 
 let effectArray = [chorusNode]
-
-function addEffect(effectArray, newEffect) {
-  let newEffectArray = [...effectArray]
-  newEffectArray.push(newEffect)
-  newEffectArray.push(channelNode)
-
-  synthNode.chain(...newEffectArray)
-
-  console.log('Effects added')
-}
-
-// setTimeout(() => addEffect(effectArray, distortionNode), 10000)
-
-// setTimeout(addEffect, 10000, vibratoNode)
 
 const instrument = [
   {
@@ -119,29 +102,32 @@ const instrument = [
     name: 'Melody Synth',
     type: 'ToneMelodyEffectSynth',
     node: synthNode,
-    settings: synthSettings
+    settings: synthSettings,
+    newEffect: false
   },
   {
     id: generateUniqId(),
     name: 'Chorus',
     type: 'ChorusEffect',
     node: chorusNode,
-    settings: chorusSettings
+    settings: chorusSettings,
+    newEffect: false
   },
   {
     id: generateUniqId(),
     name: 'Channel',
     type: 'Channel',
     node: channelNode,
-    settings: channelSettings
-  },
-  {
-    id: generateUniqId(),
-    name: 'Distortion',
-    type: 'DistortionEffect',
-    node: distortionNode1,
-    settings: distortionSettings
+    settings: channelSettings,
+    newEffect: false
   }
+  // {
+  //   id: generateUniqId(),
+  //   name: 'Distortion',
+  //   type: 'DistortionEffect',
+  //   node: distortionNode1,
+  //   settings: distortionSettings
+  // }
   // {
   //   id: generateUniqId(),
   //   name: 'Freeverb',

@@ -44,12 +44,9 @@
       border-bottom-width: 0.5px;
       border-bottom-style: solid;
       border-color: #999999;
-      background-color: #e1e1e1;
     }
 
     .sliderLargeContainer:last-of-type {
-      background-color: #e1e1e1;
-
       border-top-width: 0.5px;
       border-top-style: solid;
       border-color: #999999;
@@ -69,6 +66,8 @@
   }
 
   .sliderLargeContainer {
+    background-color: #e1e1e1;
+
     height: 94px;
     width: 440px;
     display: flex;

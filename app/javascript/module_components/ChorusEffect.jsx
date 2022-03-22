@@ -36,65 +36,81 @@ export default class ChorusEffect extends Component {
 
     return (
       <div className="ChorusEffect">
-        <h1>{name}</h1>
+        <div className="moduleHeaderText">Эффект: Chorus</div>
 
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="firstModuleSettingsContainer">
+          <div className="sliderLargeContainerBlock">
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Wet"
+                property={['wet']}
+                min={0}
+                max={1}
+                step={0.01}
+                value={wet}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
 
-        <ButtonSet
-          name="Type"
-          property={['type']}
-          value={type}
-          options={oscillatorTypes}
-          handleChange={this.handlePropertyValueChange}
-        />
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Delay Time"
+                property={['delayTime']}
+                min={0}
+                max={30}
+                step={1}
+                value={delayTime}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
 
-        <Slider
-          name="Frequency"
-          property={['frequency']}
-          min={0}
-          max={100}
-          step={0.01}
-          value={frequency}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Delay Time"
-          property={['delayTime']}
-          min={0}
-          max={30}
-          step={1}
-          value={delayTime}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Depth"
-          property={['depth']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={depth}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Spread"
-          property={['spread']}
-          min={0}
-          max={360}
-          step={1}
-          value={spread}
-          handleChange={this.handlePropertyValueChange}
-        />
+          <div className="knobContainer">
+            <Knob
+              name="Frequency"
+              property={['frequency']}
+              min={0}
+              max={100}
+              value={frequency}
+              handleChange={this.handlePropertyValueChange}
+            />
+          </div>
+        </div>
+        <div className="secondModuleSettingsContainer">
+          <div className="buttonSetContainer">
+            <ButtonSet
+              name="Type"
+              property={['type']}
+              value={type}
+              options={oscillatorTypes}
+              handleChange={this.handlePropertyValueChange}
+            />
+          </div>
+          <div className="sliderLargeContainerBlock">
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Depth"
+                property={['depth']}
+                min={0}
+                max={1}
+                step={0.01}
+                value={depth}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Spread"
+                property={['spread']}
+                min={0}
+                max={360}
+                step={1}
+                value={spread}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

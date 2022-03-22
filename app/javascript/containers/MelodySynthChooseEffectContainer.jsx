@@ -5,7 +5,6 @@ import * as tone_melody_chooseeffect_synth from '../tunes/tone_melody_chooseeffe
 import { generateUniqId } from '../utilities'
 
 import Button from '../control_components/Button'
-// import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
 
 import WelcomeScreen from '../views/WelcomeScreen'
 import MelodySynthChooseEffectModule from '../views/MelodySynthChooseEffectModule'
@@ -222,11 +221,9 @@ export default class MelodySynthEffectContainer extends PureComponent {
       <MelodySynthChooseEffectModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
-        handleCheckState={this.checkState}
         handlePlaySequence={this.playSequence}
         addEffect={this.addEffect}
         possibleEffects={possibleEffects}
-        // handleInitInstruments={this.initInstruments}
       />
     )
   }

@@ -1,16 +1,37 @@
 .ButtonSet {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  font-size: 13px;
+  color: #000;
+  font-weight: 400;
 
-  h3 {
-    margin-bottom: 11px;
+  .ToggleButton {
+    width: 80px;
+    height: 24px;
+    background-color: #c8c8c8;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+      font-weight: 700;
+      background-color: #79ff39;
+      color: #000;
+    }
+
+    &.active:hover {
+      background-color: #79ff39;
+    }
   }
 
-  & > div {
+  .ToggleButton:hover {
+    background-color: #9f9f9f;
+  }
+
+  .ButtonSetWrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 138px;
+    width: 80px;
   }
 }

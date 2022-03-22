@@ -34,46 +34,62 @@ export default class PitchShiftEffect extends Component {
 
     return (
       <div className="PitchShiftEffect">
-        <h1>{name}</h1>
+        <div className="moduleHeaderText">Эффект: Pitch Shift</div>
+        <div className="PartManage">
+          <div className="LeftPart">
+            <div className="firstModuleSettingsContainer">
+              <div className="sliderLargeContainerBlock">
+                <div className="sliderLargeContainer">
+                  <Slider
+                    name="Wet"
+                    property={['wet']}
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    value={wet}
+                    handleChange={this.handlePropertyValueChange}
+                  />
+                </div>
+                <div className="sliderLargeContainer">
+                  <Slider
+                    name="Window Size"
+                    property={['windowSize']}
+                    min={0}
+                    max={1}
+                    step={0.01}
+                    value={windowSize}
+                    handleChange={this.handlePropertyValueChange}
+                  />
+                </div>
+              </div>
+            </div>
 
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Feedback"
+                property={['feedback']}
+                min={0}
+                max={1}
+                step={0.001}
+                value={feedback}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
 
-        <Knob
-          name="Pitch"
-          property={['pitch']}
-          min={-24}
-          max={24}
-          value={pitch}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Window Size"
-          property={['windowSize']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={windowSize}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Feedback"
-          property={['feedback']}
-          min={0}
-          max={1}
-          step={0.001}
-          value={feedback}
-          handleChange={this.handlePropertyValueChange}
-        />
+          <div className="RightPart">
+            <div className="knobContainer">
+              <Knob
+                name="Pitch"
+                property={['pitch']}
+                min={-24}
+                max={24}
+                value={pitch}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

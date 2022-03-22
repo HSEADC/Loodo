@@ -47,15 +47,6 @@ export default class SequencerContainer extends PureComponent {
     }
   }
 
-  playNote = (note, dur) => {
-    let { togglePlay } = this.state
-    let synth = this.state.instruments[0].node
-
-    synth.triggerAttackRelease(note, dur)
-
-    setTimeout(this.changeToggle, 1000)
-  }
-
   initInstruments = () => {
     Tone.Transport.bpm.value = 120
 

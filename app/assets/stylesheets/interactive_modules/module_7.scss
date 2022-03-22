@@ -1,2 +1,17 @@
-.interactive_module_6 {
+.interactive_module_7 {
+  .moduleWidth {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ToneSynth {
+    display: none;
+  }
+
+  .InteractiveBlocks {
+    width: 600px;
+  }
 }

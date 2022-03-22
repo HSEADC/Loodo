@@ -30,8 +30,7 @@ export default class ButtonSet extends PureComponent {
 
     return (
       <div className="ButtonSet">
-        <h3>{name}</h3>
-        <div>{buttonElements}</div>
+        <div className="ButtonSetWrapper">{buttonElements}</div>
       </div>
     )
   }

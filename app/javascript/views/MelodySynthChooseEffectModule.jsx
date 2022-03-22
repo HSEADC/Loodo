@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import ToggleButton from '../control_components/ToggleButton'
+import PlayButton from '../control_components/PlayButton'
 import Button from '../control_components/Button'
 import Select from '../control_components/Select'
 
@@ -66,31 +66,29 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
     })
 
     return (
-      <div>
-        <div className="moduleHeaderButton">
-          <div className="headerButton">
-            <ToggleButton
-              className="trigerButton"
-              text="Start"
-              handleClick={this.props.handlePlaySequence}
+      <div className="mainSequencerContainer">
+        <div className="moduleWidth">
+          <div className="moduleHeaderButton">
+            <div className="headerButton">
+              <PlayButton
+                on={this.props.togglePlay}
+                handleClick={this.props.handlePlaySequence}
+              />
+            </div>
+            <span>Мелодия</span>
+          </div>
+          <div className="Arrow"></div>
+          <div className="moduleHeaderText">Синтезатор</div>
+          <div className="Arrow"></div>
+          <div className="InteractiveBlocks">{instrumentElements}</div>
+
+          <div>
+            <Select
+              text="Добавить эффект"
+              options={this.props.possibleEffects}
+              addEffect={this.props.addEffect}
             />
           </div>
-          <span>Мелодия</span>
-        </div>
-        <div>стрелка</div>
-        <div className="moduleHeaderText">Синтезатор</div>
-        <div>стрелка</div>
-        <div className="InteractiveBlocks">
-          <div className="moduleHeaderText">Эффект</div>
-          {instrumentElements}
-        </div>
-
-        <div>
-          <Select
-            text="Добавить эффект"
-            options={this.props.possibleEffects}
-            addEffect={this.props.addEffect}
-          />
         </div>
       </div>
     )

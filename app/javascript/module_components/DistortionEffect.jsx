@@ -32,35 +32,42 @@ export default class DistortionEffect extends Component {
 
     return (
       <div className="DistortionEffect">
-        <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Distortion"
-          property={['distortion']}
-          min={0}
-          max={20}
-          step={0.01}
-          value={distortion}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <ButtonSet
-          name="Oversample"
-          property={['oversample']}
-          value={oversample}
-          options={oversampleTypes}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="moduleHeaderText">Эффект: Distortion</div>
+        <div className="firstModuleSettingsContainer">
+          <div className="sliderLargeContainerBlock">
+            <div className="sliderLargeContainer">
+              <Slider
+                name="Wet"
+                property={['wet']}
+                min={0}
+                max={1}
+                step={0.01}
+                value={wet}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+            <div className="sliderLargeProblemContainer">
+              <Slider
+                name="Distortion"
+                property={['distortion']}
+                min={0}
+                max={20}
+                step={0.01}
+                value={distortion}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
+          <div className="buttonSetContainer">
+            <ButtonSet
+              name="Oversample"
+              property={['oversample']}
+              value={oversample}
+              options={oversampleTypes}
+              handleChange={this.handlePropertyValueChange}
+            />
+          </div>
+        </div>
       </div>
     )
   }

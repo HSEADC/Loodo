@@ -2,6 +2,7 @@ import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
 import * as toneMelodyEffectSynth from '../tunes/tone_melody_effect_synth'
+import { generateUniqId } from '../utilities'
 
 import Button from '../control_components/Button'
 // import { ReactComponent as PlayButton } from "../../assets/images/play_button.svg";
@@ -15,7 +16,8 @@ export default class MelodySynthEffectContainer extends PureComponent {
 
     this.state = {
       webAudioStarted: false,
-      instruments: []
+      instruments: [],
+      togglePlay: false
     }
   }
 
@@ -27,10 +29,6 @@ export default class MelodySynthEffectContainer extends PureComponent {
     this.setState({
       webAudioStarted: true
     })
-  }
-
-  generateUniqId = () => {
-    return Math.floor(Math.random() * Date.now())
   }
 
   handlePropertyValueChange = (id, property, value) => {
@@ -105,32 +103,35 @@ export default class MelodySynthEffectContainer extends PureComponent {
     })
   }
 
-  checkState = () => {
-    console.log(this.state)
-  }
-
   renderWelcomeScreen = () => {
     return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
   }
 
-  playSequence = (isPressed) => {
-    if (isPressed) {
+  playSequence = () => {
+    let { togglePlay } = this.state
+
+    if (togglePlay == false) {
       Tone.Transport.start()
+      this.setState({
+        togglePlay: !togglePlay
+      })
     } else {
       Tone.Transport.stop()
+      this.setState({
+        togglePlay: !togglePlay
+      })
     }
   }
 
   renderRoom = () => {
-    const { instruments } = this.state
+    const { instruments, togglePlay } = this.state
 
     return (
       <MelodySynthEffectModule
         instruments={instruments}
+        togglePlay={togglePlay}
         handlePropertyValueChange={this.handlePropertyValueChange}
-        handleCheckState={this.checkState}
         handlePlaySequence={this.playSequence}
-        // handleInitInstruments={this.initInstruments}
       />
     )
   }

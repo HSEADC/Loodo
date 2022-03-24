@@ -4,16 +4,17 @@ import React, { PureComponent } from 'react'
 import { generateUniqId } from '../utilities'
 
 import WelcomeScreen from '../views/WelcomeScreen'
-import ToneSynthModule from '../views/ToneSynthModule'
+import BPMSynthModule from '../views/BPMSynthModule'
 
-export default class TrigerContainer extends PureComponent {
+export default class BPMSynthContainer extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
       webAudioStarted: false,
       instruments: [],
-      togglePlay: false
+      togglePlay: false,
+      bpm: 120
     }
   }
 
@@ -24,6 +25,14 @@ export default class TrigerContainer extends PureComponent {
 
     this.setState({
       webAudioStarted: true
+    })
+  }
+
+  handleBPMChange = (value) => {
+    Tone.Transport.bpm.value = this.state.bpm
+
+    this.setState({
+      bpm: value
     })
   }
 
@@ -75,6 +84,8 @@ export default class TrigerContainer extends PureComponent {
         harmonicity: 0.5
       }
     }
+
+    Tone.Transport.bpm.value = this.state.bpm
 
     const melodySynthNode = new Tone.Synth(melodySynthSettings).toDestination()
 
@@ -128,12 +139,14 @@ export default class TrigerContainer extends PureComponent {
     const { instruments } = this.state
 
     return (
-      <ToneSynthModule
+      <BPMSynthModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
         handlePlaySequence={this.playSequence}
         togglePlay={this.state.togglePlay}
         disabled={this.props.disabled}
+        handleBPMChange={this.handleBPMChange}
+        bpm={this.state.bpm}
       />
     )
   }

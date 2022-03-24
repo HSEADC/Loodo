@@ -1,4 +1,4 @@
-let kick = new Tone.Buffer('/.samples/00007-Linn-9000-Kick-2.mp3', () => {
+let kick = new Tone.Buffer('/samples/00007-Linn-9000-Kick-2.mp3', () => {
   let buff = kick.get()
 })
 

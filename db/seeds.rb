@@ -17,7 +17,7 @@
   },
   {
     name: '5',
-    description: 'About'
+    description: 'Synth with 1 module'
   },
   {
     name: '6',
@@ -30,7 +30,27 @@
   {
     name: '8',
     description: 'First Code Game'
-  }
+  },
+  {
+    name: '9',
+    description: 'Synth with 2 modules'
+  },
+  {
+    name: '10',
+    description: 'Synth with 3 modules'
+  },
+  {
+    name: '11',
+    description: 'Synth with 4 modules'
+  },
+  {
+    name: '12',
+    description: 'Synth with 5 modules'
+  },
+  {
+    name: '13',
+    description: 'First Code Game'
+  },
 ]
 
 @lessons_data = [

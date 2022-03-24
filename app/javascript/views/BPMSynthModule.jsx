@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import ToneMelodySynth from '../module_components/ToneMelodySynth'
+import BPMSynth from '../module_components/BPMSynth'
 
-export default class ToneSynthModule extends PureComponent {
+export default class BPMSynthContainer extends PureComponent {
   constructor(props) {
     super(props)
   }
@@ -24,7 +24,7 @@ export default class ToneSynthModule extends PureComponent {
       switch (type) {
         case 'ToneSynth':
           instrumentElement = (
-            <ToneMelodySynth
+            <BPMSynth
               id={id}
               name={name}
               node={node}
@@ -34,6 +34,8 @@ export default class ToneSynthModule extends PureComponent {
               togglePlay={togglePlay}
               key={i}
               disabled={this.props.disabled}
+              bpm={this.props.bpm}
+              handleBPMChange={this.props.handleBPMChange}
             />
           )
 
@@ -47,7 +49,7 @@ export default class ToneSynthModule extends PureComponent {
   }
 }
 
-ToneSynthModule.propTypes = {
+BPMSynthContainer.propTypes = {
   instruments: PropTypes.array.isRequired,
   handlePropertyValueChange: PropTypes.func.isRequired
 }

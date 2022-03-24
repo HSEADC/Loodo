@@ -3,6 +3,10 @@
   //   display: none;
   // }
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   .keyboardContainer {
     display: flex;
     // width: 600px;
@@ -16,8 +20,12 @@
     .blackContainer {
       width: 482px;
       position: absolute;
-      left: 58px;
+      left: 480px;
     }
+  }
+
+  .SynthContainer {
+    width: 600px;
   }
 
   .PianoWhiteKey {

@@ -10,6 +10,22 @@
   }
 }
 
+.GreenButton {
+  background-color: #79ff39;
+  width: 180px;
+  height: 42px;
+  font-weight: 700;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.GreenButton:hover {
+  background-color: #4d8e2e;
+  cursor: pointer;
+}
+
 .mainSequencerContainer {
   display: flex;
   align-items: center;

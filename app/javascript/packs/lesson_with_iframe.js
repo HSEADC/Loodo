@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Connecting...')
     const iframes = document.getElementsByTagName('iframe')
     console.log(iframes)
-    iframes[0].contentWindow.postMessage('hello there!', '*')
+    iframes[3].contentWindow.postMessage('hello there!', '*')
   }, 3000)
 
   window.addEventListener(
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (type === 'success') {
         console.log('You done the task succesefully')
 
-        const container = document.getElementsByClassName('support_module')[0]
+        const container = document.getElementsByClassName('support_module')[3]
 
         container.innerHTML = ''
 

@@ -1,4 +1,4 @@
-.FirstLesson {
+.SecondLesson {
   background-color: #2d2d2d;
 
   .MenuBar {
@@ -184,6 +184,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+  }
+
+  .SepparatorCodeModule {
+    margin-top: 40px;
+  }
+
+  .InteractiveBlockSampler {
+    background-color: #232323;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .SupportContainer {
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      margin-bottom: 40px;
+
+      .SupportHeader {
+        width: 320px;
+      }
+
+      .SuccessBlock {
+        border-radius: 12px;
+        font-weight: 500;
+        padding: 16px 20px 16px 20px;
+        color: #79ff39;
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      span {
+        color: #757575;
+        font-size: 14px;
+        font-weight: 500;
+        height: 20px;
+      }
+
+      p {
+        margin-top: 8px;
+        font-size: 18px;
+      }
+    }
   }
 
   .NextLessonControl {

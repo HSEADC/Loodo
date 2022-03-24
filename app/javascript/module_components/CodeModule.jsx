@@ -45,7 +45,7 @@ export default class CodeModule extends PureComponent {
 
     return (
       <div className="CodeModule">
-        <h1>Code Module</h1>
+        <h1>Пример кода</h1>
 
         <SyntaxHighlighter language="javascript" style={styles}>
           {codeTest}

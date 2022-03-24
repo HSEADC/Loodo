@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react'
 
-export default class Slider extends PureComponent {
+export default class SliderNoProperty extends PureComponent {
   constructor(props) {
     super(props)
     this.input = React.createRef()
   }
 
   handleChange = () => {
-    const { property, handleChange } = this.props
+    const { handleChange } = this.props
     const value = this.input.current.valueAsNumber
-    handleChange(property, value)
+    handleChange(value)
   }
 
   render() {

@@ -3,16 +3,15 @@ import * as Tone from 'tone'
 // import * as bassSynth from '../tunes/bass_synth'
 // import * as spaceSynth from '../tunes/space_synth'
 // import * as allEffectsSynth from '../tunes/all_effects_synth'
-import * as drumSampler from '../tunes/drum_sampler_game1'
+import * as drumSampler from '../tunes/drum_sampler'
 import * as sequencedSynth from '../tunes/sequenced_synth'
 
 import React, { PureComponent } from 'react'
 
 import WelcomeScreen from '../views/WelcomeScreen'
-import SequencerModule from '../views/SequencerModule'
-import CodeModule from '../module_components/CodeModule'
+import SamplerModule from '../views/SamplerModule'
 
-export default class SecuencerFirstGameContainer extends PureComponent {
+export default class SamplerContainer extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -30,40 +29,6 @@ export default class SecuencerFirstGameContainer extends PureComponent {
     this.setState({
       webAudioStarted: true
     })
-  }
-
-  gameApp = () => {
-    let { instruments } = this.state
-
-    let choosedSequence = instruments[0][2].settings.sequence
-    let choosedTime = []
-    let winCondition = 0
-
-    choosedSequence.forEach((sequence, i) => {
-      choosedTime.push(sequence.time)
-    })
-
-    function suits(element, index, array) {
-      if (element === '0:0:0') {
-        return true
-      } else if (element === '0:2:0') {
-        return true
-      } else if (element === '1:0:0') {
-        return true
-      } else if (element === '1:2:0') {
-        return true
-      } else {
-        return false
-      }
-    }
-
-    if (choosedTime.every(suits)) {
-      if (choosedTime.length == 4) {
-        this.props.postMessageToWindow('success', {
-          points: 2000
-        })
-      }
-    }
   }
 
   playSequence = () => {
@@ -101,6 +66,7 @@ export default class SecuencerFirstGameContainer extends PureComponent {
       // spaceSynth.instrument
       // allEffectsSynth.instrument
       drumSampler.instrument
+      // sequencedSynth.instrument
     ]
 
     this.setState({ instruments })
@@ -154,8 +120,6 @@ export default class SecuencerFirstGameContainer extends PureComponent {
       instruments.push(newInstrument)
     })
 
-    this.gameApp()
-
     this.setState({
       instruments
     })
@@ -169,17 +133,12 @@ export default class SecuencerFirstGameContainer extends PureComponent {
     const { instruments } = this.state
 
     return (
-      <div>
-        <SequencerModule
-          instruments={instruments}
-          handlePropertyValueChange={this.handlePropertyValueChange}
-          handlePlaySequence={this.playSequence}
-          togglePlay={this.state.togglePlay}
-        />
-        <div className="SepparatorCodeModule">
-          <CodeModule />
-        </div>
-      </div>
+      <SamplerModule
+        instruments={instruments}
+        handlePropertyValueChange={this.handlePropertyValueChange}
+        handlePlaySequence={this.playSequence}
+        togglePlay={this.state.togglePlay}
+      />
     )
   }
 

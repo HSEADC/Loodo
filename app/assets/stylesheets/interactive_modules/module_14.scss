@@ -1,0 +1,17 @@
+.interactive_module_14 {
+  display: flex;
+  justify-content: center;
+
+  .SynthContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ButtonContainer {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+}

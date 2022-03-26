@@ -2,7 +2,7 @@ import * as Tone from 'tone'
 import { generateUniqId } from '../utilities'
 
 const synthSettings = {
-  volume: 0.8,
+  volume: 10,
   detune: 0,
   portamento: 0.05,
   envelope: {

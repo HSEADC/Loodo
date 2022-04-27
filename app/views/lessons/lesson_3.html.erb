@@ -1,0 +1,134 @@
+<div class="ThirdLesson">
+<div class="MenuBar">
+  <div class="LeftMenubarPart">
+    <div class="MenuButton"></div>
+    <span>Третий урок</span>
+    <!-- <span>Баллы</span> -->
+  </div>
+  <div class="LogoMenubarContainer">
+    <div class="LogoADC"></div>
+  </div>
+</div>
+
+<div class="LessonHeader">
+  <div class="LessonHeaderContainer">
+    <div class="LessonName">
+      <span>Третий урок</span>
+      <h1>Инструменты в тоне</h1>
+    </div>
+    <div class="LessonDescription">
+      <span>Описание</span>
+      <h5>В этом уроке мы расскажем вам про то, какие есть инструменты в тоне. Покажем как устроены синтезаторы и как работает семплер.</h5>
+    </div>
+  </div>
+
+
+    <div class="Divider"> </div>
+</div>
+
+<div class="BigHeaderBlock">
+  <p>В тоне есть два типа инструментов - синтезатор и сэмплер. Синтезатор генерирует звук исходя из настроек его параметров. В тоне есть 8 разных видов синтезаторов: Tone Synth, Mono Synth, FM Synth, AM Synth, Poly Synth, Fat Oscilator, Metal Synth, Granular Synth. У семплера нет подвидов, так как его суть в том, что он воспроизводит загруженные аудио файлы.  </p>
+</div>
+
+
+<div class="SynthModules">
+  <div class=InteractiveDescription>
+    <h4>Tone Synth </h4>
+    <div>Состоит из минимального набора - одного осцилятора и ADSR-огибающей.</div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>Mono Synth </h4>
+    <div>Cостоит из одного осцилятора, одного фильтра и двух ADSR-огибающих. Обе огибающих срабатывают одновременно при триггере ноты.</div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>FM Synth </h4>
+    <div>Cостоит из двух Tone Synth, где первый синтезатор модулирует частоту второго. </div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>AM Synth </h4>
+    <div>Также состоит из двух Tone Synth. Первый модулирует амплитуду второго.</div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>Poly Synth </h4>
+    <div>Poly Synth сам по себе не является синтезатором, он объединяет в себе монофонические синтезаторы, создавая полифонический синтезатор. Этот синтезатор нужен, чтобы играть аккордами.</div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>Fat Oscilator  </h4>
+    <div>Cоздает несколько осцилляторов и слегка отделяет их друг от друга (воспроизводит с задержкой), чтобы сделать звук “жирнее”. Параметр count задает количество осцилляторов, а spread - общий разброс (в условных единицах - cents) между осцилляторами. </div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+  <div class=InteractiveDescription>
+    <h4>Metal Synth </h4>
+    <div>Cоздает металлические, негармоничные звуки, использует 6 FM осциляторов (Tone.FMOscillator). Они настроенны на основе звука тарелки в легендарной драммашине Roland TR-808 1980-1983 года выпуска.</div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+
+
+  <div class=InteractiveDescription>
+    <h4>Granular Synth </h4>
+    <div>Использует гранулярный синтез позволяющий независимо регулировать высоту звука и скорость воспроизведения. </div>
+  </div>
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="700px"></iframe>
+  </div>
+  </div>
+
+  <div class="BigHeaderBlock">
+    <h2>Сэмплер</h2>
+    <p>Позволяет легко создавать инструмент из семплов (аудио файлов). Семплер удобно использовать для битов. Но также возможно воспроизводить с помощью него любые другие звуки.  </p>
+  </div>
+
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="50px"></iframe>
+  </div>
+
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="50px"></iframe>
+  </div>
+  <div class="BigHeaderBlock">
+    <h2>Итог</h2>
+    <p>Позволяет легко создавать инструмент из семплов (аудио файлов). Семплер удобно использовать для битов. Но также возможно воспроизводить с помощью него любые другие звуки.  </p>
+  </div>
+
+  <div class="NextLessonControl">
+    <div class="NextLessonControlContainer">
+      <%= link_to 'Previous lesson', @previous_lesson %>
+      <%= link_to 'Next lesson', @next_lesson %>
+    </div>
+  </div>
+</div>

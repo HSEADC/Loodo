@@ -16,6 +16,7 @@ export default class ToneMelodySynth extends Component {
 
   updateNodeParams = () => {
     const { node, settings } = this.props
+    console.log(settings)
     const { volume, detune, portamento, envelope, oscillator } = settings
     const { type, phase, harmonicity } = oscillator
 
@@ -139,22 +140,22 @@ export default class ToneMelodySynth extends Component {
               <div className="synthModuleSettingsContainerBlock">
                 <div className={'sliderLargeContainer' + freqStyle}>
                   <Slider
-                    name="Frequency"
-                    property={['frequency']}
+                    name="Harmonicity"
+                    property={['oscillator', 'harmonicity']}
                     min={0}
-                    max={1}
-                    step={0.01}
-                    value={volume}
+                    max={10}
+                    step={0.1}
+                    value={harmonicity}
                     handleChange={this.handlePropertyValueChange}
                   />
                 </div>
                 <div className={'sliderLargeContainer' + phaseStyle}>
                   <Slider
                     name="Phase"
-                    property={['oscillator', 'type']}
+                    property={['oscillator', 'phase']}
                     min={0}
-                    max={1}
-                    step={0.01}
+                    max={100}
+                    step={1}
                     value={phase}
                     handleChange={this.handlePropertyValueChange}
                   />
@@ -164,11 +165,11 @@ export default class ToneMelodySynth extends Component {
             <div className="synthModuleSettingsContainer">
               <div className={'knobContainerPortamento' + portStyle}>
                 <Knob
-                  name="Portamento"
-                  property={['portamento']}
+                  name="Volume"
+                  property={['volume']}
                   min={0}
-                  max={100}
-                  value={portamento}
+                  max={10}
+                  value={volume}
                   handleChange={this.handlePropertyValueChange}
                 />
               </div>

@@ -1,173 +1,168 @@
 <div class="FirstLesson">
 
 
-<div class="MenuBar">
-  <div class="LeftMenubarPart">
-    <div class="MenuButton"></div>
-    <span>Первый урок</span>
-    <!-- <span>Баллы</span> -->
-  </div>
-  <div class="LogoMenubarContainer">
-    <div class="LogoADC"></div>
-  </div>
-</div>
-
-<div class="LessonHeader">
-  <div class="LessonHeaderContainer">
-    <div class="LessonName">
+  <div class="MenuBar">
+    <div class="LeftMenubarPart">
+      <div class="MenuButton"></div>
       <span>Первый урок</span>
-      <h1>Cинтез звука</h1>
+      <!-- <span>Баллы</span> -->
     </div>
-    <div class="LessonDescription">
-      <span>Описание</span>
-      <h5>В этом уроке мы расскажем тебе, как создается звук в браузере. Также немного расскажем, про синтезаторы, эффекты, секвенсоры и сэмплеры. </h5>
+    <div class="LogoMenubarContainer">
+      <div class="LogoADC"></div>
     </div>
   </div>
 
-
-    <div class="Divider"> </div>
-</div>
-
-<div class="BigHeaderBlock">
-  <h2>Синтез электронного звука</h2>
-  <p>Разработчики веб-технологий позаботились о том, чтобы программисты могли создавать мелодии прямо в браузере. Библиотека Tone.js является инструментом, используя который программист может создавать целые музыкальные произведения. </p>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Как появляется звук в браузере?</h1>
-  <p>Как и в любом синтезаторе, вначале нужно, чтобы музыкант нажал клавишу на клавиатуре, после чего начнет синтезироваться звук. Чтобы заставить браузер генерировать звук, нужно всего лишь используя Tone отправить верные команды. </p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(1)) %>" width="100%" height="264px"></iframe>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Как мы привыкли?</h1>
-  <p>Внешний вид триггера никак не влияет на логику и суть. Вместо значений нот и длительности можно подставить клавиатуру. Интерфейс ввода не имеет значения. Имеют значения передающиеся в Tone параметры.</p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(2)) %>" width="100%" height="344px"></iframe>
-</div>
+  <div class="LessonHeader">
+    <div class="LessonHeaderContainer">
+      <div class="LessonName">
+        <span>Первый урок</span>
+        <h1>Cинтез звука</h1>
+      </div>
+      <div class="LessonDescription">
+        <span>Описание</span>
+        <h5>В этом уроке мы расскажем тебе, как создается звук в браузере. Также немного расскажем, про синтезаторы, эффекты, секвенсоры и сэмплеры. </h5>
+      </div>
+    </div>
 
 
-
-<div class="MediumHeaderBlock">
-  <h1>Как проигрывается последовательность нот?</h1>
-  <p>Наиболее удобный интерфейс, для написания мелодий — это секвенсор. Он позволяет выбрать пользователю, в какой промежуток времени инструменту сыграть ту или иную ноту. Далее в курсе мы подробнее расскажем про длительность и тайминги в Тоне.
-</p>
-</div>
-
-<div class="InteractiveBlockSequencer">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(4)) %>" width="100%" height="490"></iframe>
-</div>
-
-<div class="BigHeaderBlock">
-  <h2>Синтезатор</h2>
-  <p>Хорошо, но что придает звуку характер? А придает его, тот кто его производит, а именно синтезатор. В Тоне существует 7 разных синтезаторов. Каждый из них имеет свои особенности и предназначение. Сейчас мы покажем принцип устройства Тон синта, а далее в курсе подробнее расскажем про каждый синт по отдельности. </p>
-</div>
-
-<div class="BigHeaderBlock">
-<p>У каждого синта есть свои уникальные настройки. У Тон синта это — Detune, Frequency, Phase, Portamento и ADSR.</p>
-</div>
-
-<div class="SynthModules">
-  <div class=InteractiveDescription>
-    <h4>Detune</h4>
-    <div>Эта настройка сбрасывает частоты финальной волны и таким образом звук либо понижается, либо повышается. </div>
-  </div>
-  <div class="InteractiveBlock">
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(5)) %>" width="100%" height="360"></iframe>
+      <div class="Divider"> </div>
   </div>
 
-  <div class=InteractiveDescription>
-    <h4>Frequency</h4>
-    <div>Эта настройка непосредственно влияет на регистр частоты синтезатора.</div>
+  <div class="BigHeaderBlock">
+    <h2>Синтез электронного звука</h2>
+    <p>Разработчики веб-технологий позаботились о том, чтобы программисты могли создавать мелодии прямо в браузере. Библиотека Tone.js является инструментом, используя который программист может создавать целые музыкальные произведения. </p>
+  </div>
+
+  <div class="MediumHeaderBlock">
+    <h1>Как появляется звук в браузере?</h1>
+    <p>Как и в любом синтезаторе, вначале нужно, чтобы музыкант нажал клавишу на клавиатуре, после чего начнет синтезироваться звук. Чтобы заставить браузер генерировать звук, нужно всего лишь используя Tone отправить верные команды. </p>
   </div>
 
   <div class="InteractiveBlock">
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(9)) %>" width="100%" height="360"></iframe>
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(1)) %>" width="100%" height="264px"></iframe>
   </div>
 
-  <div class=InteractiveDescription>
-
-    <h4>Phase</h4>
-    <div>Фаза убирает выбранные частоты, таким образом звук становится глухим. </div>
-  </div>
-
-  <div class="InteractiveBlock">
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(10)) %>" width="100%" height="360"></iframe>
-  </div>
-
-  <div class=InteractiveDescription>
-    <h4>Portamento</h4>
-    <div>Эта настройка регулирует плавность перехода между одной ноты к другой.</div>
+  <div class="MediumHeaderBlock">
+    <h1>Как мы привыкли?</h1>
+    <p>Внешний вид триггера никак не влияет на логику и суть. Вместо значений нот и длительности можно подставить клавиатуру. Интерфейс ввода не имеет значения. Имеют значения передающиеся в Tone параметры.</p>
   </div>
 
   <div class="InteractiveBlock">
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(11)) %>" width="100%" height="640"></iframe>
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(2)) %>" width="100%" height="344px"></iframe>
   </div>
 
-  <div class=InteractiveDescription>
-    <h4>ADSR</h4>
-    <div>Эти настройки позволяет менять длительность звучания ноты в разных этапах ее звучания.</div>
+
+
+  <div class="MediumHeaderBlock">
+    <h1>Как проигрывается последовательность нот?</h1>
+    <p>Наиболее удобный интерфейс, для написания мелодий — это секвенсор. Он позволяет выбрать пользователю, в какой промежуток времени инструменту сыграть ту или иную ноту. Далее в курсе мы подробнее расскажем про длительность и тайминги в Тоне.
+  </p>
+  </div>
+
+  <div class="InteractiveBlockSequencer">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(4)) %>" width="100%" height="490"></iframe>
+  </div>
+
+  <div class="BigHeaderBlock">
+    <h2>Синтезатор</h2>
+    <p>Хорошо, но что придает звуку характер? А придает его, тот кто его производит, а именно синтезатор. В Тоне существует 7 разных синтезаторов. Каждый из них имеет свои особенности и предназначение. Сейчас мы покажем принцип устройства Тон синта, а далее в курсе подробнее расскажем про каждый синт по отдельности. </p>
+  </div>
+
+  <div class="BigHeaderBlock">
+  <p>У каждого синта есть свои уникальные настройки. У Тон синта это — Detune, Frequency, Phase, Portamento и ADSR.</p>
+  </div>
+
+  <div class="SynthModules">
+    <div class=InteractiveDescription>
+      <h4>Detune</h4>
+      <div>Эта настройка сбрасывает частоты финальной волны и таким образом звук либо понижается, либо повышается. </div>
+    </div>
+    <div class="InteractiveBlock">
+      <iframe src="<%= interactive_module_url(InteractiveModule.find(5)) %>" width="100%" height="360"></iframe>
+    </div>
+
+    <div class=InteractiveDescription>
+      <h4>Frequency</h4>
+      <div>Эта настройка непосредственно влияет на регистр частоты синтезатора.</div>
+    </div>
+
+    <div class="InteractiveBlock">
+      <iframe src="<%= interactive_module_url(InteractiveModule.find(9)) %>" width="100%" height="360"></iframe>
+    </div>
+
+    <div class=InteractiveDescription>
+      <h4>Phase</h4>
+      <div>Фаза убирает выбранные частоты, таким образом звук становится глухим. </div>
+    </div>
+
+    <div class="InteractiveBlock">
+      <iframe src="<%= interactive_module_url(InteractiveModule.find(10)) %>" width="100%" height="360"></iframe>
+    </div>
+
+    <div class=InteractiveDescription>
+      <h4>Portamento</h4>
+      <div>Эта настройка регулирует плавность перехода между одной ноты к другой.</div>
+    </div>
+
+    <div class="InteractiveBlock">
+      <iframe src="<%= interactive_module_url(InteractiveModule.find(11)) %>" width="100%" height="640"></iframe>
+    </div>
+
+    <div class=InteractiveDescription>
+      <h4>ADSR</h4>
+      <div>Эти настройки позволяет менять длительность звучания ноты в разных этапах ее звучания.</div>
+    </div>
+
+    <div class="InteractiveBlock">
+      <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="640"></iframe>
+    </div>
+  </div>
+
+  <div class="BigHeaderBlock">
+    <h2>Эффекты</h2>
+    <p>После того, как звук покинул синтезатор, он направляется в колонки. Но это не всегда так! Иногда музыканты подключают к этому звуку эффекты, чтобы еще сильнее изменить его. </p>
+  </div>
+
+  <div class="MediumHeaderBlock">
+    <h1>Пример эффектов</h1>
+    <p>Таким же образом эффекты работают и в браузере. На примере можете потыкать и послушать, что происходит со звуком, когда мы подключаем Хорус.
+  </p>
   </div>
 
   <div class="InteractiveBlock">
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="640"></iframe>
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(6)) %>" width="100%" height="650"></iframe>
   </div>
-</div>
 
-<div class="BigHeaderBlock">
-  <h2>Эффекты</h2>
-  <p>После того, как звук покинул синтезатор, он направляется в колонки. Но это не всегда так! Иногда музыканты подключают к этому звуку эффекты, чтобы еще сильнее изменить его. </p>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Пример эффектов</h1>
-  <p>Таким же образом эффекты работают и в браузере. На примере можете потыкать и послушать, что происходит со звуком, когда мы подключаем Хорус.
-</p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(6)) %>" width="100%" height="650"></iframe>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Чейнинг эффектов</h1>
-  <p>Можно добавлять и несколько эффектов, накладывать их друг на друга и создавать все более и более странный результат. Процесс наложения эффектов на звук в Тоне называется — чейнинг.
-</p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(7)) %>" width="100%" height="650"></iframe>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Использование семплов</h1>
-  <p>Ну вот мы и научились делать мелодии и аккомпанементы. Но для полной группы нам нужен барабанщик. Для этого разработчики Тона добавили в библиотеку сэмплер. Он позволяет загрузить в инструмент любой MP3 файл и воспроизводить его сколько нам захочется. </p>
-</div>
-
-<div class="InteractiveBlockSequencer">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(13)) %>" width="100%" height="215"></iframe>
-</div>
-
-<!-- <div class="MediumHeaderBlock">
-  <h1>Создание музыкальной последовательности</h1>
-  <p>Теперь, мы можем соединить все инструменты в один оркестр и наслаждаться их звучанием. </p>
-</div> -->
-
-<div class="NextLessonControl">
-  <div class="NextLessonControlContainer">
-    <div style="color: #fff;">На главную</div>
-    <%= link_to 'Next lesson', @next_lesson %>
+  <div class="MediumHeaderBlock">
+    <h1>Чейнинг эффектов</h1>
+    <p>Можно добавлять и несколько эффектов, накладывать их друг на друга и создавать все более и более странный результат. Процесс наложения эффектов на звук в Тоне называется — чейнинг.
+  </p>
   </div>
-</div>
+
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(7)) %>" width="100%" height="650"></iframe>
+  </div>
+
+  <div class="MediumHeaderBlock">
+    <h1>Использование семплов</h1>
+    <p>Ну вот мы и научились делать мелодии и аккомпанементы. Но для полной группы нам нужен барабанщик. Для этого разработчики Тона добавили в библиотеку сэмплер. Он позволяет загрузить в инструмент любой MP3 файл и воспроизводить его сколько нам захочется. </p>
+  </div>
+
+  <div class="InteractiveBlockSequencer">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(13)) %>" width="100%" height="215"></iframe>
+  </div>
+
+
+    <div class="NextLessonControl">
+      <div class="NextLessonControlContainer">
+        <div style="color: #fff;">На главную</div>
+      <%= link_to 'Next lesson', @next_lesson %>
+    </div>
+  </div>
 </div>

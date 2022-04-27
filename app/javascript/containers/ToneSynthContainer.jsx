@@ -2,6 +2,7 @@ import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
 import { generateUniqId } from '../utilities'
+import * as allMelodySynth from '../tunes/all_melody_synth'
 
 import WelcomeScreen from '../views/WelcomeScreen'
 import ToneSynthModule from '../views/ToneSynthModule'
@@ -33,19 +34,25 @@ export default class TrigerContainer extends PureComponent {
     this.state.instruments.forEach((instrument, i) => {
       const newInstrument = Object.assign({}, instrument)
 
-      if (instrument.id === id) {
+      // console.log(newInstrument[0])
+      // console.log(newInstrument[0].settings)
+      // console.log(value)
+
+      if (instrument[0].id === id) {
         if (property.length === 1) {
           const propertyName = property[0]
-          newInstrument.settings[propertyName] = value
+          newInstrument[0].settings[propertyName] = value
         } else if (property.length === 2) {
           const scopeName = property[0]
           const propertyName = property[1]
-          newInstrument.settings[scopeName][propertyName] = value
+          newInstrument[0].settings[scopeName][propertyName] = value
         }
       }
 
       instruments.push(newInstrument)
     })
+
+    console.log(this.state.instruments)
 
     this.setState({
       instruments
@@ -53,45 +60,41 @@ export default class TrigerContainer extends PureComponent {
   }
 
   initInstruments = () => {
-    const melodySynthSettings = {
-      volume: 0.8,
-      detune: 0,
-      portamento: 0.05,
-      envelope: {
-        attack: 0.05,
-        attackCurve: 'exponential',
-        decay: 0.2,
-        decayCurve: 'exponential',
-        sustain: 0.2,
-        release: 1.5,
-        releaseCurve: 'exponential'
-      },
-      oscillator: {
-        type: 'amtriangle',
-        modulationType: 'sine',
-        // partialCount: 0,
-        // partials: [],
-        phase: 0,
-        harmonicity: 0.5
-      }
+    const instruments = [allMelodySynth.instrument]
+    const { synth } = this.props
+
+    let choosenNode
+
+    switch (synth) {
+      case 'ToneSynth':
+        choosenNode = instruments[0][0].node[0]
+        break
+
+      case 'MonoSynth':
+        choosenNode = instruments[0][0].node[1]
+        break
+
+      case 'FMSynth':
+        choosenNode = instruments[0][0].node[2]
+        break
+
+      case 'AMSynth':
+        choosenNode = instruments[0][0].node[3]
+        break
+
+      case 'PolySynth':
+        choosenNode = instruments[0][0].node[4]
+        break
+
+      case 'FatOscillator':
+        choosenNode = instruments[0][0].node[5]
+        break
     }
-
-    const melodySynthNode = new Tone.Synth(melodySynthSettings).toDestination()
-
-    const instruments = [
-      {
-        id: generateUniqId(),
-        name: 'Melody Synth',
-        type: 'ToneSynth',
-        node: melodySynthNode,
-        settings: melodySynthSettings
-      }
-    ]
 
     // prettier-ignore
     const seq = new Tone.Sequence(
       (time, note) => {
-        instruments[0].node.triggerAttackRelease(note, 0.8, time)
+        choosenNode.triggerAttackRelease(note, 0.8, time)
       },
       [
         'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4',
@@ -102,6 +105,8 @@ export default class TrigerContainer extends PureComponent {
     this.setState({
       instruments
     })
+
+    return choosenNode
   }
 
   renderWelcomeScreen = () => {
@@ -134,6 +139,7 @@ export default class TrigerContainer extends PureComponent {
         handlePlaySequence={this.playSequence}
         togglePlay={this.state.togglePlay}
         disabled={this.props.disabled}
+        synth={this.props.synth}
       />
     )
   }

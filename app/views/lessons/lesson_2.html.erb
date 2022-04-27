@@ -1,85 +1,85 @@
 <div class="SecondLesson">
-<div class="MenuBar">
-  <div class="LeftMenubarPart">
-    <div class="MenuButton"></div>
-    <span>Второй урок</span>
-    <!-- <span>Баллы</span> -->
-  </div>
-  <div class="LogoMenubarContainer">
-    <div class="LogoADC"></div>
-  </div>
-</div>
-
-<div class="LessonHeader">
-  <div class="LessonHeaderContainer">
-    <div class="LessonName">
+  <div class="MenuBar">
+    <div class="LeftMenubarPart">
+      <div class="MenuButton"></div>
       <span>Второй урок</span>
-      <h1>Время и ноты в Тоне</h1>
+      <!-- <span>Баллы</span> -->
     </div>
-    <div class="LessonDescription">
-      <span>Описание</span>
-      <h5>Из последних уроков вы узнали, как организуются ноты в гаммы. А теперь давайте посмотрим, как организуются ноты в аккорды. Аккорд – это группа звуков разной высоты, звучащих одновременно.</h5>
+    <div class="LogoMenubarContainer">
+      <div class="LogoADC"></div>
     </div>
   </div>
 
-
-    <div class="Divider"> </div>
-</div>
-
-<div class="BigHeaderBlock">
-  <h2>Длительность звука</h2>
-  <p>У любой ноты есть продолжительность. Указать продолжительность можно с помощью множества разных способов. С помощью секунд, музыкальной длительности или же с помощью специального языка длительности, который используется в Тоне. </p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(14)) %>" width="100%" height="50px"></iframe>
-</div>
-
-<div class="MediumHeaderBlock">
-  <h1>Что такое BPM?</h1>
-  <p>У каждого музыкального произведения есть единый параметр скорости — Beats Per Minute. Например вальс играется в скорости 70 BPM, а хаус использует 100 BPM. </p>
-</div>
-
-<div class="InteractiveBlock">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(16)) %>" width="100%" height="150px"></iframe>
-</div>
-
-
-
-<div class="MediumHeaderBlock">
-  <h1>Время в музыкальной теории</h1>
-  <p>В музыке есть и свое разделение времени. Оно делится на четверти, восьмые, целые и шестнадцатые.</p>
-</div>
-
-<div class="InteractiveBlockSequencer">
-  <div class="support_module"></div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(15)) %>" width="100%" height="100px"></iframe>
-</div>
-
-<div class="BigHeaderBlock">
-  <h2>Тайминги в Тоне</h2>
-  <p>После того, как мы узнали про время, можно создавать секвенции и мелодии.</p>
-</div>
-
-<div class="InteractiveBlockSampler">
-  <div class="SupportContainer">
-    <div class="SupportHeader">
-      <h3>Задание №1</h3>
-      <span>Что нужно сделать?</span>
-      <p>Попробуйте сделать прямую бочку, а мы вас проверим</p>
+  <div class="LessonHeader">
+    <div class="LessonHeaderContainer">
+      <div class="LessonName">
+        <span>Второй урок</span>
+        <h1>Время и ноты в Тоне</h1>
+      </div>
+      <div class="LessonDescription">
+        <span>Описание</span>
+        <h5>Из последних уроков вы узнали, как организуются ноты в гаммы. А теперь давайте посмотрим, как организуются ноты в аккорды. Аккорд – это группа звуков разной высоты, звучащих одновременно.</h5>
+      </div>
     </div>
+
+
+      <div class="Divider"> </div>
+  </div>
+
+  <div class="BigHeaderBlock">
+    <h2>Длительность звука</h2>
+    <p>У любой ноты есть продолжительность. Указать продолжительность можно с помощью множества разных способов. С помощью секунд, музыкальной длительности или же с помощью специального языка длительности, который используется в Тоне. </p>
+  </div>
+
+  <div class="InteractiveBlock">
     <div class="support_module"></div>
- </div>
-  <iframe src="<%= interactive_module_url(InteractiveModule.find(8)) %>" width="100%" height="490"></iframe>
-</div>
-
-<div class="NextLessonControl">
-  <div class="NextLessonControlContainer">
-    <div>Назад</div>
-    <%= link_to 'Next lesson', @next_lesson %>
-
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(14)) %>" width="100%" height="50px"></iframe>
   </div>
-</div>
+
+  <div class="MediumHeaderBlock">
+    <h1>Что такое BPM?</h1>
+    <p>У каждого музыкального произведения есть единый параметр скорости — Beats Per Minute. Например вальс играется в скорости 70 BPM, а хаус использует 100 BPM. </p>
+  </div>
+
+  <div class="InteractiveBlock">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(16)) %>" width="100%" height="150px"></iframe>
+  </div>
+
+
+
+  <div class="MediumHeaderBlock">
+    <h1>Время в музыкальной теории</h1>
+    <p>В музыке есть и свое разделение времени. Оно делится на четверти, восьмые, целые и шестнадцатые.</p>
+  </div>
+
+  <div class="InteractiveBlockSequencer">
+    <div class="support_module"></div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(15)) %>" width="100%" height="100px"></iframe>
+  </div>
+
+  <div class="BigHeaderBlock">
+    <h2>Тайминги в Тоне</h2>
+    <p>После того, как мы узнали про время, можно создавать секвенции и мелодии.</p>
+  </div>
+
+  <div class="InteractiveBlockSampler">
+    <div class="SupportContainer">
+      <div class="SupportHeader">
+        <h3>Задание №1</h3>
+        <span>Что нужно сделать?</span>
+        <p>Попробуйте сделать прямую бочку, а мы вас проверим</p>
+      </div>
+      <div class="support_module"></div>
+   </div>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(8)) %>" width="100%" height="490"></iframe>
+  </div>
+
+  <div class="NextLessonControl">
+    <div class="NextLessonControlContainer">
+
+      <%= link_to 'Previous lesson', @previous_lesson %>
+      <%= link_to 'Next lesson', @next_lesson %>
+    </div>
+  </div>
 </div>

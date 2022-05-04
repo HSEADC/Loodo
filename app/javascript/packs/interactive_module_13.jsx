@@ -1,3 +1,5 @@
+// Lesson_2
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import SamplerContainer from '../containers/SamplerContainer'

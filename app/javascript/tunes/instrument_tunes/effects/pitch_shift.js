@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const pitchShiftSettings = {
   wet: 0,
@@ -13,7 +13,7 @@ const pitchShiftNode = new Tone.PitchShift(pitchShiftSettings)
 const pitchShiftInstrument = {
   id: generateUniqId(),
   name: 'Pitch Shift',
-  type: 'PitchShiftEffect',
+  type: 'PitchShift',
   node: pitchShiftNode,
   settings: pitchShiftSettings
 }

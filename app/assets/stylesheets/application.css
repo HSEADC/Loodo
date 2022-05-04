@@ -20,5 +20,7 @@
  *= require_tree ./views
  *= require_tree ./interactive_modules
  *= require_tree ./lessons
+ *= require_tree ./effects
+
 
  */

@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const vibratoSettings = {
   wet: 0,
@@ -13,7 +13,7 @@ const vibratoNode = new Tone.Vibrato(vibratoSettings)
 const vibratoInstrument = {
   id: generateUniqId(),
   name: 'Vibrato',
-  type: 'VibratoEffect',
+  type: 'Vibrato',
   node: vibratoNode,
   settings: vibratoSettings
 }

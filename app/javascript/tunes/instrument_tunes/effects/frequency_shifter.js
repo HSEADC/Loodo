@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const frequencyShifterSettings = {
   wet: 0,
@@ -7,12 +7,12 @@ const frequencyShifterSettings = {
 }
 const frequencyShifterNode = new Tone.FrequencyShifter(frequencyShifterSettings)
 
-const autoFilterInstrument = {
+const frequencyShifterInstrument = {
   id: generateUniqId(),
   name: 'Frequency Shift',
-  type: 'FrequencyShifterEffect',
+  type: 'FrequencyShifter',
   node: frequencyShifterNode,
   settings: frequencyShifterSettings
 }
 
-export { autoFilterInstrument }
+export { frequencyShifterInstrument }

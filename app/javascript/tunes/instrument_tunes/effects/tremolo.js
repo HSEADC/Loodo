@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const tremoloSettings = {
   wet: 0,
@@ -13,7 +13,7 @@ const tremoloNode = new Tone.Tremolo(tremoloSettings)
 const tremoloInstrument = {
   id: generateUniqId(),
   name: 'Tremolo',
-  type: 'TremoloEffect',
+  type: 'Tremolo',
   node: tremoloNode,
   settings: tremoloSettings
 }

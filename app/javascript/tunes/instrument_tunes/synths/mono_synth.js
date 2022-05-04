@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const synthSettings = {
   volume: 0,

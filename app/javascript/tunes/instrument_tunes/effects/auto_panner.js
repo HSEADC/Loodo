@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const autoPannerSettings = {
   wet: 0,
@@ -12,7 +12,7 @@ const autoPannerNode = new Tone.AutoPanner(autoPannerSettings).start()
 const autoPannerInstrument = {
   id: generateUniqId(),
   name: 'Auto Panner',
-  type: 'AutoPannerEffect',
+  type: 'AutoPanner',
   node: autoPannerNode,
   settings: autoPannerSettings
 }

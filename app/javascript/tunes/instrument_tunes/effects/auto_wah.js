@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const autoWahSettings = {
   wet: 0,
@@ -15,7 +15,7 @@ const autoWahNode = new Tone.AutoWah(autoWahSettings)
 const autoWahInstrument = {
   id: generateUniqId(),
   name: 'Auto Wah',
-  type: 'AutoWahEffect',
+  type: 'AutoWah',
   node: autoWahNode,
   settings: autoWahSettings
 }

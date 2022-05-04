@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const stereoWidenerSettings = {
   wet: 0,
@@ -10,7 +10,7 @@ const stereoWidenerNode = new Tone.StereoWidener(stereoWidenerSettings)
 const stereoWidenerInstrument = {
   id: generateUniqId(),
   name: 'Stereo Widener',
-  type: 'StereoWidenerEffect',
+  type: 'StereoWidener',
   node: stereoWidenerNode,
   settings: stereoWidenerSettings
 }

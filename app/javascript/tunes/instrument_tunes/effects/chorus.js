@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const chorusSettings = {
   wet: 0,
@@ -14,7 +14,7 @@ const chorusNode = new Tone.Chorus(chorusSettings)
 const chorusInstrument = {
   id: generateUniqId(),
   name: 'Chorus',
-  type: 'ChorusEffect',
+  type: 'Chorus',
   node: chorusNode,
   settings: chorusSettings
 }

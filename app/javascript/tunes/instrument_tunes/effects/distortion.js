@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const distortionSettings = {
   wet: 0,
@@ -11,7 +11,7 @@ const distortionNode = new Tone.Distortion(distortionSettings)
 const distortionInstrument = {
   id: generateUniqId(),
   name: 'Distortion',
-  type: 'DistortionEffect',
+  type: 'Distortion',
   node: distortionNode,
   settings: distortionSettings
 }

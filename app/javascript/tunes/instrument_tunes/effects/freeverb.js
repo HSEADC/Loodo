@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const freeverbSettings = {
   wet: 0.9,
@@ -11,7 +11,7 @@ const freeverbNode = new Tone.Freeverb(freeverbSettings)
 const freeverbInstrument = {
   id: generateUniqId(),
   name: 'Freeverb',
-  type: 'FreeverbEffect',
+  type: 'Freeverb',
   node: freeverbNode,
   settings: freeverbSettings
 }

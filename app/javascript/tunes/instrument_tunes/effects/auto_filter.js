@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const autoFilterSettings = {
   wet: 0,
@@ -21,7 +21,7 @@ const autoFilterNode = new Tone.AutoFilter(autoFilterSettings).start()
 const autoFilterInstrument = {
   id: generateUniqId(),
   name: 'Auto Filter',
-  type: 'AutoFilterEffect',
+  type: 'AutoFilter',
   node: autoFilterNode,
   settings: autoFilterSettings
 }

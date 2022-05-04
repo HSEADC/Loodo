@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const jcReverbSettings = {
   wet: 0,
@@ -10,7 +10,7 @@ const jcReverbNode = new Tone.JCReverb(jcReverbSettings)
 const jcReverbInstrument = {
   id: generateUniqId(),
   name: 'JC Reverb',
-  type: 'JCReverbEffect',
+  type: 'JCReverb',
   node: jcReverbNode,
   settings: jcReverbSettings
 }

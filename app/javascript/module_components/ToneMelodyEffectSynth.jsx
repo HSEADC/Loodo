@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
-import Slider from "../control_components/Slider";
-import Knob from "../control_components/Knob";
-import ButtonSet from "../control_components/ButtonSet";
+import Slider from '../control_components/Slider'
+import Knob from '../control_components/Knob'
+import ButtonSet from '../control_components/ButtonSet'
 
 export default class ToneMelodyEffectSynth extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   // Можно спользовать обновление тут, так как
@@ -16,9 +16,9 @@ export default class ToneMelodyEffectSynth extends Component {
   // }
 
   updateNodeParams = () => {
-    const { node, settings } = this.props;
-    const { volume, detune, portamento, envelope, oscillator } = settings;
-    const { type, phase, harmonicity } = oscillator;
+    const { node, settings } = this.props
+    const { volume, detune, portamento, envelope, oscillator } = settings
+    const { type, phase, harmonicity } = oscillator
 
     const {
       attack,
@@ -27,37 +27,37 @@ export default class ToneMelodyEffectSynth extends Component {
       decayCurve,
       sustain,
       release,
-      releaseCurve,
-    } = envelope;
+      releaseCurve
+    } = envelope
 
-    node.volume.value = volume;
-    node.detune.value = detune;
-    node.portamento = portamento;
+    node.volume.value = volume
+    node.detune.value = detune
+    node.portamento = portamento
 
-    node.oscillator.type = type;
-    node.oscillator.phase = phase;
+    node.oscillator.type = type
+    node.oscillator.phase = phase
 
     if (node.oscillator.harmonicity) {
-      node.oscillator.harmonicity.value = harmonicity;
+      node.oscillator.harmonicity.value = harmonicity
     }
 
-    node.envelope.attack = attack;
-    node.envelope.attackCurve = attackCurve;
-    node.envelope.decay = decay;
-    node.envelope.decayCurve = decayCurve;
-    node.envelope.sustain = sustain;
-    node.envelope.release = release;
-    node.envelope.releaseCurve = releaseCurve;
-  };
+    node.envelope.attack = attack
+    node.envelope.attackCurve = attackCurve
+    node.envelope.decay = decay
+    node.envelope.decayCurve = decayCurve
+    node.envelope.sustain = sustain
+    node.envelope.release = release
+    node.envelope.releaseCurve = releaseCurve
+  }
 
   handlePropertyValueChange = (property, value) => {
-    const { id, handlePropertyValueChange } = this.props;
-    handlePropertyValueChange(id, property, value);
-  };
+    const { id, handlePropertyValueChange } = this.props
+    handlePropertyValueChange(id, property, value)
+  }
 
   render() {
-    const { id, name, settings } = this.props;
-    const { volume, detune, portamento, envelope, oscillator } = settings;
+    const { id, name, settings } = this.props
+    const { volume, detune, portamento, envelope, oscillator } = settings
 
     const {
       type,
@@ -65,8 +65,8 @@ export default class ToneMelodyEffectSynth extends Component {
       // partialCount,
       // partials,
       phase,
-      harmonicity,
-    } = oscillator;
+      harmonicity
+    } = oscillator
 
     // Type
     // The type of the oscillator. Can be any of the basic types: sine, square, triangle, sawtooth. Or prefix the basic types with "fm", "am", or "fat" to use the FMOscillator, AMOscillator or FatOscillator types. The oscillator could also be set to "pwm" or "pulse". All of the parameters of the oscillator's class are accessible when the oscillator is set to that type, but throws an error when it's not.
@@ -82,46 +82,46 @@ export default class ToneMelodyEffectSynth extends Component {
       decayCurve,
       sustain,
       release,
-      releaseCurve,
-    } = envelope;
+      releaseCurve
+    } = envelope
 
     const oscillatorTypes = [
-      "fatsine",
-      "fatsquare",
-      "fatsawtooth",
-      "fattriangle",
-      "fmsine",
-      "fmsquare",
-      "fmsawtooth",
-      "fmtriangle",
-      "amsine",
-      "amsquare",
-      "amsawtooth",
-      "amtriangle",
-      "pulse",
-      "pwm",
-    ];
+      'fatsine',
+      'fatsquare',
+      'fatsawtooth',
+      'fattriangle',
+      'fmsine',
+      'fmsquare',
+      'fmsawtooth',
+      'fmtriangle',
+      'amsine',
+      'amsquare',
+      'amsawtooth',
+      'amtriangle',
+      'pulse',
+      'pwm'
+    ]
 
     const envelopeCurves = [
-      "linear",
-      "exponential",
-      "sine",
-      "cosine",
-      "bounce",
-      "ripple",
-      "step",
-    ];
+      'linear',
+      'exponential',
+      'sine',
+      'cosine',
+      'bounce',
+      'ripple',
+      'step'
+    ]
 
-    const decayEnvelopeCurves = ["linear", "exponential"];
+    const decayEnvelopeCurves = ['linear', 'exponential']
 
-    this.updateNodeParams();
+    this.updateNodeParams()
 
     return (
       <div className="ToneSynth">
         <h1>{name}</h1>
         <Knob
           name="Detune"
-          property={["detune"]}
+          property={['detune']}
           min={-100}
           max={100}
           value={detune}
@@ -130,7 +130,7 @@ export default class ToneMelodyEffectSynth extends Component {
 
         <Knob
           name="Portamento"
-          property={["portamento"]}
+          property={['portamento']}
           min={-100}
           max={100}
           value={detune}
@@ -139,7 +139,7 @@ export default class ToneMelodyEffectSynth extends Component {
 
         <Slider
           name="Frequency"
-          property={["frequency"]}
+          property={['frequency']}
           min={0}
           max={1}
           step={0.01}
@@ -149,7 +149,7 @@ export default class ToneMelodyEffectSynth extends Component {
 
         <Slider
           name="Phase"
-          property={["oscillator", "type"]}
+          property={['oscillator', 'type']}
           min={0}
           max={1}
           step={0.01}
@@ -158,7 +158,7 @@ export default class ToneMelodyEffectSynth extends Component {
         />
         <Slider
           name="Attack"
-          property={["envelope", "attack"]}
+          property={['envelope', 'attack']}
           min={0}
           max={1}
           step={0.01}
@@ -167,7 +167,7 @@ export default class ToneMelodyEffectSynth extends Component {
         />
         <Slider
           name="Decay"
-          property={["envelope", "decay"]}
+          property={['envelope', 'decay']}
           min={0}
           max={1}
           step={0.01}
@@ -176,7 +176,7 @@ export default class ToneMelodyEffectSynth extends Component {
         />
         <Slider
           name="Sustain"
-          property={["envelope", "sustain"]}
+          property={['envelope', 'sustain']}
           min={0}
           max={1}
           step={0.01}
@@ -185,7 +185,7 @@ export default class ToneMelodyEffectSynth extends Component {
         />
         <Slider
           name="Release"
-          property={["envelope", "release"]}
+          property={['envelope', 'release']}
           min={0}
           max={1}
           step={0.01}
@@ -193,14 +193,14 @@ export default class ToneMelodyEffectSynth extends Component {
           handleChange={this.handlePropertyValueChange}
         />
       </div>
-    );
+    )
   }
 }
 
-ToneMelodyEffectSynth.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  node: PropTypes.object.isRequired,
-  settings: PropTypes.object.isRequired,
-  handlePropertyValueChange: PropTypes.func.isRequired,
-};
+// ToneMelodyEffectSynth.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   node: PropTypes.object.isRequired,
+//   settings: PropTypes.object.isRequired,
+//   handlePropertyValueChange: PropTypes.func.isRequired,
+// };

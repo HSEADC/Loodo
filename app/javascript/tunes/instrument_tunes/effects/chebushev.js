@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const chebyshevSettings = {
   wet: 0,
@@ -11,7 +11,7 @@ const chebyshevNode = new Tone.Chebyshev(chebyshevSettings)
 const chebyshevInstrument = {
   id: generateUniqId(),
   name: 'Chebyshev',
-  type: 'ChebyshevEffect',
+  type: 'Chebyshev',
   node: chebyshevNode,
   settings: chebyshevSettings
 }

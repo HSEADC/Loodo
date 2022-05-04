@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const reverbSettings = {
   wet: 0,
@@ -11,7 +11,7 @@ const reverbNode = new Tone.Reverb(reverbSettings)
 const reverbInstrument = {
   id: generateUniqId(),
   name: 'Reverb',
-  type: 'ReverbEffect',
+  type: 'Reverb',
   node: reverbNode,
   settings: reverbSettings
 }

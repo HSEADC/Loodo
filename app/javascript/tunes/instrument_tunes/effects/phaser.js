@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const phaserSettings = {
   wet: 0,
@@ -14,7 +14,7 @@ const phaserNode = new Tone.Phaser(phaserSettings)
 const phaserInstrument = {
   id: generateUniqId(),
   name: 'Phaser',
-  type: 'PhaserEffect',
+  type: 'Phaser',
   node: phaserNode,
   settings: phaserSettings
 }

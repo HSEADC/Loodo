@@ -1,5 +1,5 @@
 import * as Tone from 'tone'
-import { generateUniqId } from '../../utilities'
+import { generateUniqId } from '../../../utilities'
 
 const pingPongDelaySettings = {
   wet: 0,
@@ -11,7 +11,7 @@ const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings)
 const pingPongDelayInstrument = {
   id: generateUniqId(),
   name: 'Ping Pong Delay',
-  type: 'PingPongDelayEffect',
+  type: 'PingPongDelay',
   node: pingPongDelayNode,
   settings: pingPongDelaySettings
 }

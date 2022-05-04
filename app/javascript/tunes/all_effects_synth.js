@@ -165,6 +165,8 @@ const channelSettings = {
   solo: false
 }
 
+const channelNode = new Tone.Channel(channelSettings).toDestination()
+
 const synthNode = new Tone.Synth(synthSettings)
 // const autoFilterNode = new Tone.AutoFilter(autoFilterSettings).start()
 // const autoPannerNode = new Tone.AutoPanner(autoPannerSettings).start()

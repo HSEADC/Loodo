@@ -30,26 +30,28 @@ export default class StereoWidenerEffect extends Component {
     return (
       <div className="StereoWidenerEffect">
         <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Width"
-          property={['width']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={width}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Width"
+            property={['width']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={width}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

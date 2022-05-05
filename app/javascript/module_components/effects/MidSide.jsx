@@ -29,16 +29,17 @@ export default class MidSideEffect extends Component {
     return (
       <div className="MidSideEffect">
         <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

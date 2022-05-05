@@ -33,34 +33,37 @@ export default class ChebyshevEffect extends Component {
     return (
       <div className="ChebyshevEffect">
         <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Order"
-          property={['order']}
-          min={0}
-          max={100}
-          step={1}
-          value={order}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <ButtonSet
-          name="Oversample"
-          property={['oversample']}
-          value={oversample}
-          options={oversampleTypes}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Order"
+            property={['order']}
+            min={0}
+            max={100}
+            step={1}
+            value={order}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="buttonSetLineContainer">
+          <ButtonSet
+            name="Oversample"
+            property={['oversample']}
+            value={oversample}
+            options={oversampleTypes}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

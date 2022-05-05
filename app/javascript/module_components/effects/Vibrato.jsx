@@ -35,54 +35,64 @@ export default class VibratoEffect extends Component {
     return (
       <div className="VibratoEffect">
         <h1>{name}</h1>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div>
+          <div className="buttonSetLargeContainer">
+            <ButtonSet
+              name="Type"
+              property={['type']}
+              value={type}
+              options={oscillatorTypes}
+              handleChange={this.handlePropertyValueChange}
+            />
+          </div>
+          <div>
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Max Delay"
+                property={['maxDelay']}
+                min={0}
+                max={1}
+                step={0.01}
+                value={maxDelay}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Frequency"
+                property={['frequency']}
+                min={0}
+                max={3000}
+                step={1}
+                value={frequency}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
 
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Max Delay"
-          property={['maxDelay']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={maxDelay}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Frequency"
-          property={['frequency']}
-          min={0}
-          max={3000}
-          step={1}
-          value={frequency}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Depth"
-          property={['depth']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={depth}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <ButtonSet
-          name="Type"
-          property={['type']}
-          value={type}
-          options={oscillatorTypes}
-          handleChange={this.handlePropertyValueChange}
-        />
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Depth"
+                property={['depth']}
+                min={0}
+                max={1}
+                step={0.01}
+                value={depth}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

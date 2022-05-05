@@ -37,66 +37,77 @@ export default class PhaserEffect extends Component {
     return (
       <div className="PhaserEffect">
         <h1>{name}</h1>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div>
+          <div className="knobContainer">
+            <Knob
+              name="Base Frequency"
+              property={['baseFrequency']}
+              min={0}
+              max={1000}
+              value={baseFrequency}
+              handleChange={this.handlePropertyValueChange}
+            />
+          </div>
 
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
+          <div>
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Frequency"
+                property={['frequency']}
+                min={0}
+                max={100}
+                step={0.01}
+                value={frequency}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Octaves"
+                property={['octaves']}
+                min={0}
+                max={6}
+                step={0.1}
+                value={octaves}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
 
-        <Slider
-          name="Frequency"
-          property={['frequency']}
-          min={0}
-          max={100}
-          step={0.01}
-          value={frequency}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Octaves"
-          property={['octaves']}
-          min={0}
-          max={6}
-          step={0.1}
-          value={octaves}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Stages"
-          property={['stages']}
-          min={0}
-          max={10}
-          step={1}
-          value={stages}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Q"
-          property={['Q']}
-          min={0}
-          max={10}
-          step={0.01}
-          value={Q}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Base Frequency"
-          property={['baseFrequency']}
-          min={0}
-          max={1000}
-          step={1}
-          value={baseFrequency}
-          handleChange={this.handlePropertyValueChange}
-        />
+            <div className="sliderMediumContainer">
+              <Slider
+                name="Stages"
+                property={['stages']}
+                min={0}
+                max={10}
+                step={1}
+                value={stages}
+                handleChange={this.handlePropertyValueChange}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Quality"
+            property={['Q']}
+            min={0}
+            max={10}
+            step={0.01}
+            value={Q}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

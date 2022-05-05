@@ -31,36 +31,39 @@ export default class PingPongDelayEffect extends Component {
     return (
       <div className="PingPongDelayEffect">
         <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Delay Time"
-          property={['delayTime']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={delayTime}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Max Delay Time"
-          property={['maxDelayTime']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={maxDelayTime}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Delay Time"
+            property={['delayTime']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={delayTime}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Max Delay Time"
+            property={['maxDelayTime']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={maxDelayTime}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

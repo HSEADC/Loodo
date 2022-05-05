@@ -30,26 +30,28 @@ export default class FrequencyShifterEffect extends Component {
     return (
       <div className="FrequencyShifterEffect">
         <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Frequency"
-          property={['frequency']}
-          min={0}
-          max={100}
-          step={1}
-          value={frequency}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Frequency"
+            property={['frequency']}
+            min={0}
+            max={100}
+            step={1}
+            value={frequency}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

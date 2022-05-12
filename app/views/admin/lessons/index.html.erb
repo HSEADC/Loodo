@@ -15,8 +15,13 @@
     <% @lessons.each do |lesson| %>
       <tr>
         <td><%= lesson.name %></td>
-        <td><%= link_to lesson.description, lesson %></td>
+        <td><%= link_to lesson.description, admin_lesson_path(lesson) %></td>
+        <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<%= link_to 'New Lesson', new_admin_lesson_path %>

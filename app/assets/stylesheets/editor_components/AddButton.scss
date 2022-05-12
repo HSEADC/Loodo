@@ -1,0 +1,16 @@
+.AddButton {
+  * {
+    display: none;
+  }
+
+  &::before {
+    display: block;
+    content: '+';
+  }
+
+  &:hover {
+    * {
+      display: block;
+    }
+  }
+}

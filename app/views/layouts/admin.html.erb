@@ -7,12 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'lesson_with_iframe' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="lesson_<%= action_name %>">
+  <body>
+    <%= render 'admin_menubar' %>
     <br><br><br>
-    Lessons
+    Admin
     <%= yield %>
   </body>
 </html>

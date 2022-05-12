@@ -1,0 +1,27 @@
+.Element {
+  width: 700px;
+  margin: 0 auto;
+  outline: none;
+
+  &.heading1,
+  &.heading2,
+  &.heading3 {
+    font-weight: bold;
+  }
+
+  &.heading1 {
+    font-size: 40px;
+  }
+
+  &.heading2 {
+    font-size: 30px;
+  }
+
+  &.heading3 {
+    font-size: 20px;
+  }
+
+  &.paragraph {
+    font-size: 14px;
+  }
+}

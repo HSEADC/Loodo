@@ -1,0 +1,15 @@
+<%
+  props = {
+    elementsUrl: admin_lesson_lesson_elements_url(@lesson),
+    createElementUrl: admin_lesson_lesson_elements_url(@lesson),
+    updateElementUrl: admin_lesson_lesson_element_url(@lesson)
+  }
+%>
+
+<%= javascript_pack_tag 'lesson_editor' %>
+
+<h1>Editing Lesson</h1>
+
+<%= render 'form', lesson: @lesson %>
+
+<div id="editor" data-props="<%= props.to_json %>"></div>

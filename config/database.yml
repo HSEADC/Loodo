@@ -23,3 +23,22 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+#
+#
+# default: &default
+#   adapter: postgresql
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+#   reconnect: true
+#
+# development:
+#   <<: *default
+#   database: loodo_dev
+#
+# test:
+#   <<: *default
+#   database: loodo_test
+#
+# production:
+#   <<: *default
+#   database: loodo_prod

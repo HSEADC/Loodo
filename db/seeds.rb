@@ -1,3 +1,42 @@
+@lesson_1_elements = [
+  {
+    type: 'heading1',
+    text: "Bla bla bla, it's a Heading 1"
+  }, {
+    type: 'heading2',
+    text: "Bla bla bla, it's a Heading 2"
+  }, {
+    type: 'heading3',
+    text: "Bla bla bla, it's a Heading 3"
+  }, {
+    type: 'paragraph',
+    text: "Bla bla bla, it's a Paragraph"
+  }
+]
+
+@lessons_data = [
+  {
+    name: '1',
+    description: 'Синтез звука'
+  },
+  {
+    name: '2',
+    description: 'Время и ноты в Tone.js'
+  },
+  {
+    name: '3',
+    description: 'Инструменты в тоне'
+  },
+  {
+    name: '4',
+    description: 'Звуковые эффекты в тоне'
+  },
+  {
+    name: '5',
+    description: 'Каналы, микширование и создание музыки'
+  }
+]
+
 @interactive_modules_data = [
   {
     name: '1',
@@ -181,40 +220,23 @@
   },
 ]
 
-@lessons_data = [
-  {
-    name: '1',
-    description: 'Синтез звука'
-  },
-  {
-    name: '2',
-    description: 'Время и ноты в Tone.js'
-  },
-  {
-    name: '3',
-    description: 'Инструменты в тоне'
-  },
-  {
-    name: '4',
-    description: 'Звуковые эффекты в тоне'
-  },
-  {
-    name: '5',
-    description: 'Каналы, микширование
-и создание музыки'
-  }
-]
-
 def seed
   reset_db
+  create_admin
   create_interactive_modules
   create_lessons
+  create_lesson_elements
 end
 
 def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def create_admin
+  user = User.create!(email: 'admin@admin.com', password: 'testtest')
+  puts "Admin with email #{user.email} just created"
 end
 
 def create_interactive_modules
@@ -228,6 +250,20 @@ def create_lessons
   @lessons_data.each do |lesson_data|
     lesson = Lesson.create!(lesson_data)
     puts "#{lesson.name} lesson just created"
+  end
+end
+
+def create_lesson_elements
+  lesson = Lesson.find_by_name('1')
+
+  @lesson_1_elements.each_with_index do |lesson_1_element, index|
+    lesson_element = lesson.lesson_elements.create!(
+      kind: lesson_1_element[:type],
+      position: index,
+      text: lesson_1_element[:text]
+    )
+
+    puts "Lesson element created"
   end
 end
 

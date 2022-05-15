@@ -18,36 +18,9 @@ export default class ToneSynthModule extends PureComponent {
     } = this.props
 
     const instrumentElements = []
-    let choosenNode
-
-    switch (synth) {
-      case 'ToneSynth':
-        choosenNode = instruments[0][0].node[0]
-        break
-
-      case 'MonoSynth':
-        choosenNode = instruments[0][0].node[1]
-        break
-
-      case 'FMSynth':
-        choosenNode = instruments[0][0].node[2]
-        break
-
-      case 'AMSynth':
-        choosenNode = instruments[0][0].node[3]
-        break
-
-      // case 'PolySynth':
-      //   choosenNode = instruments[0][0].node[4]
-      //   break
-      //
-      // case 'FatOscillator':
-      //   choosenNode = instruments[0][0].node[5]
-      //   break
-    }
 
     instruments.forEach((instrument, i) => {
-      const { id, name, type, settings } = instrument[i]
+      const { id, name, type, node, settings } = instrument
       let instrumentElement
 
       switch (type) {
@@ -56,7 +29,58 @@ export default class ToneSynthModule extends PureComponent {
             <ToneMelodySynth
               id={id}
               name={name}
-              node={choosenNode}
+              node={node}
+              settings={settings}
+              handlePropertyValueChange={handlePropertyValueChange}
+              handlePlaySequence={handlePlaySequence}
+              togglePlay={togglePlay}
+              key={i}
+              disabled={this.props.disabled}
+              synth={this.props.synth}
+            />
+          )
+          break
+
+        case 'MonoSynth':
+          instrumentElement = (
+            <ToneMelodySynth
+              id={id}
+              name={name}
+              node={node}
+              settings={settings}
+              handlePropertyValueChange={handlePropertyValueChange}
+              handlePlaySequence={handlePlaySequence}
+              togglePlay={togglePlay}
+              key={i}
+              disabled={this.props.disabled}
+              synth={this.props.synth}
+            />
+          )
+          break
+
+        case 'AMSynth':
+          instrumentElement = (
+            <ToneMelodySynth
+              id={id}
+              name={name}
+              node={node}
+              settings={settings}
+              handlePropertyValueChange={handlePropertyValueChange}
+              handlePlaySequence={handlePlaySequence}
+              togglePlay={togglePlay}
+              key={i}
+              disabled={this.props.disabled}
+              synth={this.props.synth}
+            />
+          )
+          break
+
+        case 'FMSynth':
+          instrumentElement = (
+            <ToneMelodySynth
+              id={id}
+              name={name}
+              node={node}
               settings={settings}
               handlePropertyValueChange={handlePropertyValueChange}
               handlePlaySequence={handlePlaySequence}

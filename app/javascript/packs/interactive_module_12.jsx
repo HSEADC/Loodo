@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ToneSynthContainer from '../containers/ToneSynthContainer'
+import ThreeButtonTriggerContainer from '../containers/ThreeButtonTriggerContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ToneSynthContainer disabled={0} synth={'ToneSynth'} />,
+    <ThreeButtonTriggerContainer />,
     document.body.getElementsByClassName('interactive_module_12')[0]
   )
 })

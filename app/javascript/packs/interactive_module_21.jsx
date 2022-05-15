@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import EverySynthContainer from '../containers/EverySynthContainer'
+import ToneSynthContainer from '../containers/ToneSynthContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <EverySynthContainer />,
-    document.body.getElementsByClassName('interactive_module_17')[0]
+    <ToneSynthContainer disabled={0} synth={'FatOscillator'} />,
+    document.body.getElementsByClassName('interactive_module_21')[0]
   )
 })

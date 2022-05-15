@@ -30,7 +30,7 @@ export default class ReverbEffect extends Component {
 
     return (
       <div className="ReverbEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"

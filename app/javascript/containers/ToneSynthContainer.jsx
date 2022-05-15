@@ -18,9 +18,12 @@ export default class TrigerContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.initInstruments()
+  }
+
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
     console.log('/// Instruments have been initialized ///')
 
     this.setState({
@@ -38,14 +41,14 @@ export default class TrigerContainer extends PureComponent {
       // console.log(newInstrument[0].settings)
       // console.log(value)
 
-      if (instrument[0].id === id) {
+      if (instrument.id === id) {
         if (property.length === 1) {
           const propertyName = property[0]
-          newInstrument[0].settings[propertyName] = value
+          newInstrument.settings[propertyName] = value
         } else if (property.length === 2) {
           const scopeName = property[0]
           const propertyName = property[1]
-          newInstrument[0].settings[scopeName][propertyName] = value
+          newInstrument.settings[scopeName][propertyName] = value
         }
       }
 
@@ -63,31 +66,33 @@ export default class TrigerContainer extends PureComponent {
     const instruments = [allMelodySynth.instrument]
     const { synth } = this.props
 
+    let assembledInstruments = []
     let choosenNode
 
     switch (synth) {
       case 'ToneSynth':
-        choosenNode = instruments[0][0].node[0]
+        assembledInstruments.push(instruments[0][0], instruments[0][5])
+        choosenNode = instruments[0][0].node
         break
 
       case 'MonoSynth':
-        choosenNode = instruments[0][0].node[1]
+        assembledInstruments.push(instruments[0][1], instruments[0][5])
+        choosenNode = instruments[0][1].node
         break
 
       case 'FMSynth':
-        choosenNode = instruments[0][0].node[2]
+        assembledInstruments.push(instruments[0][2], instruments[0][5])
+        choosenNode = instruments[0][2].node
         break
 
       case 'AMSynth':
-        choosenNode = instruments[0][0].node[3]
+        assembledInstruments.push(instruments[0][3], instruments[0][5])
+        choosenNode = instruments[0][3].node
         break
 
       case 'PolySynth':
-        choosenNode = instruments[0][0].node[4]
-        break
-
-      case 'FatOscillator':
-        choosenNode = instruments[0][0].node[5]
+        assembledInstruments.push(instruments[0][0], instruments[0][5])
+        choosenNode = instruments[0][0].node
         break
     }
 
@@ -103,18 +108,20 @@ export default class TrigerContainer extends PureComponent {
     ).start(0)
 
     this.setState({
-      instruments
+      instruments: assembledInstruments
     })
-
-    return choosenNode
   }
 
-  renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
-  }
+  // renderWelcomeScreen = () => {
+  //   return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
+  // }
 
   playSequence = () => {
     let { togglePlay } = this.state
+
+    if (this.state.webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     if (togglePlay == false) {
       Tone.Transport.start()
@@ -145,14 +152,9 @@ export default class TrigerContainer extends PureComponent {
   }
 
   render() {
+    console.log('asdasdasd')
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

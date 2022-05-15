@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 
 import Slider from '../../control_components/Slider'
 import ButtonSet from '../../control_components/ButtonSet'
+import Knob from '../../control_components/Knob'
 
 export default class PhaserEffect extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class PhaserEffect extends Component {
 
     return (
       <div className="PhaserEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"
@@ -48,7 +49,7 @@ export default class PhaserEffect extends Component {
             handleChange={this.handlePropertyValueChange}
           />
         </div>
-        <div>
+        <div className="knobSliderContainer">
           <div className="knobContainer">
             <Knob
               name="Base Frequency"

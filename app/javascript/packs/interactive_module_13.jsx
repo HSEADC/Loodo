@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SamplerContainer from '../containers/SamplerContainer'
+import BPMSynth from '../containers/BPMSynthContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <SamplerContainer />,
+    <BPMSynth />,
     document.body.getElementsByClassName('interactive_module_13')[0]
   )
 })

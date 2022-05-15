@@ -32,7 +32,22 @@ const synthSettings = {
 //   depth: 0.7,
 //   spread: 180
 // }
-//
+
+const autoFilterSettings = {
+  wet: 0,
+  type: 'sine',
+  frequency: 1,
+  depth: 1,
+  baseFrequency: 200,
+  octaves: 2.6,
+  filter: {
+    type: 'lowpass',
+    frequency: 100,
+    rolloff: -12,
+    Q: 1
+  }
+}
+
 // const freeverbSettings = {
 //   wet: 0.55,
 //   roomSize: 0.23,
@@ -69,7 +84,9 @@ const channelSettings = {
 }
 
 const synthNode = new Tone.Synth(synthSettings)
-// const chorusNode = new Tone.Chorus(chorusSettings).start()
+const autoFilterNode = new Tone.AutoFilter(autoFilterSettings).start()
+
+// const chorusNode = new Tone.Chorus(chorusSettings)
 // const freeverbNode = new Tone.Freeverb(freeverbSettings)
 // const pingPongDelayNode = new Tone.PingPongDelay(pingPongDelaySettings)
 // const tremoloNode = new Tone.Tremolo(tremoloSettings)
@@ -77,7 +94,7 @@ const synthNode = new Tone.Synth(synthSettings)
 const channelNode = new Tone.Channel(channelSettings).toDestination()
 
 synthNode.chain(
-  // chorusNode,
+  autoFilterNode,
   // freeverbNode,
   // pingPongDelayNode,
   // tremoloNode,
@@ -140,48 +157,6 @@ partNode.loop = true
 const instrument = [
   {
     id: generateUniqId(),
-    name: 'Melody Synth',
-    type: 'ToneSynth',
-    node: synthNode,
-    settings: synthSettings
-  },
-  // {
-  //   id: generateUniqId(),
-  //   name: "Chorus",
-  //   type: "ChorusEffect",
-  //   node: chorusNode,
-  //   settings: chorusSettings,
-  // },
-  // {
-  //   id: generateUniqId(),
-  //   name: "Freeverb",
-  //   type: "FreeverbEffect",
-  //   node: freeverbNode,
-  //   settings: freeverbSettings,
-  // },
-  // {
-  //   id: generateUniqId(),
-  //   name: "Ping Pong Delay",
-  //   type: "PingPongDelayEffect",
-  //   node: pingPongDelayNode,
-  //   settings: pingPongDelaySettings,
-  // },
-  // {
-  //   id: generateUniqId(),
-  //   name: "Tremolo",
-  //   type: "TremoloEffect",
-  //   node: tremoloNode,
-  //   settings: tremoloSettings,
-  // },
-  // {
-  //   id: generateUniqId(),
-  //   name: "Vibrato",
-  //   type: "VibratoEffect",
-  //   node: vibratoNode,
-  //   settings: vibratoSettings,
-  // },
-  {
-    id: generateUniqId(),
     name: 'Channel',
     type: 'Channel',
     node: channelNode,
@@ -193,6 +168,20 @@ const instrument = [
     type: 'Sequencer',
     node: partNode,
     settings: partSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Melody Synth',
+    type: 'ToneSynth',
+    node: synthNode,
+    settings: synthSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Auto Filter',
+    type: 'AutoFilter',
+    node: autoFilterNode,
+    settings: autoFilterSettings
   }
 ]
 

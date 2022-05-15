@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ToneSynthContainer from '../containers/ToneSynthContainer'
+import SamplerExampleButtonsContainer from '../containers/SamplerExampleButtonsContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ToneSynthContainer disabled={2} />,
+    <SamplerExampleButtonsContainer />,
     document.body.getElementsByClassName('interactive_module_10')[0]
   )
 })

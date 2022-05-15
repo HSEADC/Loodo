@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ThreeButtonTriggerContainer from '../containers/ThreeButtonTriggerContainer'
+import FourButtonTriggerContainer from '../containers/FourButtonTriggerContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ThreeButtonTriggerContainer />,
+    <FourButtonTriggerContainer />,
     document.body.getElementsByClassName('interactive_module_14')[0]
   )
 })

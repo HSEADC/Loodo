@@ -9,6 +9,7 @@ import * as chorusInstrument from './instrument_tunes/effects/chorus'
 import * as distortionInstrument from './instrument_tunes/effects/distortion'
 import * as feedbackDelayInstrument from './instrument_tunes/effects/feedback_delay'
 import * as freeverbInstrument from './instrument_tunes/effects/freeverb'
+import * as frequencyShifterInstrument from './instrument_tunes/effects/frequency_shifter'
 import * as jcReverbInstrument from './instrument_tunes/effects/JS_reverb'
 // import * as midSideInstrument from './instrument_tunes/effects/mid_side_effect'
 import * as phaserInstrument from './instrument_tunes/effects/phaser'
@@ -20,30 +21,6 @@ import * as tremoloInstrument from './instrument_tunes/effects/tremolo'
 import * as vibratoInstrument from './instrument_tunes/effects/vibrato'
 
 import * as channelInstrument from './instrument_tunes/channels/channel'
-
-// const instruments = [
-//   toneSynthInstrument,
-//
-//   autoFilterInstrument,
-//   autoPannerInstrument,
-//   autoWahInstrument,
-//   bitCrusherInstrument,
-//   chebushevInstrument,
-//   chorusInstrument,
-//   distortionInstrument,
-//   feedbackDelayInstrument,
-//   freeverbInstrument,
-//   jcReverbInstrument,
-//   // midSideInstrument,
-//   phaserInstrument,
-//   pingPongDelayInstrument,
-//   pitchShiftInstrument,
-//   stereoWidenerInstrument,
-//   tremoloInstrument,
-//   vibratoInstrument,
-//
-//   channelInstrument
-// ]
 
 const instruments = [
   { name: 'ToneSynth', instrument: toneSynthInstrument },
@@ -57,10 +34,12 @@ const instruments = [
   { name: 'Distortion', instrument: distortionInstrument },
   { name: 'FeedbackDelay', instrument: feedbackDelayInstrument },
   { name: 'Freeverb', instrument: freeverbInstrument },
+  { name: 'FrequencyShifter', instrument: frequencyShifterInstrument },
   { name: 'JCReverb', instrument: jcReverbInstrument },
   { name: 'Phaser', instrument: phaserInstrument },
   { name: 'PingPongDelay', instrument: pingPongDelayInstrument },
   { name: 'PitchShift', instrument: pitchShiftInstrument },
+  { name: 'Reverb', instrument: reverbInstrument },
   { name: 'StereoWidener', instrument: stereoWidenerInstrument },
   { name: 'Tremolo', instrument: tremoloInstrument },
   { name: 'Vibrato', instrument: vibratoInstrument },

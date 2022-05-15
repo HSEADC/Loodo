@@ -6,7 +6,7 @@ import ToneSynthContainer from '../containers/ToneSynthContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ToneSynthContainer disabled={4} />,
+    <ToneSynthContainer disabled={3} synth={'ToneSynth'} />,
     document.body.getElementsByClassName('interactive_module_5')[0]
   )
 })

@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import EverySynthContainer from '../containers/EverySynthContainer'
+import PolySynthContainer from '../containers/PolySynthContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <SamplerContainer />,
-    document.body.getElementsByClassName('interactive_module_17')[0]
+    <PolySynthContainer />,
+    document.body.getElementsByClassName('interactive_module_23')[0]
   )
 })

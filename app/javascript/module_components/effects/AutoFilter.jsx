@@ -72,7 +72,7 @@ export default class AutoFilterEffect extends Component {
 
     return (
       <div className="AutoFilterEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"
@@ -84,7 +84,7 @@ export default class AutoFilterEffect extends Component {
             handleChange={this.handlePropertyValueChange}
           />
         </div>
-        <div>
+        <div className="knobSliderContainer">
           <div className="knobContainer">
             <Knob
               name="Base Frequency"
@@ -141,7 +141,7 @@ export default class AutoFilterEffect extends Component {
             handleChange={this.handlePropertyValueChange}
           />
         </div>
-        <div>
+        <div className="Filter">
           <h2>Filter</h2>
           <div className="sliderLargeContainer">
             <Slider
@@ -174,7 +174,7 @@ export default class AutoFilterEffect extends Component {
               handleChange={this.handlePropertyValueChange}
             />
           </div>
-          <div className="buttonSetLineContainer">
+          <div className="largeButtonSetLineContainer">
             <ButtonSet
               name="Type"
               property={['filter', 'type']}

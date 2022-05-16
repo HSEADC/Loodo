@@ -1,16 +1,55 @@
+// .AddButton {
+//   * {
+//     display: none;
+//   }
+//
+//   &::before {
+//     display: block;
+//     content: '+';
+//   }
+//
+//   &:hover {
+//     * {
+//       display: block;
+//     }
+//   }
+// }
+
 .AddButton {
-  * {
-    display: none;
+  margin-top: 40px;
+  margin-left: 370px;
+
+  div {
+    width: 200px;
+    background-color: #ebf0f4;
+
+    padding-left: 16px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    color: #606060;
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    margin-bottom: 14px;
   }
 
-  &::before {
-    display: block;
-    content: '+';
+  div:hover {
+    background-color: #d8e2ec;
+    cursor: pointer;
   }
 
-  &:hover {
-    * {
-      display: block;
-    }
+  .heading1 {
+  }
+
+  .heading2 {
+  }
+
+  .heading3 {
+  }
+  .paragraph {
+  }
+  .interactiveModule {
   }
 }

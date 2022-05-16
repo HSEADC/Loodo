@@ -1,0 +1,27 @@
+.adminMenubar {
+  padding-left: 20px;
+  padding-right: 20px;
+  position: fixed;
+  width: 100%;
+  .Logo {
+    background-image: image-url('LogoColor.svg');
+    width: 77px;
+    height: 14px;
+    margin-right: 20px;
+  }
+
+  a {
+    margin-right: 16px;
+  }
+
+  .LeftPart {
+    display: flex;
+  }
+
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0px 1px 8px 0px #0000000f;
+}

@@ -1,26 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lessons</h1>
+<h1>Настройка разделов</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lessons.each do |lesson| %>
-      <tr>
-        <td><%= lesson.name %></td>
-        <td><%= link_to lesson.description, admin_lesson_path(lesson) %></td>
-        <td><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="LessonsTable">
+  <% @lessons.each do |lesson| %>
+    <div class="TableNameDescriptionEdit">
+      <div class="TableNameDescription">
+        <span><%= lesson.name %></span>
+        <span><%= link_to lesson.description, admin_lesson_path(lesson) %></span>
+      </div>
+      <span><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></span>
+    </div>
+  <% end %>
+</div>
 
 <br>
 

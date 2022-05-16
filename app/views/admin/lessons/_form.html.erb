@@ -11,17 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="LessonHeaderEdit">
+    <div class="backButtonContainer">
+      <div class="backButton">
+        <div class="smallBackArrow"> </div>
+        <%= link_to "Назад к урокам", admin_lessons_path %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="field" >
+      <%#= form.label :name %>
+      <%= form.text_field :name %>
 
-  <div class="actions">
-    <%= form.submit %>
+    </div>
+
+    <div class="field">
+      <%#= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

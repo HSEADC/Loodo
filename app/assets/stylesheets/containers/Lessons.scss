@@ -1,0 +1,26 @@
+.LessonsTable {
+  width: 700px;
+
+  .TableNameDescriptionEdit {
+    width: 100;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f6f6;
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    align-items: center;
+    // justify-content: center;
+  }
+
+  .TableNameDescription {
+    display: flex;
+    flex-direction: column;
+  }
+}

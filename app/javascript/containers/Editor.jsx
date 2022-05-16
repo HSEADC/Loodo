@@ -41,32 +41,18 @@ export default class Editor extends PureComponent {
     return result
   }
 
-  handleAddElement = (elementName) => {
-    console.log(elementName)
-
-    const { elements } = this.state
-    const newElements = [...elements]
-
-    newElements.push({
-      id: this.generateId(6),
-      type: elementName,
-      text: '',
-      isNew: true
-    })
-
-    this.setState({
-      elements: newElements
-    })
-  }
-
-  handleSaveElementText = (id, text) => {
+  handleSaveElementText = (id, tempId) => {
     const { elements } = this.state
     const newElements = []
 
-    element.forEach((element, i) => {
-      if (element.id === id) {
-        element.text = text
-        element.isNew = false
+    elements.forEach((element, i) => {
+      if (element.id === tempId) {
+        newElements.push({
+          id: id,
+          position: element.length,
+          type: element.type,
+          text: element.text
+        })
       }
 
       newElements.push(element)
@@ -77,6 +63,129 @@ export default class Editor extends PureComponent {
     })
   }
 
+  updateElement = (id) => {
+    const elements = [...this.state.elements]
+    const newElements = []
+
+    elements.forEach((element) => {
+      if (element.id === id) {
+        newElements.push({
+          id: element.id,
+          type: element.type,
+          text: element.text
+        })
+      } else {
+        newElements.push(comment)
+      }
+    })
+
+    this.setState({
+      element: newElements
+    })
+  }
+
+  handleAddElement = (elementName) => {
+    const { elements } = this.state
+    const newElements = [...elements]
+
+    const elementId = this.generateId(6)
+
+    newElements.push({
+      id: newElements.length + 1,
+      position: newElements.length,
+      type: elementName,
+      text: '',
+      isNew: true
+    })
+
+    this.setState({
+      elements: newElements
+    })
+
+    const { createElementUrl } = this.props
+
+    const data = {
+      tempId: elementId,
+      lesson_element: {
+        position: 0,
+        kind: elementName,
+        text: ''
+      }
+    }
+
+    fetch(createElementUrl, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleSaveElementText(data.id, data.tempId)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  handleUpdateElement = (id, elementText) => {
+    const elements = [...this.state.comments]
+    const newElements = []
+
+    elements.forEach((element) => {
+      if (elements.id === id) {
+        newElements.push({
+          id: elements.id,
+          type: elements.type,
+          text: elementtext,
+          updating: true
+        })
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+
+    const updateElementUrl = this.props.updateElementUrl + `${id}`
+
+    const data = {
+      lesson_element: {
+        position: 0,
+        kind: elementName,
+        text: elementText
+      }
+    }
+
+    fetch(updateElementUrl, {
+      method: 'PUT', // or 'POST'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.updateElement(data.id)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  // handleStartEditing = () => {
+  //   const { elements } = this.state
+  //
+  //   this.setState({
+  //
+  //   })
+  // }
+
   renderElements = () => {
     const { elements } = this.state
     const elementComponents = []
@@ -86,6 +195,7 @@ export default class Editor extends PureComponent {
         <Element
           {...element}
           handleInput={this.handleSaveElementText}
+          handleClick={this.handleStartEditing}
           key={i}
         />
       )

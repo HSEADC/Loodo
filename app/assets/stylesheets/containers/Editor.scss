@@ -1,0 +1,67 @@
+// .Editor {
+//   width: 700px;
+// }
+
+.LessonHeaderEdit {
+  font-family: 'PT Root UI';
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 40px;
+
+  .backButtonContainer {
+    width: 700px;
+  }
+
+  .backButton {
+    display: flex;
+    align-items: center;
+
+    .smallBackArrow {
+      background-image: image-url('SmallBackArrow.svg');
+      width: 7px;
+      height: 8px;
+      margin-right: 4px;
+    }
+  }
+
+  .backButton a {
+    color: #378dff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .backButton a:hover {
+    color: #266fd0;
+  }
+
+  .field {
+    width: 700px;
+  }
+
+  .field input {
+    outline: none;
+    border-radius: 0px;
+    border: 0px;
+    width: 700px;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 47px;
+  }
+
+  .field textarea {
+    font-family: 'PT Root UI';
+
+    outline: none;
+    border-radius: 0px;
+    border: 0px;
+    width: 700px;
+    height: 100%;
+    font-size: 18px;
+
+    resize: none;
+  }
+}

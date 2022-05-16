@@ -11,11 +11,24 @@ export default class AddButton extends PureComponent {
 
     return (
       <div className="AddButton">
-        <div onClick={() => handleClick('heading1')}>Heading 1</div>
-        <div onClick={() => handleClick('heading2')}>Heading 2</div>
-        <div onClick={() => handleClick('heading3')}>Heading 3</div>
-        <div onClick={() => handleClick('paragraph')}>Paragraph</div>
-        <div onClick={() => handleClick('module')}>Interactive module</div>
+        <div className="heading1" onClick={() => handleClick('heading1')}>
+          Heading 1
+        </div>
+        <div className="heading2" onClick={() => handleClick('heading2')}>
+          Heading 2
+        </div>
+        <div className="heading3" onClick={() => handleClick('heading3')}>
+          Heading 3
+        </div>
+        <div className="paragraph" onClick={() => handleClick('paragraph')}>
+          Paragraph
+        </div>
+        <div
+          className="interactiveModule"
+          onClick={() => handleClick('module')}
+        >
+          Interactive module
+        </div>
       </div>
     )
   }

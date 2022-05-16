@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import Slider from '../../control_components/Slider'
+import Knob from '../../control_components/Knob'
 
 export default class AutoWahEffect extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ export default class AutoWahEffect extends Component {
 
     return (
       <div className="AutoWahEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"
@@ -67,7 +68,7 @@ export default class AutoWahEffect extends Component {
           />
         </div>
 
-        <div>
+        <div className="knobSliderContainer">
           <div className="knobContainer">
             <Knob
               name="Base Frequency"

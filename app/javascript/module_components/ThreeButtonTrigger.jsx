@@ -14,21 +14,15 @@ export default class ThreeButtonTrigger extends PureComponent {
       <div className="mainContainer">
         <div className="ButtonContainer">
           <GreenButton
-            text={'1 Секунда'}
+            text={'1 секунда'}
             handleClick={() => {
               this.props.handlePlayNote('C4', '1')
             }}
           />
           <GreenButton
-            text={'2 Секунды'}
+            text={'1 hz'}
             handleClick={() => {
-              this.props.handlePlayNote('C4', '2')
-            }}
-          />
-          <GreenButton
-            text={'3'}
-            handleClick={() => {
-              this.props.handlePlayNote('C4', '1')
+              this.props.handlePlayNote('C4', '1hz')
             }}
           />
         </div>

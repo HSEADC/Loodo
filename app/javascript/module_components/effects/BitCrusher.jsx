@@ -43,27 +43,29 @@ export default class BitCrusherEffect extends Component {
 
     return (
       <div className="BitCrusherEffect">
-        <h1>{name}</h1>
-
-        <Slider
-          name="Wet"
-          property={['wet']}
-          min={0}
-          max={1}
-          step={0.01}
-          value={wet}
-          handleChange={this.handlePropertyValueChange}
-        />
-
-        <Slider
-          name="Bits"
-          property={['bits']}
-          min={0}
-          max={16}
-          step={4}
-          value={bits}
-          handleChange={this.handlePropertyValueChange}
-        />
+        <h1 className="moduleHeaderText">{name}</h1>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Wet"
+            property={['wet']}
+            min={0}
+            max={1}
+            step={0.01}
+            value={wet}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
+        <div className="sliderLargeContainer">
+          <Slider
+            name="Bits"
+            property={['bits']}
+            min={0}
+            max={16}
+            step={4}
+            value={bits}
+            handleChange={this.handlePropertyValueChange}
+          />
+        </div>
       </div>
     )
   }

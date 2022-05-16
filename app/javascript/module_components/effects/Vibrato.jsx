@@ -34,7 +34,7 @@ export default class VibratoEffect extends Component {
 
     return (
       <div className="VibratoEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"
@@ -46,7 +46,7 @@ export default class VibratoEffect extends Component {
             handleChange={this.handlePropertyValueChange}
           />
         </div>
-        <div>
+        <div className="knobSliderContainer">
           <div className="buttonSetLargeContainer">
             <ButtonSet
               name="Type"

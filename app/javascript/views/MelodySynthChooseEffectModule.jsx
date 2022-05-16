@@ -7,12 +7,12 @@ import Select from '../control_components/Select'
 
 import ToneMelodyEffectSynth from '../module_components/ToneMelodyEffectSynth'
 
-import ChorusEffect from '../module_components/effects/Chorus'
-import FreeverbEffect from '../module_components/effects/Freeverb'
-import VibratoEffect from '../module_components/effects/Vibrato'
-import PitchShiftEffect from '../module_components/effects/PitchShift'
-import DistortionEffect from '../module_components/effects/Distortion'
-import TremoloEffect from '../module_components/effects/Tremolo'
+import Chorus from '../module_components/effects/Chorus'
+import Freeverb from '../module_components/effects/Freeverb'
+import Vibrato from '../module_components/effects/Vibrato'
+import PitchShift from '../module_components/effects/PitchShift'
+import Distortion from '../module_components/effects/Distortion'
+import Tremolo from '../module_components/effects/Tremolo'
 
 import Channel from '../module_components/Channel'
 
@@ -40,13 +40,13 @@ export default class MelodySynthChooseEffectModule extends PureComponent {
 
         const components = {
           ToneMelodyEffectSynth: ToneMelodyEffectSynth,
-          ChorusEffect: ChorusEffect,
-          FreeverbEffect: FreeverbEffect,
+          ChorusEffect: Chorus,
+          FreeverbEffect: Freeverb,
           Channel: Channel,
-          VibratoEffect: VibratoEffect,
-          PitchShiftEffect: PitchShiftEffect,
-          DistortionEffect: DistortionEffect,
-          TremoloEffect: TremoloEffect
+          VibratoEffect: Vibrato,
+          PitchShiftEffect: PitchShift,
+          DistortionEffect: Distortion,
+          TremoloEffect: Tremolo
         }
 
         const ComponentType = components[type]

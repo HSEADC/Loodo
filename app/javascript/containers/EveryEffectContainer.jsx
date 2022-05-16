@@ -22,9 +22,12 @@ export default class EveryEffectContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.initInstruments()
+  }
+
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
     console.log('/// Instruments have been initialized ///')
 
     this.setState({
@@ -39,45 +42,37 @@ export default class EveryEffectContainer extends PureComponent {
     this.state.instruments.forEach((instrument, i) => {
       const newInstrument = []
 
-      instrument.forEach((instrumentModule, i) => {
-        const newInstrumentModule = Object.assign({}, instrumentModule)
+      const newInstrumentModule = Object.assign({}, instrument)
+      if (instrument.id === id) {
+        if (property.length === 1) {
+          const propertyName = property[0]
+          newInstrumentModule.settings[propertyName] = value
+        } else if (property.length === 2) {
+          const scopeName = property[0]
+          const propertyName = property[1]
+          newInstrumentModule.settings[scopeName][propertyName] = value
+        } else if (property.length === 3) {
+          let searchedEvent
 
-        if (instrumentModule.id === id) {
-          if (property.length === 1) {
-            const propertyName = property[0]
-            newInstrumentModule.settings[propertyName] = value
-          } else if (property.length === 2) {
-            const scopeName = property[0]
-            const propertyName = property[1]
-            newInstrumentModule.settings[scopeName][propertyName] = value
-          } else if (property.length === 3) {
-            let searchedEvent
-
-            newInstrumentModule.settings.sequence.forEach((event, i) => {
-              if (
-                event.noteName === property[0] &&
-                event.time === property[1]
-              ) {
-                searchedEvent = event
-                newInstrumentModule.settings.sequence.splice(i, 1)
-              }
-            })
-
-            if (searchedEvent === undefined) {
-              newInstrumentModule.settings.sequence.push({
-                time: property[1],
-                noteName: property[0],
-                duration: '1n',
-                velocity: 1
-              })
+          newInstrumentModule.settings.sequence.forEach((event, i) => {
+            if (event.noteName === property[0] && event.time === property[1]) {
+              searchedEvent = event
+              newInstrumentModule.settings.sequence.splice(i, 1)
             }
+          })
+
+          if (searchedEvent === undefined) {
+            newInstrumentModule.settings.sequence.push({
+              time: property[1],
+              noteName: property[0],
+              duration: '1n',
+              velocity: 1
+            })
           }
         }
+      }
 
-        newInstrument.push(newInstrumentModule)
-      })
-
-      instruments.push(newInstrument)
+      instruments.push(newInstrumentModule)
     })
 
     this.setState({
@@ -115,7 +110,7 @@ export default class EveryEffectContainer extends PureComponent {
         break
       case 'Chebushev':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[5].instrument.chebushevInstrument
+          everyEffectAssembly.instruments[5].instrument.chebyshevInstrument
         )
         break
       case 'Chorus':
@@ -139,54 +134,55 @@ export default class EveryEffectContainer extends PureComponent {
         )
         break
       case 'FrequencyShifter':
+        console.log(everyEffectAssembly.instruments)
         this.assembleSynthEffectChannel(
           everyEffectAssembly.instruments[10].instrument
             .frequencyShifterInstrument
         )
         break
-      case 'JS_reverb':
+      case 'JSReverb':
         this.assembleSynthEffectChannel(
           everyEffectAssembly.instruments[11].instrument.jcReverbInstrument
         )
         break
-      case 'MidSideEffect':
-        this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[12].instrument.midSideInstrument
-        )
-        break
+      // case 'MidSideEffect':
+      //   this.assembleSynthEffectChannel(
+      //     everyEffectAssembly.instruments[12].instrument.midSideInstrument
+      //   )
+      //   break
       case 'Phaser':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[13].instrument.phaserInstrument
+          everyEffectAssembly.instruments[12].instrument.phaserInstrument
         )
         break
       case 'PingPongDelay':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[14].instrument.pingPongDelayInstrument
+          everyEffectAssembly.instruments[13].instrument.pingPongDelayInstrument
         )
         break
       case 'PitchShift':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[15].instrument.pitchShiftInstrument
+          everyEffectAssembly.instruments[14].instrument.pitchShiftInstrument
         )
         break
       case 'Reverb':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[16].instrument.reverbInstrument
+          everyEffectAssembly.instruments[15].instrument.reverbInstrument
         )
         break
       case 'StereoWidener':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[17].instrument.stereoWidenerInstrument
+          everyEffectAssembly.instruments[16].instrument.stereoWidenerInstrument
         )
         break
       case 'Tremolo':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[18].instrument.tremoloInstrument
+          everyEffectAssembly.instruments[17].instrument.tremoloInstrument
         )
         break
       case 'Vibrato':
         this.assembleSynthEffectChannel(
-          everyEffectAssembly.instruments[19].instrument.vibratoInstrument
+          everyEffectAssembly.instruments[18].instrument.vibratoInstrument
         )
 
         break
@@ -204,18 +200,34 @@ export default class EveryEffectContainer extends PureComponent {
     ).start(0)
   }
 
+  addEffect = (synthNode, choosenEffectNode, channelNode) => {
+    let { instruments } = this.state
+
+    let newEffectArray = []
+
+    newEffectArray.push(choosenEffectNode)
+    newEffectArray.push(channelNode)
+    synthNode.chain(...newEffectArray)
+    newEffectArray.pop()
+  }
+
   renderWelcomeScreen = () => {
     return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
   }
 
   assembleSynthEffectChannel = (effect) => {
+    let { toneSynthInstrument } = everyEffectAssembly.instruments[0].instrument
+    let { channelInstrument } = everyEffectAssembly.instruments[19].instrument
+
     const assembledInstruments = []
 
-    assembledInstruments.push(
-      everyEffectAssembly.instruments[0].instrument.toneSynthInstrument,
-      effect,
-      everyEffectAssembly.instruments[17].instrument.channelInstrument
+    this.addEffect(
+      toneSynthInstrument.node,
+      effect.node,
+      channelInstrument.node
     )
+
+    assembledInstruments.push(toneSynthInstrument, effect, channelInstrument)
 
     this.setState({
       instruments: assembledInstruments
@@ -224,6 +236,10 @@ export default class EveryEffectContainer extends PureComponent {
 
   playSequence = () => {
     let { togglePlay } = this.state
+
+    if (this.state.webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     if (togglePlay == false) {
       Tone.Transport.start()
@@ -254,12 +270,6 @@ export default class EveryEffectContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

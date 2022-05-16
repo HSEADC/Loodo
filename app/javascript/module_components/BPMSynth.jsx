@@ -98,8 +98,8 @@ export default class BPMSynth extends Component {
           <div className="sliderLargeContainer">
             <SliderNoProperty
               name="BPM"
-              min={10}
-              max={200}
+              min={30}
+              max={300}
               step={0.1}
               value={bpm}
               handleChange={this.handleBPMChange}

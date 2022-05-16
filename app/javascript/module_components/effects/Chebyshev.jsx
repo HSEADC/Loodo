@@ -32,7 +32,7 @@ export default class ChebyshevEffect extends Component {
 
     return (
       <div className="ChebyshevEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"

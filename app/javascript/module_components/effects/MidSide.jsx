@@ -1,3 +1,17 @@
+//
+//
+//
+//
+//
+//
+// Not working
+//
+//
+//
+//
+//
+//
+
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
@@ -28,7 +42,7 @@ export default class MidSideEffect extends Component {
 
     return (
       <div className="MidSideEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"

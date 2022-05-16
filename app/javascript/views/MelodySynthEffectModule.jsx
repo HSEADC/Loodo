@@ -16,7 +16,7 @@ import FeedbackDelay from '../module_components/effects/FeedbackDelay'
 import Freeverb from '../module_components/effects/Freeverb'
 import FrequencyShifter from '../module_components/effects/FrequencyShifter'
 import JCReverb from '../module_components/effects/JCReverb'
-import MidSide from '../module_components/effects/MidSide'
+// import MidSide from '../module_components/effects/MidSide'
 import Phaser from '../module_components/effects/Phaser'
 import PingPongDelay from '../module_components/effects/PingPongDelay'
 import PitchShift from '../module_components/effects/PitchShift'
@@ -46,6 +46,7 @@ export default class MelodySynthEffectModule extends PureComponent {
 
       const components = {
         ToneSynth: ToneMelodyEffectSynth,
+
         AutoFilter: AutoFilter,
         AutoPanner: AutoPanner,
         AutoWah: AutoWah,
@@ -57,7 +58,7 @@ export default class MelodySynthEffectModule extends PureComponent {
         Freeverb: Freeverb,
         FrequencyShifter: FrequencyShifter,
         JCReverb: JCReverb,
-        MidSide: MidSide,
+        // MidSide: MidSide,
         Phaser: Phaser,
         PingPongDelay: PingPongDelay,
         PitchShift: PitchShift,
@@ -65,6 +66,7 @@ export default class MelodySynthEffectModule extends PureComponent {
         StereoWidener: StereoWidener,
         Tremolo: Tremolo,
         Vibrato: Vibrato,
+
         Channel: Channel
       }
 

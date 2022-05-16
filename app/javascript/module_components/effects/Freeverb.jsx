@@ -30,7 +30,7 @@ export default class FreeverbEffect extends Component {
 
     return (
       <div className="FreeverbEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"

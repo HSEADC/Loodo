@@ -29,7 +29,7 @@ export default class JCReverbEffect extends Component {
 
     return (
       <div className="JCReverbEffect">
-        <h1>{name}</h1>
+        <h1 className="moduleHeaderText">{name}</h1>
         <div className="sliderLargeContainer">
           <Slider
             name="Wet"

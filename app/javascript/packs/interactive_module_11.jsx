@@ -2,11 +2,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ToneSynthContainer from '../containers/ToneSynthContainer'
+import MakeSequenceContainer from '../containers/MakeSequenceContainer'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <ToneSynthContainer disabled={1} />,
+    <MakeSequenceContainer />,
     document.body.getElementsByClassName('interactive_module_11')[0]
   )
 })

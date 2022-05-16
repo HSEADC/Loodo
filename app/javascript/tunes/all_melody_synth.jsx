@@ -73,18 +73,19 @@ const channelSettings = {
   solo: false
 }
 
-// prettier-ignore
 const toneSynthNode = new Tone.Synth(synthSettings).toDestination()
-// prettier-ignore
+
 const monoSynthNode = new Tone.MonoSynth(synthSettings).toDestination()
-// prettier-ignore
+
 const fmSynthNode = new Tone.FMSynth(synthSettings).toDestination()
-// prettier-ignore
+
 const amSynthNode = new Tone.AMSynth(synthSettings).toDestination()
-// prettier-ignore
-const polySynthNode = new Tone.PolySynth(synthSettings).toDestination()
-// prettier-ignore
-const fatOscilatorSynthNode = new Tone.FatOscillator("Ab3", "sawtooth", 40).toDestination()
+
+const fatOscilatorSynthNode = new Tone.FatOscillator(
+  'Ab3',
+  'sawtooth',
+  40
+).toDestination()
 
 const channelNode = new Tone.Channel(synthSettings).toDestination()
 
@@ -92,9 +93,8 @@ const nodes = [
   toneSynthNode,
   monoSynthNode,
   fmSynthNode,
-  amSynthNode
-  // polySynthNode,
-  // fatOscilatorSynthNode
+  amSynthNode,
+  fatOscilatorSynthNode
 ]
 
 const instrument = [
@@ -102,7 +102,35 @@ const instrument = [
     id: generateUniqId(),
     name: 'Melody Synth',
     type: 'ToneSynth',
-    node: nodes,
+    node: toneSynthNode,
+    settings: synthSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Mono Synth',
+    type: 'MonoSynth',
+    node: monoSynthNode,
+    settings: synthSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'FM Synth',
+    type: 'FMSynth',
+    node: fmSynthNode,
+    settings: synthSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Am Synth',
+    type: 'AMSynth',
+    node: amSynthNode,
+    settings: synthSettings
+  },
+  {
+    id: generateUniqId(),
+    name: 'Fat Oscillator',
+    type: 'FatOscillator',
+    node: fatOscilatorSynthNode,
     settings: synthSettings
   },
   {
@@ -113,95 +141,5 @@ const instrument = [
     settings: channelSettings
   }
 ]
-
-const v = 1
-
-// const part = new Tone.Part(
-//   function (time, note) {
-//     toneSynthNode.triggerAttackRelease(
-//       note.noteName,
-//       note.duration,
-//       time,
-//       note.velocity
-//     )
-//   },
-//   [
-//     {
-//       time: '0:0:0',
-//       noteName: 'C4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '0:1:0',
-//       noteName: 'E4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '0:2:0',
-//       noteName: 'G4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '1:0:0',
-//       noteName: 'D4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '1:1:0',
-//       noteName: 'G4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '1:2:0',
-//       noteName: 'B4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '2:0:0',
-//       noteName: 'B3',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '2:1:0',
-//       noteName: 'E3',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '2:2:0',
-//       noteName: 'G3',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '3:0:0',
-//       noteName: 'E4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '3:1:0',
-//       noteName: 'G4',
-//       duration: '1n',
-//       velocity: v
-//     },
-//     {
-//       time: '3:2:0',
-//       noteName: 'B4',
-//       duration: '1n',
-//       velocity: v
-//     }
-//   ]
-// )
-//
-// part.loopEnd = '4m'
-// part.loop = true
 
 export { instrument }

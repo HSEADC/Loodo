@@ -56,6 +56,8 @@ export default class ToneMelodySynth extends Component {
   }
 
   render() {
+    console.log('alkdsmalksdmalks')
+
     const { id, name, settings, disabled } = this.props
     const { volume, detune, portamento, envelope, oscillator } = settings
 

@@ -7,12 +7,12 @@ import Select from '../control_components/Select'
 
 import ToneMelodyEffectSynth from '../module_components/ToneMelodyEffectSynth'
 
-import ChorusEffect from '../module_components/ChorusEffect'
-import FreeverbEffect from '../module_components/FreeverbEffect'
-import VibratoEffect from '../module_components/VibratoEffect'
-import PitchShiftEffect from '../module_components/PitchShiftEffect'
-import DistortionEffect from '../module_components/DistortionEffect'
-import TremoloEffect from '../module_components/TremoloEffect'
+import ChorusEffect from '../module_components/effects/Chorus'
+import FreeverbEffect from '../module_components/effects/Freeverb'
+import VibratoEffect from '../module_components/effects/Vibrato'
+import PitchShiftEffect from '../module_components/effects/PitchShift'
+import DistortionEffect from '../module_components/effects/Distortion'
+import TremoloEffect from '../module_components/effects/Tremolo'
 
 import Channel from '../module_components/Channel'
 

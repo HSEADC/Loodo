@@ -5,79 +5,36 @@ export default class Element extends PureComponent {
   constructor(props) {
     super(props)
     this.field = React.createRef()
-
-    this.state = {
-      editing: false
-    }
   }
 
   componentDidMount() {
-    const { isNew, isEditing } = this.props
+    const { text, isNew } = this.props
+    const field = this.field.current
+    field.innerText = text
 
     if (isNew) {
-      const field = this.field.current
       field.focus()
     }
   }
-
-  componentDidUpdate() {
-    const { isEditing } = this.props
-
-    if (isEditing) {
-      console.log('update on edit')
-      const field = this.field.current
-      field.focus()
-    }
-  }
-
-  handleClick = () => {
-    const { editing } = this.state
-
-    console.log(editing)
-
-    this.setState({
-      editing: !editing
-    })
-  }
-
-  handleInput = () => {
-    const { id, handleInput } = this.props
-    const text = this.field.current.textContent
-
-    console.log(
-      'Input',
-      this.field.current,
-      this.field.current.textContent,
-      text
-    )
-
-    handleInput(id, text)
-  }
-
-  // handleChange = () => {
-  // console.log('Change')
-  // }
 
   handleFocus = () => {
     const { id, handleFocus } = this.props
-    console.log('Focus', id)
     handleFocus(id)
   }
 
   handleBlur = () => {
     const { id, handleBlur } = this.props
-    console.log('Blur', id)
-    handleBlur(id)
+    const field = this.field.current
+    handleBlur(id, field.textContent)
   }
 
   render() {
-    const { type, text } = this.props
-    const { editing } = this.state
+    const { type, text, isEditing } = this.props
 
     const classes = classnames({
       Element: true,
       [`${type}`]: true,
-      Editing: editing
+      editing: isEditing
     })
 
     return (
@@ -87,13 +44,9 @@ export default class Element extends PureComponent {
           ref={this.field}
           contentEditable={true}
           suppressContentEditableWarning={true}
-          onInput={this.handleInput}
-          onChange={this.handleChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
-        >
-          {text}
-        </div>
+        />
       </div>
     )
   }

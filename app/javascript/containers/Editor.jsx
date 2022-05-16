@@ -147,7 +147,7 @@ export default class Editor extends PureComponent {
     })
   }
 
-  handleBlurElement = (id) => {
+  handleBlurElement = (id, text) => {
     const updateElementUrl = this.props.updateElementUrl + `/${id}`
     const { elements } = this.state
     const newElements = []
@@ -159,7 +159,7 @@ export default class Editor extends PureComponent {
           id: element.id,
           position: element.position,
           type: element.type,
-          text: element.text,
+          text: text,
           isNew: element.isNew,
           isEditing: false,
           isSaving: true
@@ -223,31 +223,6 @@ export default class Editor extends PureComponent {
     })
   }
 
-  handleSaveElementText = (id, text) => {
-    const { elements } = this.state
-    const newElements = []
-
-    elements.forEach((element, i) => {
-      if (element.id === id) {
-        newElements.push({
-          id: element.id,
-          position: element.position,
-          type: element.type,
-          text: text,
-          isNew: element.isNew,
-          isEditing: element.isEditing,
-          isSaving: element.isSaving
-        })
-      } else {
-        newElements.push(element)
-      }
-    })
-
-    this.setState({
-      elements: newElements
-    })
-  }
-
   renderElements = () => {
     const { elements } = this.state
     const elementComponents = []
@@ -258,8 +233,6 @@ export default class Editor extends PureComponent {
           {...element}
           handleFocus={this.handleFocusElement}
           handleBlur={this.handleBlurElement}
-          handleInput={this.handleSaveElementText}
-          handleClick={this.handleStartEditing}
           key={i}
         />
       )

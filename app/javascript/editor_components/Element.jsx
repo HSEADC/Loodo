@@ -12,9 +12,19 @@ export default class Element extends PureComponent {
   }
 
   componentDidMount() {
-    const { isNew } = this.props
+    const { isNew, isEditing } = this.props
 
     if (isNew) {
+      const field = this.field.current
+      field.focus()
+    }
+  }
+
+  componentDidUpdate() {
+    const { isEditing } = this.props
+
+    if (isEditing) {
+      console.log('update on edit')
       const field = this.field.current
       field.focus()
     }
@@ -32,8 +42,32 @@ export default class Element extends PureComponent {
 
   handleInput = () => {
     const { id, handleInput } = this.props
-    const text = this.field.current.value
+    const text = this.field.current.textContent
+
+    console.log(
+      'Input',
+      this.field.current,
+      this.field.current.textContent,
+      text
+    )
+
     handleInput(id, text)
+  }
+
+  // handleChange = () => {
+  // console.log('Change')
+  // }
+
+  handleFocus = () => {
+    const { id, handleFocus } = this.props
+    console.log('Focus', id)
+    handleFocus(id)
+  }
+
+  handleBlur = () => {
+    const { id, handleBlur } = this.props
+    console.log('Blur', id)
+    handleBlur(id)
   }
 
   render() {
@@ -52,7 +86,11 @@ export default class Element extends PureComponent {
           className={'Input'}
           ref={this.field}
           contentEditable={true}
+          suppressContentEditableWarning={true}
           onInput={this.handleInput}
+          onChange={this.handleChange}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
         >
           {text}
         </div>

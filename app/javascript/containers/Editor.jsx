@@ -14,16 +14,25 @@ export default class Editor extends PureComponent {
   }
 
   componentDidMount() {
-    console.log('yo')
     const { elementsUrl } = this.props
 
     fetch(elementsUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        const elements = data.elements.map((element) => {
+          return {
+            id: element.id,
+            position: element.position,
+            type: element.type,
+            text: element.text,
+            isNew: false,
+            isEditing: false,
+            isSaving: false
+          }
+        })
 
         this.setState({
-          elements: data.elements
+          elements
         })
       })
   }
@@ -41,7 +50,54 @@ export default class Editor extends PureComponent {
     return result
   }
 
-  handleSaveElementText = (id, tempId) => {
+  handleAddElement = (elementName) => {
+    const { createElementUrl } = this.props
+    const { elements } = this.state
+    const newElements = [...elements]
+
+    const newElement = {
+      id: this.generateId(6),
+      position: newElements.length,
+      type: elementName,
+      text: '',
+      isNew: true,
+      isEditing: true,
+      isSaving: false
+    }
+
+    const requestData = {
+      temp_id: newElement.id,
+      lesson_element: {
+        position: newElement.position,
+        type: newElement.type,
+        text: ''
+      }
+    }
+
+    newElements.push(newElement)
+
+    this.setState({
+      elements: newElements
+    })
+
+    fetch(createElementUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleAddElementSuccess(data.id, data.tempId)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  handleAddElementSuccess = (id, tempId) => {
     const { elements } = this.state
     const newElements = []
 
@@ -49,98 +105,12 @@ export default class Editor extends PureComponent {
       if (element.id === tempId) {
         newElements.push({
           id: id,
-          position: element.length,
+          position: element.position,
           type: element.type,
-          text: element.text
-        })
-      }
-
-      newElements.push(element)
-    })
-
-    this.setState({
-      elements: newElements
-    })
-  }
-
-  updateElement = (id) => {
-    const elements = [...this.state.elements]
-    const newElements = []
-
-    elements.forEach((element) => {
-      if (element.id === id) {
-        newElements.push({
-          id: element.id,
-          type: element.type,
-          text: element.text
-        })
-      } else {
-        newElements.push(comment)
-      }
-    })
-
-    this.setState({
-      element: newElements
-    })
-  }
-
-  handleAddElement = (elementName) => {
-    const { elements } = this.state
-    const newElements = [...elements]
-
-    const elementId = this.generateId(6)
-
-    newElements.push({
-      id: newElements.length + 1,
-      position: newElements.length,
-      type: elementName,
-      text: '',
-      isNew: true
-    })
-
-    this.setState({
-      elements: newElements
-    })
-
-    const { createElementUrl } = this.props
-
-    const data = {
-      tempId: elementId,
-      lesson_element: {
-        position: 0,
-        kind: elementName,
-        text: ''
-      }
-    }
-
-    fetch(createElementUrl, {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data)
-        this.handleSaveElementText(data.id, data.tempId)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
-  }
-
-  handleUpdateElement = (id, elementText) => {
-    const elements = [...this.state.comments]
-    const newElements = []
-
-    elements.forEach((element) => {
-      if (elements.id === id) {
-        newElements.push({
-          id: elements.id,
-          type: elements.type,
-          text: elementtext,
-          updating: true
+          text: element.text,
+          isNew: element.isNew,
+          isEditing: element.isEditing,
+          isSaving: element.isSaving
         })
       } else {
         newElements.push(element)
@@ -150,41 +120,133 @@ export default class Editor extends PureComponent {
     this.setState({
       elements: newElements
     })
+  }
 
-    const updateElementUrl = this.props.updateElementUrl + `${id}`
+  handleFocusElement = (id) => {
+    const { elements } = this.state
+    const newElements = []
 
-    const data = {
-      lesson_element: {
-        position: 0,
-        kind: elementName,
-        text: elementText
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+        newElements.push({
+          id: id,
+          position: element.position,
+          type: element.type,
+          text: element.text,
+          isNew: element.isNew,
+          isEditing: true,
+          isSaving: false
+        })
+      } else {
+        newElements.push(element)
       }
-    }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+  }
+
+  handleBlurElement = (id) => {
+    const updateElementUrl = this.props.updateElementUrl + `/${id}`
+    const { elements } = this.state
+    const newElements = []
+    let requestData = {}
+
+    elements.forEach((element) => {
+      if (element.id === id) {
+        const newElement = {
+          id: element.id,
+          position: element.position,
+          type: element.type,
+          text: element.text,
+          isNew: element.isNew,
+          isEditing: false,
+          isSaving: true
+        }
+
+        requestData = {
+          position: newElement.position,
+          type: newElement.type,
+          text: newElement.text
+        }
+
+        newElements.push(newElement)
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
 
     fetch(updateElementUrl, {
-      method: 'PUT', // or 'POST'
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(requestData)
     })
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data)
-        this.updateElement(data.id)
+        this.handleUpdateElementSuccess(data.id)
       })
       .catch((error) => {
         console.error('Error:', error)
       })
   }
 
-  // handleStartEditing = () => {
-  //   const { elements } = this.state
-  //
-  //   this.setState({
-  //
-  //   })
-  // }
+  handleUpdateElementSuccess = (id) => {
+    const { elements } = this.state
+    const newElements = []
+
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+        newElements.push({
+          id: element.id,
+          position: element.position,
+          type: element.type,
+          text: element.text,
+          isNew: false,
+          isEditing: false,
+          isSaving: false
+        })
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+  }
+
+  handleSaveElementText = (id, text) => {
+    const { elements } = this.state
+    const newElements = []
+
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+        newElements.push({
+          id: element.id,
+          position: element.position,
+          type: element.type,
+          text: text,
+          isNew: element.isNew,
+          isEditing: element.isEditing,
+          isSaving: element.isSaving
+        })
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+  }
 
   renderElements = () => {
     const { elements } = this.state
@@ -194,6 +256,8 @@ export default class Editor extends PureComponent {
       elementComponents.push(
         <Element
           {...element}
+          handleFocus={this.handleFocusElement}
+          handleBlur={this.handleBlurElement}
           handleInput={this.handleSaveElementText}
           handleClick={this.handleStartEditing}
           key={i}

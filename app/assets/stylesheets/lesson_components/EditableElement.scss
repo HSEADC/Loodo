@@ -1,0 +1,56 @@
+.EditableElement {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: #fafafa;
+    cursor: pointer;
+  }
+
+  .Input {
+    width: 700px;
+    outline: none;
+  }
+
+  &.heading1,
+  &.heading2,
+  &.heading3 {
+    font-weight: bold;
+  }
+
+  &.heading1 {
+    line-height: 27px;
+
+    font-size: 40px;
+    // background-color: #f4f6f6;
+    padding-top: 34px;
+    padding-bottom: 6px;
+    line-height: 27px;
+  }
+
+  &.heading2 {
+    line-height: 27px;
+
+    font-size: 30px;
+    padding-top: 24px;
+    padding-bottom: 6px;
+  }
+
+  &.heading3 {
+    line-height: 27px;
+
+    font-size: 20px;
+    padding-top: 16px;
+    padding-bottom: 6px;
+  }
+
+  &.paragraph {
+    line-height: 27px;
+    font-size: 18px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}

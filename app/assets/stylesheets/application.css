@@ -21,5 +21,5 @@
  *= require_tree ./interactive_modules
  *= require_tree ./lessons
  *= require_tree ./effects
- *= require_tree ./editor_components
+ *= require_tree ./lesson_components
  */

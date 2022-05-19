@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import Element from '../editor_components/Element'
+import EditableElement from '../editor_components/EditableElement'
 import AddButton from '../editor_components/AddButton'
 
 export default class Editor extends PureComponent {
@@ -229,7 +229,7 @@ export default class Editor extends PureComponent {
 
     elements.forEach((element, i) => {
       elementComponents.push(
-        <Element
+        <EditableElement
           {...element}
           handleFocus={this.handleFocusElement}
           handleBlur={this.handleBlurElement}

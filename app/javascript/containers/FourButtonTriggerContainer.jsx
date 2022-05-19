@@ -17,6 +17,11 @@ export default class TrigerContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
+  }
+
   initInstruments = () => {
     const melodySynthSettings = {
       volume: 0.8,
@@ -64,8 +69,6 @@ export default class TrigerContainer extends PureComponent {
 
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
-    console.log('/// Instruments have been initialized ///')
 
     this.setState({
       webAudioStarted: true
@@ -83,8 +86,12 @@ export default class TrigerContainer extends PureComponent {
   }
 
   playNote = (note, dur) => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
     let synth = this.state.instruments[0].node
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     synth.triggerAttackRelease(note, dur)
 
@@ -96,7 +103,7 @@ export default class TrigerContainer extends PureComponent {
   }
 
   renderRoom = () => {
-    const { instruments, togglePlay } = this.state
+    const { togglePlay } = this.state
 
     return (
       <FourButtonTriggerModule
@@ -107,14 +114,6 @@ export default class TrigerContainer extends PureComponent {
   }
 
   render() {
-    const { webAudioStarted } = this.state
-
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

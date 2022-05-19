@@ -9,7 +9,7 @@ import Sampler from '../module_components/Sampler'
 import Sequencer from '../module_components/Sequencer'
 import CodeModule from '../module_components/CodeModule'
 
-import AutoFilterEffect from '../module_components/effects/AutoFilter'
+import AutoFilter from '../module_components/effects/AutoFilter'
 import AutoPannerEffect from '../module_components/effects/AutoPanner'
 import AutoWahEffect from '../module_components/effects/AutoWah'
 import BitCrusherEffect from '../module_components/effects/BitCrusher'
@@ -45,12 +45,13 @@ export default class SequencerModule extends PureComponent {
 
       instrument.forEach((instrumentModule, i) => {
         const { id, name, type, node, settings } = instrumentModule
+        console.log(type)
 
         const components = {
           ToneSynth: ToneSynth,
           Sampler: Sampler,
           Sequencer: Sequencer,
-          // AutoFilterEffect: AutoFilterEffect,
+          AutoFilter: AutoFilter,
           // AutoPannerEffect: AutoPannerEffect,
           // AutoWahEffect: AutoWahEffect,
           // BitCrusherEffect: BitCrusherEffect,

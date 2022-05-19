@@ -13,11 +13,102 @@ export default class KeyboardContainer extends PureComponent {
   constructor(props) {
     super(props)
 
+    let blackKeys = [
+      {
+        note: 'C#',
+        key: 'w',
+        isPlaying: false,
+        classList: ['PianoBlackKey']
+      },
+      {
+        note: 'D#',
+        key: 'e',
+        isPlaying: false,
+        classList: ['PianoBlackKey']
+      },
+      {
+        note: 'F#',
+        key: 't',
+        isPlaying: false,
+        classList: ['PianoBlackKey']
+      },
+      {
+        note: 'G#',
+        key: 'y',
+        isPlaying: false,
+        classList: ['PianoBlackKey']
+      },
+      {
+        note: 'A#',
+        key: 'u',
+        isPlaying: false,
+        classList: ['PianoBlackKey']
+      }
+    ]
+
+    let whiteKeys = [
+      {
+        note: 'C',
+        key: 'a',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'D',
+        key: 's',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'E',
+        key: 'd',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'F',
+        key: 'f',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'G',
+        key: 'g',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'A',
+        key: 'h',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      },
+      {
+        note: 'B',
+        key: 'j',
+        isPlaying: false,
+        classList: ['PianoWhiteKey']
+      }
+    ]
+
     this.state = {
       webAudioStarted: false,
       instruments: [],
-      keyboards: []
+      keyboards: [
+        {
+          id: generateUniqId(),
+          octave: 4,
+          isPlaying: false,
+          blackKeys: blackKeys,
+          whiteKeys: whiteKeys
+        }
+      ]
     }
+  }
+
+  componentDidMount() {
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
   }
 
   playNote = (synth, note, dur) => {
@@ -48,8 +139,13 @@ export default class KeyboardContainer extends PureComponent {
   }
 
   startPlayingNote = (id, key) => {
+    const { webAudioStarted } = this.state
     const { blackKeys } = this.state.keyboards[0]
     const { whiteKeys } = this.state.keyboards[0]
+
+    if (webAudioStarted == false) {
+      this.initWebAudio()
+    }
 
     if (key === 'Black') {
       this.state.instruments[0].node.triggerAttack(this.mergeNote(id, key))
@@ -138,22 +234,13 @@ export default class KeyboardContainer extends PureComponent {
 
   renderRoom = () => {
     const { instruments } = this.state
+    let i = 0
 
     return <KeyboardModule renderNoteButtons={this.renderNoteButtons} />
   }
 
-  renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.initWebAudio} />
-  }
-
   initWebAudio = async () => {
     await Tone.start()
-
-    this.initInstruments()
-    console.log('/// Instruments have been initialized ///')
-
-    this.initKeyboard()
-    console.log('/// Keyboard have been created ///')
 
     this.setState({
       webAudioStarted: true
@@ -377,12 +464,6 @@ export default class KeyboardContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

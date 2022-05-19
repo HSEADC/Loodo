@@ -4,9 +4,9 @@ import React, { PureComponent } from 'react'
 import { generateUniqId } from '../utilities'
 
 import WelcomeScreen from '../views/WelcomeScreen'
-import ThreeButtonTriggerModule from '../views/ThreeButtonTriggerModule'
+import TwoButtonTriggerModule from '../views/TwoButtonTriggerModule'
 
-export default class TrigerContainer extends PureComponent {
+export default class TwoButtonTriggerContainer extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -15,6 +15,11 @@ export default class TrigerContainer extends PureComponent {
       instruments: [],
       togglePlay: false
     }
+  }
+
+  componentDidMount() {
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
   }
 
   initInstruments = () => {
@@ -64,16 +69,10 @@ export default class TrigerContainer extends PureComponent {
 
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
-    console.log('/// Instruments have been initialized ///')
 
     this.setState({
       webAudioStarted: true
     })
-  }
-
-  renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
   }
 
   changeToggle = () => {
@@ -83,8 +82,12 @@ export default class TrigerContainer extends PureComponent {
   }
 
   playNote = (note, dur) => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
     let synth = this.state.instruments[0].node
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     synth.triggerAttackRelease(note, dur)
 
@@ -96,10 +99,10 @@ export default class TrigerContainer extends PureComponent {
   }
 
   renderRoom = () => {
-    const { instruments, togglePlay } = this.state
+    const { togglePlay } = this.state
 
     return (
-      <ThreeButtonTriggerModule
+      <TwoButtonTriggerModule
         togglePlay={togglePlay}
         handlePlayNote={this.playNote}
       />
@@ -109,12 +112,6 @@ export default class TrigerContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

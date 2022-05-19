@@ -22,10 +22,13 @@ export default class MelodySynthEffectContainer extends PureComponent {
     }
   }
 
-  startWebAudio = async () => {
-    await Tone.start()
+  componentDidMount() {
     this.initInstruments()
     console.log('/// Instruments have been initialized ///')
+  }
+
+  startWebAudio = async () => {
+    await Tone.start()
 
     this.setState({
       webAudioStarted: true
@@ -102,10 +105,6 @@ export default class MelodySynthEffectContainer extends PureComponent {
     this.setState({
       instruments
     })
-  }
-
-  checkState = () => {
-    console.log(this.state)
   }
 
   renderWelcomeScreen = () => {
@@ -199,7 +198,11 @@ export default class MelodySynthEffectContainer extends PureComponent {
   }
 
   playSequence = () => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     if (togglePlay == false) {
       Tone.Transport.start()
@@ -231,12 +234,6 @@ export default class MelodySynthEffectContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

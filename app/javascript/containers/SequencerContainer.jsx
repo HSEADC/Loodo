@@ -22,9 +22,13 @@ export default class SequencerContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
+  }
+
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
 
     this.setState({
       webAudioStarted: true
@@ -32,7 +36,11 @@ export default class SequencerContainer extends PureComponent {
   }
 
   playSequence = () => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     if (togglePlay == false) {
       Tone.Transport.start()
@@ -125,11 +133,7 @@ export default class SequencerContainer extends PureComponent {
     })
   }
 
-  renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
-  }
-
-  renderSynthRoom = () => {
+  renderSequencerRoom = () => {
     const { instruments } = this.state
 
     return (
@@ -146,11 +150,7 @@ export default class SequencerContainer extends PureComponent {
     const { webAudioStarted } = this.state
 
     return (
-      <div className="SequencerContainer">
-        {webAudioStarted === true
-          ? this.renderSynthRoom()
-          : this.renderWelcomeScreen()}
-      </div>
+      <div className="SequencerContainer">{this.renderSequencerRoom()}</div>
     )
   }
 }

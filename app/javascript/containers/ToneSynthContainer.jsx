@@ -152,7 +152,6 @@ export default class TrigerContainer extends PureComponent {
   }
 
   render() {
-    console.log('asdasdasd')
     const { webAudioStarted } = this.state
 
     return <div className="SynthContainer">{this.renderRoom()}</div>

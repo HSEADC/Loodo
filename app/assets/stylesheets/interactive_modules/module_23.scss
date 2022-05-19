@@ -1,26 +1,15 @@
 .interactive_module_23 {
-  // .secondModuleContainer {
-  //   display: none;
-  // }
-
   display: flex;
   justify-content: center;
   align-items: center;
 
   .keyboardContainer {
     display: flex;
-    // width: 600px;
     height: 180px;
 
     .whiteContainer {
       width: 600px;
       display: flex;
-    }
-
-    .blackContainer {
-      width: 482px;
-      position: absolute;
-      left: 480px;
     }
   }
 
@@ -28,41 +17,50 @@
     width: 600px;
   }
 
-  .PianoWhiteKey {
-    z-index: 1;
+  #WhitePianoKey0,
+  #WhitePianoKey2,
+  #WhitePianoKey4,
+  #WhitePianoKey5,
+  #WhitePianoKey7,
+  #WhitePianoKey9,
+  #WhitePianoKey11 {
     background: #e1e1e1;
+    z-index: 1;
+    border: 0.5px solid #505050;
     width: 16.6%;
-    border: 1px solid #505050;
+    user-select: none;
+    padding-bottom: 20px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
     &.on {
       background-color: #79fd38;
-      width: 400px;
     }
   }
 
-  .PianoBlackKey {
-    position: absolute;
-    width: 52px;
-    height: 120px;
+  #BlackPianoKey1,
+  #BlackPianoKey3,
+  #BlackPianoKey6,
+  #BlackPianoKey8,
+  #BlackPianoKey10 {
     background: #505050;
-    z-index: 2;
+    z-index: 1;
+    border: 0.5px solid #505050;
+    width: 52px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+
+    padding-bottom: 10px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
     &.on {
       background-color: #79fd38;
-      width: 400px;
     }
-  }
-
-  #BlackPianoKey1 {
-    left: 88px;
-  }
-  #BlackPianoKey2 {
-    left: 261px;
-  }
-  #BlackPianoKey3 {
-    left: 346px;
-  }
-  #BlackPianoKey4 {
-    left: 431px;
   }
 }

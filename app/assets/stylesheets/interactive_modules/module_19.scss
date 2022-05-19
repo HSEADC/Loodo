@@ -1,24 +1,12 @@
-// .interactive_module_6 {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//
-//   .SynthContainer {
-//     width: 600px;
-//   }
-//
-//   .InteractiveBlocks {
-//     .ToneSynth {
-//       display: none;
-//     }
-//   }
-// }
-
-.interactive_module_6 {
+.interactive_module_19 {
   .SynthMelodyModule {
     display: flex;
     align-items: center;
     flex-direction: column;
+  }
+
+  .sliderLargeContainer .Slider {
+    width: 400px;
   }
 
   .synthModule {
@@ -144,3 +132,58 @@
     display: none;
   }
 }
+
+// .interactive_module_17 {
+//   .mainContainer {
+//     width: 100%;
+//     display: flex;
+//     text-align: center;
+//     align-items: center;
+//     flex-direction: column;
+//   }
+//
+//   .trigerContainer {
+//     width: 600px;
+//   }
+//
+//   .trigerHeaderContainer {
+//     background-color: var(--black);
+//     color: var(--white);
+//     height: 50px;
+//     display: flex;
+//     text-align: center;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding-left: 12px;
+//     padding-right: 12px;
+//   }
+//
+//   .trigerBodyContainer {
+//     background-color: #e1e1e1;
+//     height: 100px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     font-size: 18px;
+//     padding: 20px 20px 20px 20px;
+//
+//     .wrapper {
+//       display: flex;
+//       flex-direction: row;
+//       height: 25px;
+//     }
+//
+//     h4 {
+//       font-weight: 700;
+//       margin-left: 8px;
+//     }
+//   }
+//
+//   .trigerButton {
+//     background-image: image-url('play_button.svg');
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     width: 26px;
+//     height: 26px;
+//   }
+// }

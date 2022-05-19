@@ -22,9 +22,13 @@ export default class MakeSequenceContainer extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.initInstruments()
+    console.log('/// Instruments have been initialized ///')
+  }
+
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
 
     this.setState({
       webAudioStarted: true
@@ -32,7 +36,11 @@ export default class MakeSequenceContainer extends PureComponent {
   }
 
   playSequence = () => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     if (togglePlay == false) {
       Tone.Transport.start()
@@ -50,24 +58,7 @@ export default class MakeSequenceContainer extends PureComponent {
   initInstruments = () => {
     Tone.Transport.bpm.value = 120
 
-    // melodySynth.part.start()
-    // bassSynth.sequention.start(0)
-    // spaceSynth.sequention.start(0)
-
-    // const sequention = allEffectsSynth.sequentions[0]().start(0)
-    // allEffectsSynth.sequentions[0].start(0)
-
-    // const sequention = drumSampler.part.start()
-
-    const instruments = [
-      // toneMelodyEffectSynth.instrument,
-      // melodySynth.instrument,
-      // bassSynth.instrument
-      // spaceSynth.instrument
-      // allEffectsSynth.instrument
-      drumSampler.instrument,
-      sequencedSynth.instrument
-    ]
+    const instruments = [drumSampler.instrument, sequencedSynth.instrument]
 
     this.setState({ instruments })
   }
@@ -125,10 +116,6 @@ export default class MakeSequenceContainer extends PureComponent {
     })
   }
 
-  renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
-  }
-
   renderSynthRoom = () => {
     const { instruments } = this.state
 
@@ -145,12 +132,6 @@ export default class MakeSequenceContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return (
-      <div className="SequencerContainer">
-        {webAudioStarted === true
-          ? this.renderSynthRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SequencerContainer">{this.renderSynthRoom()}</div>
   }
 }

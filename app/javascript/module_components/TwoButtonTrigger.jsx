@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react'
 import GreenButton from '../control_components/GreenButton'
 import CodeModule from './CodeModule'
 
-export default class ThreeButtonTrigger extends PureComponent {
+export default class TwoButtonTrigger extends PureComponent {
   constructor(props) {
     super(props)
   }
@@ -31,6 +31,6 @@ export default class ThreeButtonTrigger extends PureComponent {
   }
 }
 
-ThreeButtonTrigger.propTypes = {
+TwoButtonTrigger.propTypes = {
   handlePlayNote: PropTypes.func.isRequired
 }

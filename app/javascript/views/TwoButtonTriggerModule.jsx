@@ -3,14 +3,14 @@ import React, { PureComponent } from 'react'
 
 import ThreeButtonTrigger from '../module_components/ThreeButtonTrigger'
 
-export default class TrigerModule extends PureComponent {
+export default class TwoButtonTriggerModule extends PureComponent {
   constructor(props) {
     super(props)
   }
 
   render() {
     return (
-      <ThreeButtonTrigger
+      <TwoButtonTrigger
         togglePlay={this.props.togglePlay}
         handlePlayNote={this.props.handlePlayNote}
       />
@@ -18,6 +18,6 @@ export default class TrigerModule extends PureComponent {
   }
 }
 
-TrigerModule.propTypes = {
+TwoButtonTriggerModule.propTypes = {
   handlePlayNote: PropTypes.func.isRequired
 }

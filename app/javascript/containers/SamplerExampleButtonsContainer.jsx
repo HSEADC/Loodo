@@ -13,21 +13,13 @@ export default class SamplerExampleButtonsContainer extends PureComponent {
 
     this.state = {
       webAudioStarted: false,
-      instruments: [],
+      instruments: instrument,
       togglePlay: false
     }
   }
 
-  initInstruments = () => {
-    this.setState({
-      instruments: instrument
-    })
-  }
-
   startWebAudio = async () => {
     await Tone.start()
-    this.initInstruments()
-    console.log('/// Instruments have been initialized ///')
 
     this.setState({
       webAudioStarted: true
@@ -45,8 +37,12 @@ export default class SamplerExampleButtonsContainer extends PureComponent {
   }
 
   playNote = (sample) => {
-    let { togglePlay } = this.state
+    let { togglePlay, webAudioStarted } = this.state
     let sampler = this.state.instruments[0].node
+
+    if (webAudioStarted === false) {
+      this.startWebAudio()
+    }
 
     switch (sample) {
       case 'Kick':
@@ -65,16 +61,10 @@ export default class SamplerExampleButtonsContainer extends PureComponent {
 
         break
     }
-
-    // this.setState({
-    //   togglePlay: true
-    // })
-    //
-    // setTimeout(this.changeToggle, 1000)
   }
 
   renderRoom = () => {
-    const { instruments, togglePlay } = this.state
+    const { togglePlay } = this.state
 
     return (
       <SamplerExampleButtonsModule
@@ -85,14 +75,6 @@ export default class SamplerExampleButtonsContainer extends PureComponent {
   }
 
   render() {
-    const { webAudioStarted } = this.state
-
-    return (
-      <div className="SynthContainer">
-        {webAudioStarted === true
-          ? this.renderRoom()
-          : this.renderWelcomeScreen()}
-      </div>
-    )
+    return <div className="SynthContainer">{this.renderRoom()}</div>
   }
 }

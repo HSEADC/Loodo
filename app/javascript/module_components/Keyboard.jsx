@@ -13,13 +13,10 @@ export default class Keyboard extends PureComponent {
     return (
       <div className="mainContainer">
         <div>
-          <div class="moduleHeaderText">Клавиатура</div>
+          <div className="moduleHeaderText">Клавиатура</div>
           <div className="keyboardContainer">
             <div className="whiteContainer">
-              {this.props.renderNoteButtons('White')}
-            </div>
-            <div className="blackContainer">
-              {this.props.renderNoteButtons('Black')}
+              {this.props.renderNoteButtons()}
             </div>
           </div>
         </div>

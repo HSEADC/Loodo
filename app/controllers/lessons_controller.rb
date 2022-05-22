@@ -20,5 +20,4 @@ class LessonsController < ApplicationController
       @previous_lesson = Lesson.find(previous_lesson_id)
     end
   end
-
 end

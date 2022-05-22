@@ -1,13 +1,30 @@
 .EditableElement {
   width: 100%;
   margin: 0 auto;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  .EditableElementContainer {
+    width: 220px;
+  }
+
   &:hover {
-    background-color: #fafafa;
+    background-color: #f9fafc;
     cursor: pointer;
+
+    .ModuleSettings {
+      display: block;
+      .IconButtonContainer {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &.editing {
+    background-color: #f4f6f6;
   }
 
   .Input {

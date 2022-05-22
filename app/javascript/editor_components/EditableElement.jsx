@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import React, { PureComponent } from 'react'
+import ModuleSettings from './ModuleSettings'
 
 export default class EditableElement extends PureComponent {
   constructor(props) {
@@ -28,6 +29,12 @@ export default class EditableElement extends PureComponent {
     handleBlur(id, field.textContent)
   }
 
+  handleDelete = () => {
+    const { id, handleDelete } = this.props
+
+    handleDelete(id)
+  }
+
   render() {
     const { type, text, isEditing } = this.props
 
@@ -39,6 +46,7 @@ export default class EditableElement extends PureComponent {
 
     return (
       <div className={classes}>
+        <ModuleSettings handleDelete={this.handleDelete} />
         <div
           className={'Input'}
           ref={this.field}

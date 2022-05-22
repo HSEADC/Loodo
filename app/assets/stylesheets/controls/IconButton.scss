@@ -1,0 +1,37 @@
+.IconButtonContainer {
+  .DeleteIcon {
+    width: 17px;
+    height: 20px;
+
+    background-image: image-url('TrashCanDefault');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-image: image-url('TrashCanHover');
+    }
+  }
+  .DownMediumArrowIcon {
+    width: 17px;
+    height: 20px;
+    background-image: image-url('DownMediumArrowDefault');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-image: image-url('DownMediumArrowHover');
+    }
+  }
+  .UpMediumArrowIcon {
+    width: 17px;
+    height: 20px;
+    background-image: image-url('UpMediumArrowDefault');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-image: image-url('UpMediumArrowHover');
+    }
+  }
+}

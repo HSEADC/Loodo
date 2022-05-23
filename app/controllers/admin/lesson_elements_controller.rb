@@ -33,6 +33,7 @@ class Admin::LessonElementsController < Admin::ApplicationController
     lesson_element = LessonElement.find(params[:id])
     lesson_element.destroy
 
+
     render json: { id: lesson_element.id }
 
   end

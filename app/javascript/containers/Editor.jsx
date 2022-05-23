@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
 import EditableElement from '../editor_components/EditableElement'
+import InteractiveModuleElement from '../editor_components/InteractiveModuleElement'
 import AddButton from '../editor_components/AddButton'
 
 export default class Editor extends PureComponent {
@@ -277,16 +278,29 @@ export default class Editor extends PureComponent {
     const elementComponents = []
 
     elements.forEach((element, i) => {
-      elementComponents.push(
-        <EditableElement
-          {...element}
-          isActive={element.isEditing}
-          handleFocus={this.handleFocusElement}
-          handleBlur={this.handleBlurElement}
-          handleDelete={this.handleDeleteElement}
-          key={i}
-        />
-      )
+      if (element.type === 'module') {
+        elementComponents.push(
+          <InteractiveModuleElement
+            {...element}
+            isActive={element.isEditing}
+            handleFocus={this.handleFocusElement}
+            handleBlur={this.handleBlurElement}
+            handleDelete={this.handleDeleteElement}
+            key={i}
+          />
+        )
+      } else {
+        elementComponents.push(
+          <EditableElement
+            {...element}
+            isActive={element.isEditing}
+            handleFocus={this.handleFocusElement}
+            handleBlur={this.handleBlurElement}
+            handleDelete={this.handleDeleteElement}
+            key={i}
+          />
+        )
+      }
     })
 
     return elementComponents
@@ -298,7 +312,9 @@ export default class Editor extends PureComponent {
     return (
       <div className="Editor">
         {this.renderElements()}
-        <AddButton handleClick={this.handleAddElement} />
+        <div className="AddButtonContainer">
+          <AddButton handleClick={this.handleAddElement} />
+        </div>
       </div>
     )
   }

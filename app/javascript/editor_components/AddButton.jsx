@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
+import AddModuleButton from '../control_components/AddModuleButton'
+
 export default class AddButton extends PureComponent {
   constructor(props) {
     super(props)
@@ -11,23 +13,27 @@ export default class AddButton extends PureComponent {
 
     return (
       <div className="AddButton">
-        <div className="heading1" onClick={() => handleClick('heading1')}>
-          Heading 1
+        <div className="AddButtonsContainer">
+          <span>Текст</span>
+          <div className="ButtonsContainer">
+            <AddModuleButton type="paragraph" handleClick={handleClick} />
+            <AddModuleButton type="heading1" handleClick={handleClick} />
+            <AddModuleButton type="heading2" handleClick={handleClick} />
+            <AddModuleButton type="heading3" handleClick={handleClick} />
+          </div>
         </div>
-        <div className="heading2" onClick={() => handleClick('heading2')}>
-          Heading 2
+        <div className="AddButtonsContainer">
+          <span>Медиа</span>
+          <div className="ButtonsContainer">
+            <AddModuleButton type="image" handleClick={handleClick} />
+            <AddModuleButton type="video" handleClick={handleClick} />
+          </div>
         </div>
-        <div className="heading3" onClick={() => handleClick('heading3')}>
-          Heading 3
-        </div>
-        <div className="paragraph" onClick={() => handleClick('paragraph')}>
-          Paragraph
-        </div>
-        <div
-          className="interactiveModule"
-          onClick={() => handleClick('module')}
-        >
-          Interactive module
+        <div className="AddButtonsContainer">
+          <span>Интерактивный блок</span>
+          <div className="ButtonsContainer">
+            <AddModuleButton type="module" handleClick={handleClick} />
+          </div>
         </div>
       </div>
     )

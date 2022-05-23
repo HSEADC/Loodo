@@ -1,6 +1,9 @@
-// .Editor {
-//   width: 700px;
-// }
+.Editor {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
 .LessonHeaderEdit {
   font-family: 'PT Root UI';

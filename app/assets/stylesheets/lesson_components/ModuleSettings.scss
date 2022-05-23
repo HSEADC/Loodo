@@ -1,7 +1,10 @@
 .ModuleSettings {
-  display: none;
+  display: flex;
+
   .IconButtonContainer {
     width: 63px;
+    display: flex;
+    justify-content: space-between;
   }
 
   position: absolute;

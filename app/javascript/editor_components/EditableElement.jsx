@@ -9,13 +9,22 @@ export default class EditableElement extends PureComponent {
   }
 
   componentDidMount() {
-    const { text, isNew } = this.props
-    const field = this.field.current
-    field.innerText = text
+    const { isNew } = this.props
+    this.setInnerText()
 
     if (isNew) {
-      field.focus()
+      this.field.current.focus()
     }
+  }
+
+  componentDidUpdate() {
+    this.setInnerText()
+  }
+
+  setInnerText = () => {
+    const { text } = this.props
+    const field = this.field.current
+    field.innerText = text
   }
 
   handleFocus = () => {
@@ -31,7 +40,6 @@ export default class EditableElement extends PureComponent {
 
   handleDelete = () => {
     const { id, handleDelete } = this.props
-
     handleDelete(id)
   }
 
@@ -47,6 +55,7 @@ export default class EditableElement extends PureComponent {
     return (
       <div className={classes}>
         <ModuleSettings handleDelete={this.handleDelete} />
+
         <div
           className={'Input'}
           ref={this.field}

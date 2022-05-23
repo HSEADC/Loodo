@@ -20,17 +20,7 @@ export default class Editor extends PureComponent {
     fetch(elementsUrl)
       .then((response) => response.json())
       .then((data) => {
-        const elements = data.elements.map((element) => {
-          return {
-            id: element.id,
-            position: element.position,
-            type: element.type,
-            text: element.text,
-            isNew: false,
-            isEditing: false,
-            isSaving: false
-          }
-        })
+        const elements = this.modifyElementsToStore(data.elements)
 
         this.setState({
           elements
@@ -49,6 +39,22 @@ export default class Editor extends PureComponent {
     }
 
     return result
+  }
+
+  modifyElementsToStore = (elements) => {
+    const modifiedElements = elements.map((element) => {
+      return {
+        id: element.id,
+        position: element.position,
+        type: element.type,
+        text: element.text,
+        isNew: false,
+        isEditing: false,
+        isSaving: false
+      }
+    })
+
+    return modifiedElements
   }
 
   handleAddElement = (elementName) => {
@@ -231,8 +237,7 @@ export default class Editor extends PureComponent {
     let requestData = {}
 
     elements.forEach((element, i) => {
-      if (element.id === id) {
-      } else {
+      if (element.id != id) {
         newElements.push(element)
       }
     })
@@ -250,31 +255,24 @@ export default class Editor extends PureComponent {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data)
-        this.handleDeleteElementSuccess(data.id)
+        this.handleDeleteElementSuccess(data)
       })
       .catch((error) => {
         console.error('Error:', error)
       })
   }
 
-  handleDeleteElementSuccess = (id) => {
-    const { elements } = this.state
-    const newElements = []
-
-    elements.forEach((element, i) => {
-      if (element.id === id) {
-      } else {
-        newElements.push(element)
-      }
-    })
+  handleDeleteElementSuccess = (data) => {
+    const elements = this.modifyElementsToStore(data.elements)
 
     this.setState({
-      elements: newElements
+      elements
     })
   }
 
   renderElements = () => {
     const { elements } = this.state
+    console.log('from state', elements)
     const elementComponents = []
 
     elements.forEach((element, i) => {

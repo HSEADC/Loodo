@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
 import EditableElement from '../editor_components/EditableElement'
+import InteractiveModuleElement from '../editor_components/InteractiveModuleElement'
 import AddButton from '../editor_components/AddButton'
 
 export default class Editor extends PureComponent {
@@ -223,29 +224,97 @@ export default class Editor extends PureComponent {
     })
   }
 
+  handleDeleteElement = (id) => {
+    const updateElementUrl = this.props.updateElementUrl + `/${id}`
+    const { elements } = this.state
+    const newElements = []
+    let requestData = {}
+
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+
+    fetch(updateElementUrl, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleDeleteElementSuccess(data.id)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  handleDeleteElementSuccess = (id) => {
+    const { elements } = this.state
+    const newElements = []
+
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+  }
+
   renderElements = () => {
     const { elements } = this.state
     const elementComponents = []
 
     elements.forEach((element, i) => {
-      elementComponents.push(
-        <EditableElement
-          {...element}
-          handleFocus={this.handleFocusElement}
-          handleBlur={this.handleBlurElement}
-          key={i}
-        />
-      )
+      if (element.type === 'module') {
+        elementComponents.push(
+          <InteractiveModuleElement
+            {...element}
+            isActive={element.isEditing}
+            handleFocus={this.handleFocusElement}
+            handleBlur={this.handleBlurElement}
+            handleDelete={this.handleDeleteElement}
+            key={i}
+          />
+        )
+      } else {
+        elementComponents.push(
+          <EditableElement
+            {...element}
+            isActive={element.isEditing}
+            handleFocus={this.handleFocusElement}
+            handleBlur={this.handleBlurElement}
+            handleDelete={this.handleDeleteElement}
+            key={i}
+          />
+        )
+      }
     })
 
     return elementComponents
   }
 
   render() {
+    const { elements } = this.state
+
     return (
       <div className="Editor">
         {this.renderElements()}
-        <AddButton handleClick={this.handleAddElement} />
+        <div className="AddButtonContainer">
+          <AddButton handleClick={this.handleAddElement} />
+        </div>
       </div>
     )
   }

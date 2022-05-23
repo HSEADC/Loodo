@@ -1,13 +1,37 @@
 .EditableElement {
   width: 100%;
   margin: 0 auto;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  .EditableElementContainer {
+    width: 220px;
+  }
+
+  .ModuleSettings {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
   &:hover {
-    background-color: #fafafa;
+    background-color: #f9fafc;
     cursor: pointer;
+
+    .ModuleSettings {
+      opacity: 1;
+      display: flex;
+
+      .IconButtonContainer {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &.editing {
+    background-color: #f4f6f6;
   }
 
   .Input {
@@ -24,33 +48,28 @@
   &.heading1 {
     line-height: 27px;
 
-    font-size: 40px;
-    // background-color: #f4f6f6;
-    padding-top: 34px;
-    padding-bottom: 6px;
-    line-height: 27px;
+    font-size: 27px;
+    padding-top: 40px;
+    line-height: 38px;
   }
 
   &.heading2 {
-    line-height: 27px;
+    line-height: 34px;
 
-    font-size: 30px;
-    padding-top: 24px;
-    padding-bottom: 6px;
+    font-size: 24px;
+    padding-top: 30px;
   }
 
   &.heading3 {
-    line-height: 27px;
+    line-height: 24px;
 
     font-size: 20px;
-    padding-top: 16px;
-    padding-bottom: 6px;
+    padding-top: 22px;
   }
 
   &.paragraph {
-    line-height: 27px;
+    line-height: 28px;
     font-size: 18px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 10px;
   }
 }

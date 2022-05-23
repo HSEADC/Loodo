@@ -17,6 +17,7 @@ class Admin::LessonElementsController < Admin::ApplicationController
       text: params[:lesson_element][:text]
     )
 
+
     render json: { id: lesson_element.id, tempId: params[:temp_id] }
   end
 
@@ -28,7 +29,13 @@ class Admin::LessonElementsController < Admin::ApplicationController
   end
 
   def destroy
-    # @lesson.destroy
+
+    lesson_element = LessonElement.find(params[:id])
+    lesson_element.destroy
+
+
+    render json: { id: lesson_element.id }
+
   end
 
   private

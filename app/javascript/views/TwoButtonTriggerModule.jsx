@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import ThreeButtonTrigger from '../module_components/ThreeButtonTrigger'
+import TwoButtonTrigger from '../module_components/TwoButtonTrigger'
 
 export default class TwoButtonTriggerModule extends PureComponent {
   constructor(props) {

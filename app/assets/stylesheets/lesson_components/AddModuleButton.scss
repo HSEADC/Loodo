@@ -1,0 +1,87 @@
+.AddModuleButton {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px 8px 12px;
+  background-color: #fafafa;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #f3f4f4;
+
+    cursor: pointer;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: #606060;
+    line-height: 16px;
+  }
+
+  p {
+    margin-top: 4px;
+    font-size: 13px;
+    color: #c8ccd3;
+    line-height: 16px;
+  }
+
+  .AddButtonDescriptionContainer {
+    margin-left: 14px;
+  }
+
+  .H1Image {
+    background-image: image-url('AddHeading1');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 20px;
+    height: 20px;
+  }
+  .H2Image {
+    background-image: image-url('AddHeading2');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+  .H3Image {
+    background-image: image-url('AddHeading3');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+  .PImage {
+    background-image: image-url('AddParagraph');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+  .IImage {
+    background-image: image-url('AddImage');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+  .VImage {
+    background-image: image-url('AddVideo');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+  .MImage {
+    background-image: image-url('AddModule');
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
+}

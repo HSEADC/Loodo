@@ -2,7 +2,7 @@ import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import ModuleSettings from './ModuleSettings'
 
-export default class EditableElement extends PureComponent {
+export default class InteractiveModuleElement extends PureComponent {
   constructor(props) {
     super(props)
     this.field = React.createRef()

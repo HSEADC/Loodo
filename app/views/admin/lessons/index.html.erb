@@ -1,20 +1,9 @@
-<p id="notice"><%= notice %></p>
+<%
+  props = {
+    lessonsUrl: admin_lessons_url,
+    newLessonUrl: new_admin_lesson_url
+  }
+%>
 
-<h1>Настройка разделов</h1>
-
-<div class="LessonsTable">
-  <% @lessons.each do |lesson| %>
-    <div class="TableNameDescriptionEdit">
-      <%= link_to admin_lesson_path(lesson), class: 'TableNameDescription' do %>
-        <span><%= lesson.name %></span>
-        <span><%= lesson.description %></span>
-      <% end %>
-      
-      <span><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></span>
-    </div>
-  <% end %>
-</div>
-
-<br>
-
-<%= link_to 'New Lesson', new_admin_lesson_path %>
+<%= javascript_pack_tag 'lessons_editor' %>
+<div id="lessonsEditor" data-props="<%= props.to_json %>"></div>

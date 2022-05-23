@@ -1,5 +1,4 @@
 class Admin::LessonElementsController < Admin::ApplicationController
-  before_action :set_lesson, only: %i[ update destroy ]
   before_action :get_lesson_elements, only: %i[ index ]
 
   def index
@@ -43,14 +42,6 @@ class Admin::LessonElementsController < Admin::ApplicationController
     def get_lesson_elements
       lesson = Lesson.find(params[:lesson_id])
       @lesson_elements = lesson.lesson_elements
-    end
-
-    def set_lesson
-      # @lesson = Lesson.find(params[:id])
-    end
-
-    def lesson_params
-      # params.require(:lesson).permit(:name, :description)
     end
 
 end

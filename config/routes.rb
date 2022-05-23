@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :interactive_modules
 
     resources :lessons do
+      member do
+        get 'publish'
+      end
+
       resources :lesson_elements
     end
 

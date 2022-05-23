@@ -5,10 +5,11 @@
 <div class="LessonsTable">
   <% @lessons.each do |lesson| %>
     <div class="TableNameDescriptionEdit">
-      <div class="TableNameDescription">
+      <%= link_to admin_lesson_path(lesson), class: 'TableNameDescription' do %>
         <span><%= lesson.name %></span>
-        <span><%= link_to lesson.description, admin_lesson_path(lesson) %></span>
-      </div>
+        <span><%= lesson.description %></span>
+      <% end %>
+      
       <span><%= link_to 'Edit', edit_admin_lesson_path(lesson) %></span>
     </div>
   <% end %>

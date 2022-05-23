@@ -1,4 +1,47 @@
 .Viewer {
-  width: 700px;
-  margin: 0 auto;
+  width: 100vw;
+  background: var(--background-grey);
+  color: var(--text-grey);
+
+  .heading2,
+  .heading3,
+  .paragraph {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .heading2,
+  .heading3 {
+    margin-top: 40px;
+  }
+
+  .paragraph {
+    margin-top: 20px;
+  }
+
+  .heading2 + .paragraph {
+    margin-top: 10px;
+  }
+
+  .heading3 + .paragraph {
+    margin-top: 10px;
+  }
+
+  .paragraph + .heading2 {
+    margin-top: 60px;
+  }
+
+  .paragraph + .heading3 {
+    margin-top: 60px;
+  }
+
+  .InteractiveModule {
+    width: 100vw;
+    padding: 40px 0;
+    background: var(--background-dark-grey);
+
+    iframe {
+      margin: 0 auto;
+    }
+  }
 }

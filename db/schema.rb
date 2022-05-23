@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_05_12_103140) do
   end
 
   create_table "lessons", force: :cascade do |t|
+    t.integer "position"
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false

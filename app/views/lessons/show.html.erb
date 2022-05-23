@@ -1,3 +1,12 @@
-<br><br><br>
-<h1>Show template</h1>
-<p>Content</p>
+<%
+  props = {
+    elementsUrl: admin_lesson_lesson_elements_url(@lesson)
+  }
+%>
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_admin_lesson_path(@lesson) %>
+<% end %>
+
+<%= javascript_pack_tag 'lesson_viewer' %>
+<div id="viewer" data-props="<%= props.to_json %>"></div>

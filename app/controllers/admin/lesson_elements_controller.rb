@@ -2,14 +2,8 @@ class Admin::LessonElementsController < Admin::ApplicationController
   before_action :set_lesson, only: %i[ update destroy ]
 
   def index
-    # puts "__________"
-    # puts params
-    # puts "__________"
-
     lesson = Lesson.find(params[:lesson_id])
     lesson_elements = lesson.lesson_elements
-
-
 
     render json: { elements: lesson_elements }
   end
@@ -18,7 +12,7 @@ class Admin::LessonElementsController < Admin::ApplicationController
     lesson = Lesson.find(params[:lesson_id])
 
     lesson_element = lesson.lesson_elements.create!(
-      kind: params[:lesson_element][:kind],
+      kind: params[:lesson_element][:type],
       position: params[:lesson_element][:position],
       text: params[:lesson_element][:text]
     )

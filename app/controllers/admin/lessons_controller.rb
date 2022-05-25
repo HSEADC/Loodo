@@ -56,10 +56,18 @@ class Admin::LessonsController < Admin::ApplicationController
   def destroy
     @lesson.destroy
 
-    respond_to do |format|
-      format.html { redirect_to admin_lessons_url, notice: "Lesson was successfully destroyed." }
-      format.json { head :no_content }
+    get_lessons
+
+    @lessons.each_with_index do |lesson, index|
+      lesson.update_attribute(:position, index)
     end
+
+    render json: { lessons: @lessons }
+
+    # respond_to do |format|
+    #   format.html { redirect_to admin_lessons_url, notice: "Lesson was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
   end
 
   def publish

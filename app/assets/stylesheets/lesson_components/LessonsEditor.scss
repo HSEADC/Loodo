@@ -1,0 +1,21 @@
+.LessonsEditor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .LessonsEditorHeading {
+    font-size: 32px;
+    font-weight: 700;
+    width: 700px;
+    margin-top: 20px;
+  }
+
+  .LessonsListItemContainer:first-of-type {
+    margin-top: 0px;
+  }
+
+  .LessonsListItemContainer {
+    margin-top: 20px;
+  }
+}

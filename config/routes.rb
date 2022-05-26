@@ -4,10 +4,19 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :interactive_modules
 
+
+
     resources :lessons do
+
       member do
         get 'publish'
+
       end
+
+      collection do
+        post 'update_lessons_position'
+
+  end
 
       resources :lesson_elements
     end

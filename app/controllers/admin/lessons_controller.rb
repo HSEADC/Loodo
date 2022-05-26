@@ -1,5 +1,5 @@
 class Admin::LessonsController < Admin::ApplicationController
-  before_action :set_lesson, only: %i[ show edit update destroy publish ]
+  before_action :set_lesson, only: %i[ show edit update destroy publish  ]
   before_action :get_lessons, only: %i[ index ]
 
   def index
@@ -42,15 +42,12 @@ class Admin::LessonsController < Admin::ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @lesson.update(lesson_params)
-        format.html { redirect_to admin_lesson_url(@lesson), notice: "Lesson was successfully updated." }
-        format.json { render :show, status: :ok, location: @lesson }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lesson.errors, status: :unprocessable_entity }
-      end
-    end
+    lesson = Lesson.find(params[:id])
+
+    lesson.update_attribute(:name, params[:name])
+    lesson.update_attribute(:description, params[:description])
+
+    render json: { name: lesson.name, description: lesson.description }
   end
 
   def destroy
@@ -75,6 +72,20 @@ class Admin::LessonsController < Admin::ApplicationController
     redirect_to admin_lessons_url
   end
 
+  def update_lessons_position
+    new_lessons = params[:newLessons]
+
+    get_lessons
+
+    @lessons.each_with_index do |lesson, index|
+      lesson.update_attribute(:position, new_lessons[index][:position])
+      lesson.update_attribute(:name, new_lessons[index][:name])
+      lesson.update_attribute(:description, new_lessons[index][:description])
+    end
+
+    render json: { lessons: @lessons }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
@@ -87,6 +98,7 @@ class Admin::LessonsController < Admin::ApplicationController
     end
 
     def get_lessons
+
       @lessons = Lesson.all
     end
 end

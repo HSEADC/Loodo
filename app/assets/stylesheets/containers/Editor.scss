@@ -3,68 +3,66 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
 
-.LessonHeaderEdit {
-  font-family: 'PT Root UI';
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  margin-top: 40px;
-
-  .backButtonContainer {
-    width: 700px;
-  }
-
-  .backButton {
+  .CourseHeaderContainer {
+    width: 600px;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
-    .smallBackArrow {
-      background-image: image-url('SmallBackArrow.svg');
-      width: 7px;
-      height: 8px;
-      margin-right: 4px;
+    .Input {
+      outline: none;
+      border-radius: 0px;
+      border: 0px;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 47px;
     }
-  }
 
-  .backButton a {
-    color: #378dff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-  }
+    .Input:empty:focus::before {
+      content: '';
+    }
 
-  .backButton a:hover {
-    color: #266fd0;
-  }
+    .NameContainer {
+      width: 240px;
 
-  .field {
-    width: 700px;
-  }
+      .Input {
+        font-size: 27px;
+        line-height: 38px;
+        margin-top: 4px;
+      }
 
-  .field input {
-    outline: none;
-    border-radius: 0px;
-    border: 0px;
-    width: 700px;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 47px;
-  }
+      .Input:empty:before {
+        content: 'Введите название';
+        font-size: 27px;
+        color: var(--editor-grey);
+      }
+    }
 
-  .field textarea {
-    font-family: 'PT Root UI';
+    .DescriptionContainer {
+      width: 320px;
 
-    outline: none;
-    border-radius: 0px;
-    border: 0px;
-    width: 700px;
-    height: 100%;
-    font-size: 18px;
+      .Input {
+        font-size: 14px;
+        line-height: 18px;
+        margin-top: 18px;
+        font-weight: 400;
+      }
 
-    resize: none;
+      .Input:empty:before {
+        font-weight: 700;
+
+        content: 'Добавте описание урока';
+        font-size: 14px;
+        color: var(--editor-grey);
+      }
+    }
+
+    .CaptionHeader {
+      font-size: 14px;
+      color: var(--editor-dark-grey);
+      font-weight: 700;
+    }
   }
 }

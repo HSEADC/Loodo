@@ -26,7 +26,7 @@ const LessonsListItem = (props) => {
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: 'Card',
-    drop: () => handleDropLesson(id, position),
+    drop: () => handleDropLesson(position),
     collect: (monitor) => ({
       isOver: !!monitor.isOver()
     })
@@ -55,7 +55,7 @@ const LessonsListItem = (props) => {
   return (
     <div
       onDragStart={() => {
-        handleDragLesson(id, position)
+        handleDragLesson(position)
       }}
       ref={drag}
       style={{

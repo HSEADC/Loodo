@@ -12,8 +12,7 @@ export default class LessonsEditor extends PureComponent {
 
     this.state = {
       lessons: [],
-      draggedPosition: null,
-      draggedId: null
+      draggedPosition: null
     }
   }
 
@@ -85,14 +84,14 @@ export default class LessonsEditor extends PureComponent {
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data)
-        this.handleDeleteElementSuccess(data)
+        this.handleUpdateElementSuccess(data)
       })
       .catch((error) => {
         console.error('Error:', error)
       })
   }
 
-  handleDeleteElementSuccess = (data) => {
+  handleUpdateElementSuccess = (data) => {
     const lessons = this.modifyLessonsToStore(data.lessons)
 
     this.setState({
@@ -108,31 +107,53 @@ export default class LessonsEditor extends PureComponent {
       }
     }
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0])
-    return arr // for testing
+    return arr
   }
 
-  handleDropLesson = (id, position) => {
+  handleDropLesson = (position) => {
+    const { updateLessonUrl } = this.props
     const { lessons, draggedPosition } = this.state
-    let newDraggedId = null
     let newDraggedPosition = null
+    let requestData = {}
+
+    let newLessons = this.arrayMove(lessons, draggedPosition, position)
+
+    newLessons.forEach((lesson, i) => {
+      lesson.position = i
+    })
 
     this.setState({
-      lessons: this.arrayMove(lessons, draggedPosition, position),
-      draggedId: newDraggedId,
+      lessons: newLessons,
       draggedPosition: newDraggedPosition
     })
+
+    requestData = {
+      newLessons
+    }
+
+    console.log(newLessons)
+
+    fetch(updateLessonUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleUpdateElementSuccess(data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
   }
 
-  handleDragLesson = (id, position) => {
-    let newDraggedId = id
+  handleDragLesson = (position) => {
     let newDraggedPosition = position
 
-    console.log('=====')
-    console.log(newDraggedId)
-    console.log(newDraggedPosition)
-
     this.setState({
-      draggedId: newDraggedId,
       draggedPosition: newDraggedPosition
     })
   }
@@ -141,10 +162,6 @@ export default class LessonsEditor extends PureComponent {
     const { lessonsUrl } = this.props
     const { lessons } = this.state
     const lessonComponents = []
-
-    lessons.forEach((lesson, i) => {
-      lesson.position = i
-    })
 
     lessons.forEach((lesson, i) => {
       lessonComponents.push(
@@ -167,7 +184,7 @@ export default class LessonsEditor extends PureComponent {
 
     return (
       <div className="LessonsEditor">
-        <div className="LessonsEditorHeading">Настройка уроков</div>
+        <div className="LessonsEditorHeading">Уроки</div>
         <DndProvider backend={HTML5Backend}>{this.renderLessons()}</DndProvider>
         <a href={newLessonUrl}>Добавить урок</a>
       </div>

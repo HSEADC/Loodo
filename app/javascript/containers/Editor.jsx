@@ -4,26 +4,33 @@ import React, { PureComponent } from 'react'
 import EditableElement from '../editor_components/EditableElement'
 import InteractiveModuleElement from '../editor_components/InteractiveModuleElement'
 import AddButton from '../editor_components/AddButton'
+import CourseHeader from '../editor_components/CourseHeader'
 
 export default class Editor extends PureComponent {
   constructor(props) {
     super(props)
 
     this.state = {
-      elements: []
+      elements: [],
+      lessonDescription: {}
     }
   }
 
   componentDidMount() {
-    const { elementsUrl } = this.props
+    const { elementsUrl, name, description } = this.props
 
     fetch(elementsUrl)
       .then((response) => response.json())
       .then((data) => {
         const elements = this.modifyElementsToStore(data.elements)
+        const lessonDescription = this.modifyLessonDescriptionToStore(
+          name,
+          description
+        )
 
         this.setState({
-          elements
+          elements,
+          lessonDescription
         })
       })
   }
@@ -39,6 +46,13 @@ export default class Editor extends PureComponent {
     }
 
     return result
+  }
+
+  modifyLessonDescriptionToStore = (name, description) => {
+    return {
+      name: name,
+      description: description
+    }
   }
 
   modifyElementsToStore = (elements) => {
@@ -127,6 +141,45 @@ export default class Editor extends PureComponent {
     this.setState({
       elements: newElements
     })
+  }
+
+  handleUpdateLessonSuccess = (name, description) => {
+    const lessonDescription = this.modifyLessonDescriptionToStore(
+      name,
+      description
+    )
+
+    this.setState({
+      lessonDescription
+    })
+  }
+
+  handleBlurLesson = (object) => {
+    const updateLessonUrl = this.props.updateLessonUrl
+    let requestData = {
+      name: object.name,
+      description: object.description
+    }
+
+    this.setState({
+      lessonDescription: object
+    })
+
+    fetch(updateLessonUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleUpdateElementSuccess(data.name, data.description)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
   }
 
   handleFocusElement = (id) => {
@@ -272,7 +325,6 @@ export default class Editor extends PureComponent {
 
   renderElements = () => {
     const { elements } = this.state
-    console.log('from state', elements)
     const elementComponents = []
 
     elements.forEach((element, i) => {
@@ -305,10 +357,15 @@ export default class Editor extends PureComponent {
   }
 
   render() {
-    const { elements } = this.state
+    const { elements, lessonDescription } = this.state
 
     return (
       <div className="Editor">
+        <CourseHeader
+          name={lessonDescription.name}
+          description={lessonDescription.description}
+          handleBlur={this.handleBlurLesson}
+        />
         {this.renderElements()}
         <div className="AddButtonContainer">
           <AddButton handleClick={this.handleAddElement} />
@@ -317,3 +374,26 @@ export default class Editor extends PureComponent {
     )
   }
 }
+//
+// <div className="CourseHeaderContainer">
+//   <div className="NameContainer">
+//     <div className="CaptionHeader">Название урока</div>
+//
+//     <div
+//       className={'Input'}
+//       onFocus={this.handleFocus}
+//       onBlur={this.handleBlur}
+//       contentEditable={true}
+//       suppressContentEditableWarning={true}
+//     />
+//   </div>
+//
+//   <div className="DescriptionContainer">
+//     <div className="CaptionHeader">Описание</div>
+//     <div
+//       className={'Input'}
+//       contentEditable={true}
+//       suppressContentEditableWarning={true}
+//     />
+//   </div>
+// </div>

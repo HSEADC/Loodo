@@ -1,5 +1,8 @@
 <%
   props = {
+    updateLessonUrl: admin_lesson_url(@lesson),
+    name: @lesson.name,
+    description: @lesson.description,
     elementsUrl: admin_lesson_lesson_elements_url(@lesson),
     createElementUrl: admin_lesson_lesson_elements_url(@lesson),
     updateElementUrl: admin_lesson_lesson_elements_url(@lesson)
@@ -10,6 +13,6 @@
 
 <!-- <h1>Editing Lesson</h1> -->
 
-<%= render 'form', lesson: @lesson %>
+
 
 <div id="editor" data-props="<%= props.to_json %>"></div>

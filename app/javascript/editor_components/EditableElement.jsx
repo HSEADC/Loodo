@@ -55,7 +55,6 @@ export default class EditableElement extends PureComponent {
     return (
       <div className={classes}>
         <ModuleSettings handleDelete={this.handleDelete} />
-
         <div
           className={'Input'}
           ref={this.field}

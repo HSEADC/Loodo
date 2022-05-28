@@ -12,6 +12,8 @@
   .ModuleSettings {
     opacity: 0;
     transition: opacity 0.3s;
+    display: flex;
+    justify-content: space-between;
 
     margin-right: 4px;
   }
@@ -95,8 +97,17 @@
     font-size: 18px;
     padding-top: 10px;
 
+    .AddModuleDialog {
+      left: -381px;
+      top: 42px;
+      background-color: white;
+      color: red;
+      z-index: 200;
+    }
+
     .ModuleSettings {
       margin-top: 6px;
+      top: 42px;
     }
   }
 }

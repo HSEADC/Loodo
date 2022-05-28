@@ -44,12 +44,13 @@ export default class EditableElement extends PureComponent {
     })
   }
 
-  handleAddElement = (id) => {
+  handleAddElement = (id, type) => {
     const { handleAddElement } = this.props
-    let dialog = document.getElementById('AddModuleDialog_' + id)
+
+    let dialog = document.getElementById(id)
 
     dialog.close()
-    handleAddElement()
+    handleAddElement(type)
 
     this.setState({
       idOfPressed: false

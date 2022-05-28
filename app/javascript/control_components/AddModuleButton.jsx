@@ -7,7 +7,7 @@ export default class AddModuleButton extends PureComponent {
   }
 
   render() {
-    const { type, handleClick } = this.props
+    const { type, handleClick, styleId } = this.props
     let imageClass
     let heading
     let text
@@ -55,7 +55,7 @@ export default class AddModuleButton extends PureComponent {
       <div
         className="AddModuleButton"
         onClick={() => {
-          handleClick(type)
+          handleClick(styleId, type)
         }}
       >
         <div className={imageClass}></div>

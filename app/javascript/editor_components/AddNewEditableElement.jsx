@@ -25,7 +25,7 @@ export default class AddNewEditableElement extends PureComponent {
   handleOpenAddModule = (id) => {
     const { plusWasPressed, idOfPressed } = this.state
 
-    let dialog = document.getElementById('AddModuleDialog_' + id)
+    let dialog = document.getElementById(id)
 
     plusWasPressed ? dialog.close() : dialog.show()
 
@@ -35,12 +35,15 @@ export default class AddNewEditableElement extends PureComponent {
     })
   }
 
-  handleAddElement = (id) => {
-    const { handleAddElement } = this.props
+  handleAddElement = (id, type) => {
+    const { handleAddElement, elements, handleUpdateElement } = this.props
+
     let dialog = document.getElementById('AddModuleDialog_' + id)
 
     dialog.close()
-    handleAddElement()
+    handleAddElement(type)
+
+    console.log(this.field.current)
 
     this.setState({
       idOfPressed: false
@@ -56,8 +59,6 @@ export default class AddNewEditableElement extends PureComponent {
     this.setState({
       plusWasPressed: !plusWasPressed
     })
-
-    // handleDelete(id)
   }
 
   render() {
@@ -78,7 +79,14 @@ export default class AddNewEditableElement extends PureComponent {
             id={id}
           />
         </div>
-        <input className="Input" />
+        <input
+          ref={this.field}
+          value={''}
+          onInput={() => {
+            this.handleAddElement(id, 'paragraph')
+          }}
+          className="Input"
+        />
         <div className={'CompositionBlock'}> </div>
       </div>
     )

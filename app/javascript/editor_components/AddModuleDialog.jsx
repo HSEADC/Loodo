@@ -19,27 +19,23 @@ export default class AddModuleDialog extends PureComponent {
             <div className="ButtonsContainer">
               <AddModuleButton
                 type="paragraph"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading1"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading2"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading3"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
             </div>
           </div>
@@ -48,15 +44,13 @@ export default class AddModuleDialog extends PureComponent {
             <div className="ButtonsContainer">
               <AddModuleButton
                 type="image"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="video"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
             </div>
           </div>
@@ -65,9 +59,8 @@ export default class AddModuleDialog extends PureComponent {
             <div className="ButtonsContainer">
               <AddModuleButton
                 type="module"
-                handleClick={() => {
-                  handleClick(id)
-                }}
+                styleId={styleId}
+                handleClick={handleClick}
               />
             </div>
           </div>

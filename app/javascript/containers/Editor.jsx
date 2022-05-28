@@ -372,6 +372,8 @@ export default class Editor extends PureComponent {
         <AddNewEditableElement
           id="AddNewElement"
           handleAddElement={this.handleAddElement}
+          handleUpdateElement={this.handleBlurElement}
+          elements={elements}
         />
         <div className="AddButtonContainer"></div>
       </div>

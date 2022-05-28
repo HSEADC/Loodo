@@ -13,7 +13,9 @@
     opacity: 0;
     transition: opacity 0.3s;
 
-    margin-right: 4px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
   }
 
   &:hover {
@@ -29,74 +31,16 @@
     }
   }
 
-  &.editing {
-    background-color: #f4f6f6;
-  }
-
   .Input {
     width: 600px;
     outline: none;
+    border: none;
+    line-height: 28px;
+    font-size: 18px;
+    padding-top: 10px;
   }
 
   .CompositionBlock {
     width: 46px;
-  }
-
-  &.heading1,
-  &.heading2,
-  &.heading3 {
-    font-weight: bold;
-  }
-
-  &.heading1 {
-    line-height: 27px;
-
-    font-size: 27px;
-    padding-top: 40px;
-    line-height: 38px;
-
-    .ModuleSettings {
-      margin-top: 12px;
-    }
-  }
-
-  &.heading2 {
-    line-height: 34px;
-
-    font-size: 24px;
-    padding-top: 30px;
-
-    .ModuleSettings {
-      margin-top: 10px;
-    }
-  }
-
-  &.heading3 {
-    line-height: 24px;
-
-    font-size: 20px;
-    padding-top: 22px;
-
-    .AddModuleDialog {
-      left: -381px;
-      top: 52px;
-      background-color: white;
-      color: red;
-      z-index: 200;
-    }
-
-    .ModuleSettings {
-      margin-top: 4px;
-    }
-  }
-
-  &.paragraph {
-    line-height: 28px;
-    font-size: 18px;
-    padding-top: 10px;
-
-    .ModuleSettings {
-      margin-top: 6px;
-    }
   }
 }

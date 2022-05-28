@@ -4,7 +4,7 @@ import ModuleSettings from './ModuleSettings'
 import AddButton from '../editor_components/AddButton'
 import AddModuleDialog from '../editor_components/AddModuleDialog'
 
-export default class EditableElement extends PureComponent {
+export default class AddNewEditableElement extends PureComponent {
   constructor(props) {
     super(props)
     this.field = React.createRef()
@@ -16,19 +16,10 @@ export default class EditableElement extends PureComponent {
   }
 
   componentDidMount() {
-    const { isNew, id } = this.props
-    this.setInnerText()
-
-    if (isNew) {
-      this.field.current.focus()
-    }
+    const { id } = this.props
 
     let dialog = document.getElementById('AddModuleDialog_' + id)
     let firstDialog = document.getElementById('AddModuleDialog_1')
-  }
-
-  componentDidUpdate() {
-    this.setInnerText()
   }
 
   handleOpenAddModule = (id) => {
@@ -58,23 +49,6 @@ export default class EditableElement extends PureComponent {
 
   handleOpenOptions = () => {}
 
-  setInnerText = () => {
-    const { text } = this.props
-    const field = this.field.current
-    field.innerText = text
-  }
-
-  handleFocus = () => {
-    const { id, handleFocus } = this.props
-    handleFocus(id)
-  }
-
-  handleBlur = () => {
-    const { id, handleBlur } = this.props
-    const field = this.field.current
-    handleBlur(id, field.textContent)
-  }
-
   handleDelete = () => {
     const { id, handleDelete } = this.props
     const { plusWasPressed } = this.state
@@ -87,19 +61,10 @@ export default class EditableElement extends PureComponent {
   }
 
   render() {
-    const { type, text, id } = this.props
-
-    const classes = classnames({
-      EditableElement: true,
-      [`${type}`]: true
-    })
-
-    let plusWasPressed = this.state.plusWasPressed
-
-    let open = 'open'
+    const { id } = this.props
 
     return (
-      <div className={classes}>
+      <div className="AddNewEditableElement">
         <div className="ModuleSettingsAddButtonContainer">
           <ModuleSettings
             id={id}
@@ -113,14 +78,7 @@ export default class EditableElement extends PureComponent {
             id={id}
           />
         </div>
-        <div
-          className={'Input'}
-          ref={this.field}
-          contentEditable={true}
-          suppressContentEditableWarning={true}
-          onFocus={this.handleFocus}
-          onBlur={this.handleBlur}
-        />
+        <input className="Input" />
         <div className={'CompositionBlock'}> </div>
       </div>
     )

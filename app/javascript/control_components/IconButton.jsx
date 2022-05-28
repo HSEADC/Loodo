@@ -4,6 +4,8 @@ import React, { PureComponent } from 'react'
 export default class IconButton extends PureComponent {
   constructor(props) {
     super(props)
+
+    this.div = React.createRef()
   }
 
   render() {
@@ -12,6 +14,12 @@ export default class IconButton extends PureComponent {
     let classes
 
     switch (type) {
+      case 'Plus':
+        classes = 'PlusIcon'
+        break
+      case 'Drag':
+        classes = 'DragIcon'
+        break
       case 'Delete':
         classes = 'DeleteIcon'
         break
@@ -25,8 +33,8 @@ export default class IconButton extends PureComponent {
     }
 
     return (
-      <div className={classes} onClick={handleClick}>
-        <div className="Image"> </div>
+      <div ref={this.field} className={classes} onClick={handleClick}>
+        <div className="Image"></div>
       </div>
     )
   }

@@ -8,7 +8,14 @@ export default class ModuleSettings extends PureComponent {
   }
 
   render() {
-    const { on, handleClick, id, elementName, handleDelete } = this.props
+    const {
+      on,
+      handleClick,
+      id,
+      elementName,
+      handleOpenAddModule,
+      handleOpenOptions
+    } = this.props
 
     const classes = classnames({
       playButton: true,
@@ -42,9 +49,18 @@ export default class ModuleSettings extends PureComponent {
     return (
       <div className="ModuleSettings">
         <div className="IconButtonContainer">
-          <IconButton handleClick={handleDelete} type="DownMediumArrow" />
-          <IconButton handleClick={handleDelete} type="UpMediumArrow" />
-          <IconButton handleClick={handleDelete} type="Delete" />
+          <IconButton
+            handleClick={() => {
+              handleOpenAddModule(id)
+            }}
+            type="Plus"
+          />
+          <IconButton
+            handleClick={() => {
+              handleOpenOptions(id)
+            }}
+            type="Drag"
+          />
         </div>
       </div>
     )

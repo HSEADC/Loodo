@@ -1,4 +1,38 @@
 .IconButtonContainer {
+  width: 42px;
+  display: flex;
+  justify-content: space-between;
+
+  .PlusIcon {
+    width: 20px;
+    height: 20px;
+
+    background-image: image-url('PlusIconDefault');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-image: image-url('PlusIconHover');
+      cursor: pointer;
+    }
+  }
+
+  .DragIcon {
+    width: 19px;
+    height: 18px;
+
+    margin-top: 1px;
+
+    background-image: image-url('DragIconDefault');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover {
+      background-image: image-url('DragIconHover');
+      cursor: pointer;
+    }
+  }
+
   .DeleteIcon {
     width: 17px;
     height: 20px;
@@ -9,6 +43,7 @@
 
     &:hover {
       background-image: image-url('TrashCanHover');
+      cursor: pointer;
     }
   }
   .DownMediumArrowIcon {
@@ -20,6 +55,7 @@
 
     &:hover {
       background-image: image-url('DownMediumArrowHover');
+      cursor: pointer;
     }
   }
   .UpMediumArrowIcon {
@@ -32,6 +68,7 @@
 
     &:hover {
       background-image: image-url('UpMediumArrowHover');
+      cursor: pointer;
     }
   }
 }

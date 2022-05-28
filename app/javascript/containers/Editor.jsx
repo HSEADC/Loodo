@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
 import EditableElement from '../editor_components/EditableElement'
+import AddNewEditableElement from '../editor_components/AddNewEditableElement'
 import InteractiveModuleElement from '../editor_components/InteractiveModuleElement'
 import AddButton from '../editor_components/AddButton'
 import CourseHeader from '../editor_components/CourseHeader'
@@ -347,6 +348,7 @@ export default class Editor extends PureComponent {
             handleFocus={this.handleFocusElement}
             handleBlur={this.handleBlurElement}
             handleDelete={this.handleDeleteElement}
+            handleAddElement={this.handleAddElement}
             key={i}
           />
         )
@@ -367,13 +369,17 @@ export default class Editor extends PureComponent {
           handleBlur={this.handleBlurLesson}
         />
         {this.renderElements()}
-        <div className="AddButtonContainer">
-          <AddButton handleClick={this.handleAddElement} />
-        </div>
+        <AddNewEditableElement
+          id="AddNewElement"
+          handleAddElement={this.handleAddElement}
+        />
+        <div className="AddButtonContainer"></div>
       </div>
     )
   }
 }
+
+// <AddButton handleClick={this.handleAddElement} />
 //
 // <div className="CourseHeaderContainer">
 //   <div className="NameContainer">

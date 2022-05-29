@@ -1,0 +1,37 @@
+.InteractiveModuleSettingsDialog {
+  left: 14px;
+  top: 0px;
+  background-color: white;
+  z-index: 200;
+  border: none;
+  box-shadow: 0px 4px 11px 0px #0000001f;
+  border-radius: 8px;
+  position: relative;
+  padding: 16px 20px 16px 20px;
+
+  .SettingsButton {
+    width: 166px;
+    height: 20px;
+    padding: 0px 0px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    text-transform: none;
+    color: var(--editor-dark-grey);
+  }
+
+  .SettingsButton:hover {
+    color: var(--editor-black);
+    cursor: pointer;
+  }
+
+  .SettingsButton:last-of-type {
+    color: var(--editor-active-red);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .SettingsButton:last-of-type:hover {
+    color: var(--editor-hover-red);
+    cursor: pointer;
+  }
+}

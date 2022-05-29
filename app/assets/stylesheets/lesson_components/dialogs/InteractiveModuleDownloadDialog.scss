@@ -1,0 +1,99 @@
+.InteractiveModuleDownloadDialog {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.34);
+  z-index: 200;
+  border: none;
+  box-shadow: 0px 4px 11px 0px #0000001f;
+  position: fixed;
+  padding: 16px 20px 16px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .InteractiveModuleDownloadContainer {
+    width: 400px;
+    height: 180px;
+    border-radius: 14px;
+    background-color: var(--editor-white);
+    padding: 30px 30px 30px 30px;
+
+    .Header {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .File {
+      margin-top: 20px;
+    }
+
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .inputfile + label {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: white;
+      color: var(--editor-active-blue);
+      display: inline-block;
+    }
+
+    .inputfile:focus + label,
+    .inputfile + label:hover {
+      color: var(--editor-hover-blue);
+      cursor: pointer;
+    }
+
+    .Submit {
+      display: flex;
+      margin-top: 14px;
+      justify-content: flex-end;
+    }
+
+    .Confirm {
+      color: var(--editor-active-blue);
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .Cancel {
+      color: var(--editor-grey);
+      margin-right: 20px;
+    }
+
+    .Confirm:hover {
+      color: var(--editor-hover-blue);
+
+      cursor: pointer;
+    }
+
+    .Cancel:hover {
+      color: var(--editor-dark-grey);
+      cursor: pointer;
+    }
+
+    .DescriptionInput {
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0px;
+    }
+
+    .FileInput {
+    }
+  }
+}
+
+.InteractiveModuleDownloadDialog:not([open]) {
+  display: none;
+}

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 
-import AddModuleButton from '../control_components/AddModuleButton'
+import AddModuleButton from '../../control_components/AddModuleButton'
 
-export default class ChooseTypeDialog extends PureComponent {
+export default class AddModuleDialog extends PureComponent {
   constructor(props) {
     super(props)
   }
@@ -12,7 +12,7 @@ export default class ChooseTypeDialog extends PureComponent {
     const { text, handleClick, styleId, id } = this.props
 
     return (
-      <dialog className="ChooseTypeDialog" id={styleId}>
+      <dialog className="AddModuleDialog" id={styleId}>
         <div className="AddButton">
           <div className="AddButtonsContainer">
             <div className="AddButtonsHeader">Текст</div>
@@ -20,30 +20,22 @@ export default class ChooseTypeDialog extends PureComponent {
               <AddModuleButton
                 type="paragraph"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'paragraph')
-                }}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading1"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'heading1')
-                }}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading2"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'heading2')
-                }}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="heading3"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'heading3')
-                }}
+                handleClick={handleClick}
               />
             </div>
           </div>
@@ -53,16 +45,12 @@ export default class ChooseTypeDialog extends PureComponent {
               <AddModuleButton
                 type="image"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'image')
-                }}
+                handleClick={handleClick}
               />
               <AddModuleButton
                 type="video"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'video')
-                }}
+                handleClick={handleClick}
               />
             </div>
           </div>
@@ -72,9 +60,7 @@ export default class ChooseTypeDialog extends PureComponent {
               <AddModuleButton
                 type="module"
                 styleId={styleId}
-                handleClick={() => {
-                  handleClick(id, 'module')
-                }}
+                handleClick={handleClick}
               />
             </div>
           </div>

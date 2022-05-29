@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
-import ChooseTypeDialog from '../editor_components/ChooseTypeDialog'
+import ChooseTypeDialog from './ChooseTypeDialog'
 
 export default class ElementSettingsDialog extends PureComponent {
   constructor(props) {

@@ -1,10 +1,13 @@
 class Admin::InteractiveModulesController < Admin::ApplicationController
   before_action :set_interactive_module, only: %i[ show edit update destroy ]
+  before_action :get_interactive_modules, only: %i[ index ]
 
   # GET /interactive_modules or /interactive_modules.json
   def index
-    # sleep 10
-    @interactive_modules = InteractiveModule.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: { interactive_modules: @interactive_modules } }
+    end
   end
 
   # GET /interactive_modules/1 or /interactive_modules/1.json
@@ -62,6 +65,10 @@ class Admin::InteractiveModulesController < Admin::ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_interactive_module
       @interactive_module = InteractiveModule.find(params[:id])
+    end
+
+    def get_interactive_modules
+      @interactive_modules = InteractiveModule.all
     end
 
     # Only allow a list of trusted parameters through.

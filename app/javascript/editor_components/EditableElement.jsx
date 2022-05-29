@@ -2,8 +2,8 @@ import classnames from 'classnames'
 import React, { PureComponent } from 'react'
 import ModuleSettings from './ModuleSettings'
 import AddButton from '../editor_components/AddButton'
-import AddModuleDialog from '../editor_components/AddModuleDialog'
-import ElementSettingsDialog from '../editor_components/ElementSettingsDialog'
+import AddModuleDialog from './dialogs/AddModuleDialog'
+import ElementSettingsDialog from './dialogs/ElementSettingsDialog'
 
 export default class EditableElement extends PureComponent {
   constructor(props) {

@@ -1,8 +1,15 @@
-<p id="notice"><%= notice %></p>
+<%
+  props = {
+    interactiveModulesUrl:  admin_interactive_modules_url,
+  }
+%>
 
-<h1>interactive_modules</h1>
+<%= javascript_pack_tag 'interactive_modules_editor' %>
 
-<table>
+<div id="interactiveModulesEditor" data-props="<%= props.to_json %>"></div>
+
+
+<!-- <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -21,7 +28,7 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->a
 
 <br>
 

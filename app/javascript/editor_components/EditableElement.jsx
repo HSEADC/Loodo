@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import ModuleSettings from './ModuleSettings'
 import AddButton from '../editor_components/AddButton'
 import AddModuleDialog from '../editor_components/AddModuleDialog'
+import ElementSettingsDialog from '../editor_components/ElementSettingsDialog'
 
 export default class EditableElement extends PureComponent {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class EditableElement extends PureComponent {
 
     this.state = {
       plusWasPressed: false,
+      dragWasPressed: false,
       idOfPressed: 0
     }
   }
@@ -23,7 +25,8 @@ export default class EditableElement extends PureComponent {
       this.field.current.focus()
     }
 
-    let dialog = document.getElementById('AddModuleDialog_' + id)
+    let dialog = document.getElementById('ElementSettingsDialog_' + id)
+    // dialog.show()
     let firstDialog = document.getElementById('AddModuleDialog_1')
   }
 
@@ -32,16 +35,57 @@ export default class EditableElement extends PureComponent {
   }
 
   handleOpenAddModule = (id) => {
-    const { plusWasPressed, idOfPressed } = this.state
+    const { plusWasPressed, idOfPressed, dragWasPressed } = this.state
 
-    let dialog = document.getElementById('AddModuleDialog_' + id)
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+    let addModuleDialog = document.getElementById('AddModuleDialog_' + id)
 
-    plusWasPressed ? dialog.close() : dialog.show()
+    if (dragWasPressed) {
+      elementSettingsDialog.close()
+      addModuleDialog.show()
 
-    this.setState({
-      plusWasPressed: !plusWasPressed,
-      idOfPressed: id
-    })
+      this.setState({
+        plusWasPressed: true,
+        dragWasPressed: false,
+        idOfPressed: id
+      })
+    } else {
+      plusWasPressed ? addModuleDialog.close() : addModuleDialog.show()
+      this.setState({
+        plusWasPressed: !plusWasPressed,
+        idOfPressed: id
+      })
+    }
+  }
+
+  handleOpenOptions = (id) => {
+    const { dragWasPressed, idOfPressed, plusWasPressed } = this.state
+
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+    let addModuleDialog = document.getElementById('AddModuleDialog_' + id)
+
+    if (plusWasPressed) {
+      addModuleDialog.close()
+      elementSettingsDialog.show()
+
+      this.setState({
+        plusWasPressed: false,
+        dragWasPressed: true,
+        idOfPressed: id
+      })
+    } else {
+      dragWasPressed
+        ? elementSettingsDialog.close()
+        : elementSettingsDialog.show()
+      this.setState({
+        dragWasPressed: !dragWasPressed,
+        idOfPressed: id
+      })
+    }
   }
 
   handleAddElement = (id, type) => {
@@ -56,8 +100,6 @@ export default class EditableElement extends PureComponent {
       idOfPressed: false
     })
   }
-
-  handleOpenOptions = () => {}
 
   setInnerText = () => {
     const { text } = this.props
@@ -80,11 +122,31 @@ export default class EditableElement extends PureComponent {
     const { id, handleDelete } = this.props
     const { plusWasPressed } = this.state
 
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+
     this.setState({
       plusWasPressed: !plusWasPressed
     })
 
-    // handleDelete(id)
+    handleDelete(id)
+    elementSettingsDialog.close()
+  }
+
+  handleChangeType = (id, type) => {
+    const { handleChangeElementType } = this.props
+
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+
+    elementSettingsDialog.close()
+    handleChangeElementType(id, type)
+
+    this.setState({
+      dragWasPressed: false
+    })
   }
 
   render() {
@@ -94,10 +156,6 @@ export default class EditableElement extends PureComponent {
       EditableElement: true,
       [`${type}`]: true
     })
-
-    let plusWasPressed = this.state.plusWasPressed
-
-    let open = 'open'
 
     return (
       <div className={classes}>
@@ -111,6 +169,13 @@ export default class EditableElement extends PureComponent {
           <AddModuleDialog
             handleClick={this.handleAddElement}
             styleId={'AddModuleDialog_' + id}
+            id={id}
+          />
+          <ElementSettingsDialog
+            handleChangeElementType={this.handleChangeElementType}
+            handleChangeType={this.handleChangeType}
+            handleDeleteElement={this.handleDelete}
+            styleId={'ElementSettingsDialog_' + id}
             id={id}
           />
         </div>
@@ -127,11 +192,3 @@ export default class EditableElement extends PureComponent {
     )
   }
 }
-
-// <dialog className="AddModuleDialog" id={'AddModuleDialog_' + id}>
-//   This is an open dialog window
-// </dialog>
-
-// <div className="AddButtonContainer">
-//   {plusWasPressed ? <AddButton /> : ''}
-// </div>

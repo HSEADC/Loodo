@@ -105,6 +105,17 @@
       z-index: 200;
     }
 
+    .ElementSettingsDialog {
+      left: -452px;
+      top: 42px;
+      background-color: white;
+      z-index: 200;
+      border: none;
+      box-shadow: 0px 4px 11px 0px #0000001f;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
     .ModuleSettings {
       margin-top: 6px;
       top: 42px;

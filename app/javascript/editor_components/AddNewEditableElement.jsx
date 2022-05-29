@@ -23,22 +23,63 @@ export default class AddNewEditableElement extends PureComponent {
   }
 
   handleOpenAddModule = (id) => {
-    const { plusWasPressed, idOfPressed } = this.state
+    const { plusWasPressed, idOfPressed, dragWasPressed } = this.state
 
-    let dialog = document.getElementById(id)
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+    let addModuleDialog = document.getElementById('AddModuleDialog_' + id)
 
-    plusWasPressed ? dialog.close() : dialog.show()
+    if (dragWasPressed) {
+      elementSettingsDialog.close()
+      addModuleDialog.show()
 
-    this.setState({
-      plusWasPressed: !plusWasPressed,
-      idOfPressed: id
-    })
+      this.setState({
+        plusWasPressed: true,
+        dragWasPressed: false,
+        idOfPressed: id
+      })
+    } else {
+      plusWasPressed ? addModuleDialog.close() : addModuleDialog.show()
+      this.setState({
+        plusWasPressed: !plusWasPressed,
+        idOfPressed: id
+      })
+    }
+  }
+
+  handleOpenOptions = (id) => {
+    const { dragWasPressed, idOfPressed, plusWasPressed } = this.state
+
+    let elementSettingsDialog = document.getElementById(
+      'ElementSettingsDialog_' + id
+    )
+    let addModuleDialog = document.getElementById('AddModuleDialog_' + id)
+
+    if (plusWasPressed) {
+      addModuleDialog.close()
+      elementSettingsDialog.show()
+
+      this.setState({
+        plusWasPressed: false,
+        dragWasPressed: true,
+        idOfPressed: id
+      })
+    } else {
+      dragWasPressed
+        ? elementSettingsDialog.close()
+        : elementSettingsDialog.show()
+      this.setState({
+        dragWasPressed: !dragWasPressed,
+        idOfPressed: id
+      })
+    }
   }
 
   handleAddElement = (id, type) => {
     const { handleAddElement, elements, handleUpdateElement } = this.props
 
-    let dialog = document.getElementById('AddModuleDialog_' + id)
+    let dialog = document.getElementById(id)
 
     dialog.close()
     handleAddElement(type)

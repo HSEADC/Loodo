@@ -208,6 +208,83 @@ export default class Editor extends PureComponent {
     })
   }
 
+  handleChangeElementType = (id, selectedType) => {
+    const updateElementUrl = this.props.updateElementUrl + `/${id}`
+
+    const { elements } = this.state
+    const newElements = []
+    let requestData = {}
+
+    elements.forEach((element) => {
+      if (element.id === id) {
+        const newElement = {
+          id: element.id,
+          position: element.position,
+          type: selectedType,
+          text: element.text,
+          isNew: element.isNew,
+          isEditing: false,
+          isSaving: true
+        }
+
+        requestData = {
+          position: newElement.position,
+          type: newElement.type,
+          text: newElement.text
+        }
+
+        newElements.push(newElement)
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+
+    fetch(updateElementUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data)
+        this.handleChangeElementTypeSuccess(data.id)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
+  }
+
+  handleChangeElementTypeSuccess = (id) => {
+    const { elements } = this.state
+    const newElements = []
+
+    elements.forEach((element, i) => {
+      if (element.id === id) {
+        newElements.push({
+          id: element.id,
+          position: element.position,
+          type: element.type,
+          text: element.text,
+          isNew: false,
+          isEditing: false,
+          isSaving: false
+        })
+      } else {
+        newElements.push(element)
+      }
+    })
+
+    this.setState({
+      elements: newElements
+    })
+  }
+
   handleBlurElement = (id, text) => {
     const updateElementUrl = this.props.updateElementUrl + `/${id}`
     const { elements } = this.state
@@ -349,6 +426,7 @@ export default class Editor extends PureComponent {
             handleBlur={this.handleBlurElement}
             handleDelete={this.handleDeleteElement}
             handleAddElement={this.handleAddElement}
+            handleChangeElementType={this.handleChangeElementType}
             key={i}
           />
         )

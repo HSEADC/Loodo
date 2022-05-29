@@ -1,0 +1,38 @@
+.ChooseTypeDialog {
+  width: 300px;
+  left: 200px;
+  top: 0px;
+  background-color: white;
+  z-index: 200;
+  border: none;
+  box-shadow: 0px 4px 11px 0px #0000001f;
+  border-radius: 8px;
+  padding: 16px;
+
+  .AddButton {
+    .AddButtonsContainer {
+      margin-top: 20px;
+      .ButtonsContainer {
+        margin-top: 12px;
+        .AddModuleButton {
+          margin-top: 6px;
+        }
+        .AddModuleButton:first-of-type {
+          margin-top: 0px;
+        }
+      }
+
+      .AddButtonsHeader {
+        font-size: 16px;
+        color: #606060;
+        font-weight: 400;
+        line-height: 12px;
+        // margin-bottom: 12px;
+      }
+    }
+
+    .AddButtonsContainer:first-of-type {
+      margin-top: 0px;
+    }
+  }
+}

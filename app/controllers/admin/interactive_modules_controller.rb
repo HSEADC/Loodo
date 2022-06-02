@@ -29,7 +29,7 @@ class Admin::InteractiveModulesController < Admin::ApplicationController
 
     respond_to do |format|
       if @interactive_module.save
-        format.html { redirect_to interactive_module_url(@interactive_module), notice: "Prototype was successfully created." }
+        format.html { redirect_to admin_interactive_module_url(@interactive_module), notice: "Prototype was successfully created." }
         format.json { render :show, status: :created, location: @interactive_module }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class Admin::InteractiveModulesController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @interactive_module.update(interactive_module_params)
-        format.html { redirect_to interactive_module_url(@interactive_module), notice: "Prototype was successfully updated." }
+        format.html { redirect_to admin_interactive_module_url(@interactive_module), notice: "Prototype was successfully updated." }
         format.json { render :show, status: :ok, location: @interactive_module }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class Admin::InteractiveModulesController < Admin::ApplicationController
     @interactive_module.destroy
 
     respond_to do |format|
-      format.html { redirect_to interactive_modules_url, notice: "Prototype was successfully destroyed." }
+      format.html { redirect_to admin_interactive_modules_url, notice: "Prototype was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,6 @@ class Admin::InteractiveModulesController < Admin::ApplicationController
 
     # Only allow a list of trusted parameters through.
     def interactive_module_params
-      params.require(:interactive_module).permit(:name, :description)
+      params.require(:interactive_module).permit(:name, :description, :javascript, :stylesheet)
     end
 end

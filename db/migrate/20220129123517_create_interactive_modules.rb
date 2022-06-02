@@ -3,6 +3,8 @@ class CreateInteractiveModules < ActiveRecord::Migration[6.1]
     create_table :interactive_modules do |t|
       t.string :name
       t.text :description
+      t.string :javascript
+      t.string :stylesheet
 
       t.timestamps
     end

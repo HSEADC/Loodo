@@ -1,31 +1,31 @@
-import * as Tone from "tone";
-import React, { PureComponent } from "react";
+import * as Tone from 'tone'
+import React, { PureComponent } from 'react'
 
-import WelcomeScreen from "../views/WelcomeScreen";
-import SynthRoom from "../views/SynthRoom";
+import WelcomeScreen from '../views/WelcomeScreen'
+import SynthRoom from '../views/SynthRoom'
 
 export default class SynthContainer extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       webAudioStarted: false,
-      instruments: [],
-    };
+      instruments: []
+    }
   }
 
   startWebAudio = async () => {
-    await Tone.start();
-    this.initInstruments();
+    await Tone.start()
+    this.initInstruments()
 
     this.setState({
-      webAudioStarted: true,
-    });
-  };
+      webAudioStarted: true
+    })
+  }
 
   generateUniqId = () => {
-    return Math.floor(Math.random() * Date.now());
-  };
+    return Math.floor(Math.random() * Date.now())
+  }
 
   initInstruments = () => {
     const melodySynthSettings = {
@@ -34,74 +34,74 @@ export default class SynthContainer extends PureComponent {
       portamento: 0.05,
       envelope: {
         attack: 0.05,
-        attackCurve: "exponential",
+        attackCurve: 'exponential',
         decay: 0.2,
-        decayCurve: "exponential",
+        decayCurve: 'exponential',
         sustain: 0.2,
         release: 1.5,
-        releaseCurve: "exponential",
+        releaseCurve: 'exponential'
       },
       oscillator: {
-        type: "amtriangle",
-        modulationType: "sine",
+        type: 'amtriangle',
+        modulationType: 'sine',
         // partialCount: 0,
         // partials: [],
         phase: 0,
-        harmonicity: 0.5,
-      },
-    };
+        harmonicity: 0.5
+      }
+    }
 
     const melodySynthChorusSettings = {
       wet: 0.6,
-      type: "sine",
+      type: 'sine',
       frequency: 1.5,
       delayTime: 3.5,
       depth: 0.7,
-      spread: 180,
-    };
+      spread: 180
+    }
 
     const melodySynthChannelSettings = {
       pan: 0,
       volume: 0,
       mute: false,
-      solo: false,
-    };
+      solo: false
+    }
 
-    const melodySynthNode = new Tone.Synth(melodySynthSettings);
+    const melodySynthNode = new Tone.Synth(melodySynthSettings)
 
     const melodySynthChorusNode = new Tone.Chorus(
       melodySynthChorusSettings
-    ).start();
+    ).start()
 
     const melodySynthChannelNode = new Tone.Channel(
       melodySynthChannelSettings
-    ).toDestination();
+    ).toDestination()
 
-    melodySynthNode.chain(melodySynthChorusNode, melodySynthChannelNode);
+    melodySynthNode.chain(melodySynthChorusNode, melodySynthChannelNode)
 
     const instruments = [
       {
         id: this.generateUniqId(),
-        name: "Melody Synth",
-        type: "ToneSynth",
+        name: 'Melody Synth',
+        type: 'ToneSynth',
         node: melodySynthNode,
-        settings: melodySynthSettings,
+        settings: melodySynthSettings
       },
       {
         id: this.generateUniqId(),
-        name: "Chorus",
-        type: "Chorus",
+        name: 'Chorus',
+        type: 'Chorus',
         node: melodySynthChorusNode,
-        settings: melodySynthChorusSettings,
+        settings: melodySynthChorusSettings
       },
       {
         id: this.generateUniqId(),
-        name: "Channel",
-        type: "Channel",
+        name: 'Channel',
+        type: 'Channel',
         node: melodySynthChannelNode,
-        settings: melodySynthChannelSettings,
-      },
-    ];
+        settings: melodySynthChannelSettings
+      }
+    ]
 
     // prettier-ignore
     const seq = new Tone.Sequence(
@@ -114,12 +114,12 @@ export default class SynthContainer extends PureComponent {
       ]
     ).start(0)
 
-    Tone.Transport.start();
+    Tone.Transport.start()
 
     this.setState({
-      instruments,
-    });
-  };
+      instruments
+    })
+  }
 
   handlePropertyValueChange = (id, property, value) => {
     // Звук лагает при изменении параметров
@@ -135,47 +135,47 @@ export default class SynthContainer extends PureComponent {
     // })
 
     // Иммутабельный способ, звук не лагает
-    const instruments = [];
+    const instruments = []
 
     this.state.instruments.forEach((instrument, i) => {
-      const newInstrument = Object.assign({}, instrument);
+      const newInstrument = Object.assign({}, instrument)
 
       if (instrument.id === id) {
         if (property.length === 1) {
-          const propertyName = property[0];
-          newInstrument.settings[propertyName] = value;
+          const propertyName = property[0]
+          newInstrument.settings[propertyName] = value
         } else if (property.length === 2) {
-          const scopeName = property[0];
-          const propertyName = property[1];
-          newInstrument.settings[scopeName][propertyName] = value;
+          const scopeName = property[0]
+          const propertyName = property[1]
+          newInstrument.settings[scopeName][propertyName] = value
         }
       }
 
-      instruments.push(newInstrument);
-    });
+      instruments.push(newInstrument)
+    })
 
     this.setState({
-      instruments,
-    });
-  };
+      instruments
+    })
+  }
 
   renderWelcomeScreen = () => {
-    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />;
-  };
+    return <WelcomeScreen handleStartWebAudio={this.startWebAudio} />
+  }
 
   renderSynthRoom = () => {
-    const { instruments } = this.state;
+    const { instruments } = this.state
 
     return (
       <SynthRoom
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
       />
-    );
-  };
+    )
+  }
 
   render() {
-    const { webAudioStarted } = this.state;
+    const { webAudioStarted } = this.state
 
     return (
       <div className="SynthContainer">
@@ -183,6 +183,6 @@ export default class SynthContainer extends PureComponent {
           ? this.renderSynthRoom()
           : this.renderWelcomeScreen()}
       </div>
-    );
+    )
   }
 }

@@ -1,2 +1,9 @@
-<%= javascript_pack_tag "interactive_module_#{@interactive_module.id}" %>
-<div class="interactive_module_<%= @interactive_module.id %>"></div>
+<%
+  javascript_url = @interactive_module.javascript.url + '/' + @interactive_module.javascript_identifier
+  stylesheet_url = @interactive_module.stylesheet.url + '/' + @interactive_module.stylesheet_identifier
+%>
+
+<script src="<%= javascript_url %>" charset="utf-8"></script>
+<link rel="stylesheet" href="<%= stylesheet_url %>">
+
+<div class="interactive_module"></div>

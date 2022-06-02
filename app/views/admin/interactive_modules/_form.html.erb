@@ -1,4 +1,4 @@
-<%= form_with(model: interactive_module) do |form| %>
+<%= form_with(model: [:admin, interactive_module], multipart: true) do |form| %>
   <% if interactive_module.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(interactive_module.errors.count, "error") %> prohibited this interactive_module from being saved:</h2>
@@ -19,6 +19,16 @@
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :javascript %>
+    <%= form.file_field :javascript %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stylesheet %>
+    <%= form.file_field :stylesheet %>
   </div>
 
   <div class="actions">

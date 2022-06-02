@@ -58,4 +58,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'cancancan'
-gem 'wdm', '>= 0.1.0'
+gem 'carrierwave', '~> 2.0'
+# gem 'wdm', '>= 0.1.0'

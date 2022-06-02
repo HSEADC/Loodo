@@ -1,5 +1,5 @@
 {
-  "name": "ADC-Generative-Art-Boilerplate",
+  "name": "ADC-Synth-Tutorial",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

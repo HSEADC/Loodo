@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2022_05_12_103140) do
   create_table "interactive_modules", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "javascript"
+    t.string "stylesheet"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

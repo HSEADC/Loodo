@@ -1,6 +1,11 @@
 import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
+import { styles } from '../module_components/CodeModule-styles'
+SyntaxHighlighter.registerLanguage('javascript', js)
+
 import { generateUniqId } from '../utilities'
 import * as allMelodySynth from '../tunes/all_melody_synth'
 
@@ -17,86 +22,6 @@ export default class KeyboardContainer extends PureComponent {
     this.state = {
       webAudioStarted: false,
       instruments: [],
-      keyboards: {
-        id: generateUniqId(),
-        isPlaying: false
-        // blackKeys: [
-        //   {
-        //     note: 'C#',
-        //     key: 'w',
-        //     isPlaying: false,
-        //     classList: ['PianoBlackKey']
-        //   },
-        //   {
-        //     note: 'D#',
-        //     key: 'e',
-        //     isPlaying: this.state.pianoKeys.dUp.isPlaying,
-        //     classList: ['PianoBlackKey']
-        //   },
-        //   {
-        //     note: 'F#',
-        //     key: 't',
-        //     isPlaying: this.state.pianoKeys.fUp.isPlaying,
-        //     classList: ['PianoBlackKey']
-        //   },
-        //   {
-        //     note: 'G#',
-        //     key: 'y',
-        //     isPlaying: this.state.pianoKeys.gUp.isPlaying,
-        //     classList: ['PianoBlackKey']
-        //   },
-        //   {
-        //     note: 'A#',
-        //     key: 'u',
-        //     isPlaying: this.state.pianoKeys.aUp.isPlaying,
-        //     classList: ['PianoBlackKey']
-        //   }
-        // ],
-        // whiteKeys: [
-        //   {
-        //     note: 'C',
-        //     key: 'a',
-        //     isPlaying: this.state.pianoKeys.c.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'D',
-        //     key: 's',
-        //     isPlaying: this.state.pianoKeys.d.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'E',
-        //     key: 'd',
-        //     isPlaying: this.state.pianoKeys.e.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'F',
-        //     key: 'f',
-        //     isPlaying: this.state.pianoKeys.f.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'G',
-        //     key: 'g',
-        //     isPlaying: this.state.pianoKeys.g.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'A',
-        //     key: 'h',
-        //     isPlaying: this.state.pianoKeys.a.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   },
-        //   {
-        //     note: 'B',
-        //     key: 'j',
-        //     isPlaying: this.state.pianoKeys.b.isPlaying,
-        //     classList: ['PianoWhiteKey']
-        //   }
-        // ]
-      },
       keys: [],
       pianoKeys: {
         octave: '4',
@@ -709,9 +634,29 @@ export default class KeyboardContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
+    const codeTest = `    // Создали ноду синта
+    const synth = new Tone.Synth().toDestination()
+
+    // Функция для тригера первой кнопки
+    synth.triggerAttackRelease("1")
+
+    // Функция для тригера второй кнопки
+    synth.triggerAttackRelease("1hz")`
+
     window.addEventListener('keydown', this.handleNotesKeyDown, false)
     window.addEventListener('keyup', this.handleNotesKeyUp, false)
 
-    return <div className="SynthContainer">{this.renderRoom()}</div>
+    return (
+      <div className="SynthContainer">
+        {this.renderRoom()}{' '}
+        <div className="CodeModule">
+          <h1>Пример кода</h1>
+
+          <SyntaxHighlighter language="javascript" style={styles}>
+            {codeTest}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+    )
   }
 }

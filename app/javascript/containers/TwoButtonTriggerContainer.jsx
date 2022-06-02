@@ -1,10 +1,16 @@
 import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
+import { styles } from '../module_components/CodeModule-styles'
+SyntaxHighlighter.registerLanguage('javascript', js)
+
 import { generateUniqId } from '../utilities'
 
 import WelcomeScreen from '../views/WelcomeScreen'
 import TwoButtonTriggerModule from '../views/TwoButtonTriggerModule'
+import CodeModule from '../module_components/CodeModule'
 
 export default class TwoButtonTriggerContainer extends PureComponent {
   constructor(props) {
@@ -112,6 +118,26 @@ export default class TwoButtonTriggerContainer extends PureComponent {
   render() {
     const { webAudioStarted } = this.state
 
-    return <div className="SynthContainer">{this.renderRoom()}</div>
+    const codeTest = `    // Создали синтезатор
+    const synth = new Tone.Synth().toDestination()
+
+    // Функция для тригера первой кнопки
+    synth.triggerAttackRelease("1")
+
+    // Функция для тригера второй кнопки
+    synth.triggerAttackRelease("1hz")`
+
+    return (
+      <div className="SynthContainer">
+        {this.renderRoom()}
+        <div className="CodeModule">
+          <h1>Пример кода</h1>
+
+          <SyntaxHighlighter language="javascript" style={styles}>
+            {codeTest}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+    )
   }
 }

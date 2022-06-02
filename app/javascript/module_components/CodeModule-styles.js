@@ -1,10 +1,12 @@
 const styles = {
   hljs: {
     display: 'block',
-    overflowX: 'auto',
-    padding: '0.5em',
+    overflowX: 'hidden',
+    padding: '20px 20px 20px 0px',
     color: '#abb2bf',
-    background: '#282c34'
+    background: '#232323',
+    width: 'fit-content',
+    minwidth: '600px'
   },
   'hljs-comment': {
     color: '#5c6370',

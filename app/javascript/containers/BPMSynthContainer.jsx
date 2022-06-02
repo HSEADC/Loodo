@@ -1,6 +1,11 @@
 import * as Tone from 'tone'
 import React, { PureComponent } from 'react'
 
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
+import { styles } from '../module_components/CodeModule-styles'
+SyntaxHighlighter.registerLanguage('javascript', js)
+
 import { generateUniqId } from '../utilities'
 
 import WelcomeScreen from '../views/WelcomeScreen'
@@ -145,6 +150,7 @@ export default class BPMSynthContainer extends PureComponent {
       <BPMSynthModule
         instruments={instruments}
         handlePropertyValueChange={this.handlePropertyValueChange}
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         handlePlaySequence={this.playSequence}
         togglePlay={this.state.togglePlay}
         disabled={this.props.disabled}
@@ -155,6 +161,45 @@ export default class BPMSynthContainer extends PureComponent {
   }
 
   render() {
-    return <div className="SynthContainer">{this.renderRoom()}</div>
+    const { bpm, togglePlay } = this.state
+
+    let isPlaying = ''
+
+    if (togglePlay) {
+      isPlaying = `// Запустили сиквенцию
+      Tone.Transport.start()`
+    } else {
+      isPlaying = `// Остановили сиквенцию
+      Tone.Transport.stop()`
+    }
+
+    const codeTest = `    // Создали синтезатор
+    const melodySynthNode = new Tone.Synth(melodySynthSettings).toDestination()
+
+    // Создали сиквенцию
+    const seq = new Tone.Sequence(
+      (time, note) => {
+        instruments[0].node.triggerAttackRelease(note, 0.8, time)
+      },
+      ['C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4', 'C4', 'E4', 'G4',
+        'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3', 'E4', 'G4', 'B3']
+      ).start(0)
+
+    ${isPlaying}
+
+    // Значение BPM
+    Tone.Transport.bpm.value = ${bpm}`
+    return (
+      <div className="SynthContainer">
+        {this.renderRoom()}
+        <div className="CodeModule">
+          <h1>Пример кода</h1>
+
+          <SyntaxHighlighter language="javascript" style={styles}>
+            {codeTest}
+          </SyntaxHighlighter>
+        </div>
+      </div>
+    )
   }
 }

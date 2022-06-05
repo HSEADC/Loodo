@@ -20,12 +20,20 @@
       line-height: 47px;
     }
 
+    .Input:hover {
+      cursor: text;
+    }
+
     .Input:empty:focus::before {
       content: '';
     }
 
     .NameContainer {
       width: 240px;
+
+      &:hover {
+        cursor: default;
+      }
 
       .Input {
         font-size: 27px;
@@ -43,11 +51,19 @@
     .DescriptionContainer {
       width: 320px;
 
+      &:hover {
+        cursor: default;
+      }
+
       .Input {
         font-size: 14px;
         line-height: 18px;
         margin-top: 18px;
         font-weight: 400;
+      }
+
+      .Input:hover {
+        cursor: text;
       }
 
       .Input:empty:before {

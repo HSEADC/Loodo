@@ -186,7 +186,11 @@ export default class LessonsEditor extends PureComponent {
       <div className="LessonsEditor">
         <div className="LessonsEditorHeading">Уроки</div>
         <DndProvider backend={HTML5Backend}>{this.renderLessons()}</DndProvider>
-        <a href={newLessonUrl}>Добавить урок</a>
+        <div className="AddLessonContainer">
+          <a className="AddLesson" href={newLessonUrl}>
+            + Добавить урок
+          </a>
+        </div>
       </div>
     )
   }

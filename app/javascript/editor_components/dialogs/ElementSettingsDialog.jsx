@@ -43,7 +43,7 @@ export default class ElementSettingsDialog extends PureComponent {
     return (
       <dialog className="ElementSettingsDialog" id={styleId}>
         <div
-          className="Button"
+          className="SettingsButton"
           onClick={() => {
             this.handleOpenChangeTypeModule(id)
           }}
@@ -51,7 +51,7 @@ export default class ElementSettingsDialog extends PureComponent {
           Поменять тип модуля
         </div>
         <div
-          className="Button"
+          className="SettingsButton"
           onClick={() => {
             handleDeleteElement(id)
           }}

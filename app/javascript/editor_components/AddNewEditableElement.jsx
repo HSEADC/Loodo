@@ -133,11 +133,3 @@ export default class AddNewEditableElement extends PureComponent {
     )
   }
 }
-
-// <dialog className="AddModuleDialog" id={'AddModuleDialog_' + id}>
-//   This is an open dialog window
-// </dialog>
-
-// <div className="AddButtonContainer">
-//   {plusWasPressed ? <AddButton /> : ''}
-// </div>

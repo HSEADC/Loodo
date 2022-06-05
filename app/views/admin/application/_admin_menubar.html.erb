@@ -2,9 +2,9 @@
   <div class="LeftPart">
     <div class="Logo"> </div>
     <%= link_to "Уроки", admin_lessons_path %>
-    <%= link_to "Модули", admin_interactive_modules_path %>
+    <%= link_to "Интерактивные модули", admin_interactive_modules_path %>
 
 
   </div>
-  <div> <%= link_to "Log out", destroy_user_session_path if user_signed_in? %> </div>
+  <div> <%= link_to "Выход", destroy_user_session_path if user_signed_in? %> </div>
 </div>

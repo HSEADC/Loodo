@@ -1,22 +1,64 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Lessons</h1>
+  <div class="ADCWhiteLogo"> </div>
+  <div class="ADCSmille"> </div>
+  <div class="GreenBlueGradient"> </div>
+  <div class="H1Container">
+    <h1>Интерактивный Онлайн-курс по Tone.js</h1>
+    <a href="#">Начать курс</a>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="MacbookContainer">
+    <div class="MacbookIllustration"> </div>
+    <div class="H2Container">
+      <h2>Чему ты научишься?</h2>
+      <p>В нашем интерактивном курсе ты научишься пользоваться Tone.js. Мы объясним как устроено время, ноты и эффекты в библиотеке. Дадим возможность создать бит и покажем, как его перенести в код. </p>
+      <a href="#">Начать курс</a>
+    </div>
+  </div>
 
-  <tbody>
-    <% @lessons.each do |lesson| %>
-      <tr>
-        <td><%= lesson.name %></td>
-        <td><%= link_to lesson.description, lesson %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="BluePinkGradient"> </div>
+
+  <div class="LessonsContainer">
+    <h3>Уроки</h3>
+    <div class="firstRow">
+      <a href="https://yandex.ru/">
+        <h4>Синтез звука</h4>
+        <p>Расскажем, как создается звук в браузере. Также немного расскажем, про синтезаторы, эффекты, секвенсоры и сэмплеры.</p>
+        <div class="ArrowIcon">
+        </div>
+      </a>
+      <a href="#">
+        <h4>Время и ноты</h4>
+        <p>Покажем, как устроено время и нотная нотация в Тоне. Также немного увидите, как устроена музыкальная теория.</p>
+        <div class="ArrowIcon">
+        </div>
+      </a>
+      <a href="#">
+        <h4>Инструменты в тоне</h4>
+        <p>Продемонстрируем инструменты в Тоне. Покажем как устроены синтезаторы и как работает семплер.</p>
+        <div class="ArrowIcon">
+        </div>
+      </a>
+    </div>
+
+    <div class="secondRow">
+      <a href="#">
+        <h4>Звуковые эффекты </h4>
+        <p>Познакомим вас со всеми эффектами доступными в Tone.js. Вы сможете использовать этот урок в будущем, чтобы возвращаться к описанию эффектов.</p>
+        <div class="ArrowIcon">
+        </div>
+      </a>
+      <a href="#">
+        <h4>Каналы, микширование и создание музыки</h4>
+        <p>В этом уроке мы расскажем, как устроены каналы в Tone.js. Как объединять несколько сигналов в один микшер и управлять исходящим звуком.</p>
+        <div class="ArrowIcon">
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="PinkRod"></div>
+  <div class="GreenRod"></div>
+  <div class="PinkBlueGreenGradient"></div>
+  <%= render 'footer' %>

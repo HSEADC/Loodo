@@ -16,8 +16,11 @@
  *= require basics
  *= require fonts
  *= require scaffolds
+ *= require scaffolds
+
  *= require_tree ./containers
  *= require_tree ./controls
+ *= require_tree ./course_landing
  *= require_tree ./views
  *= require_tree ./interactive_modules
  *= require_tree ./lessons

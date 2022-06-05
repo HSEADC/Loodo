@@ -1,0 +1,400 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  z-index: -1000;
+  overflow-x: hidden;
+  position: relative;
+
+  .ADCWhiteLogo {
+    width: 60px;
+    height: 20px;
+
+    background-image: image-url('ADCWhiteLogo');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+    margin-left: 60px;
+    margin-top: 40px;
+  }
+
+  .ADCSmille {
+    background-image: image-url('ADCSmille');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 625px;
+    height: 600px;
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    z-index: -100;
+  }
+
+  .GreenBlueGradient {
+    background-image: image-url('GreenBlueGradient');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 1480px;
+    height: 1297px;
+    position: absolute;
+    right: -379px;
+    top: -283px;
+    z-index: -101;
+  }
+
+  .BluePinkGradient {
+    background-image: image-url('BluePinkGradient');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    top: 561px;
+    left: -716px;
+    position: absolute;
+
+    width: 1970px;
+    height: 1958px;
+    z-index: -101;
+  }
+
+  .PinkBlueGreenGradient {
+    background-image: image-url('PinkBlueGreenGradient');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    position: absolute;
+    bottom: 84px;
+    z-index: -101;
+    right: 0px;
+    width: 1560px;
+    height: 657px;
+  }
+
+  .MacbookIllustration {
+    background-image: image-url('MacbookIllustration');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 636px;
+    height: 488px;
+  }
+
+  .H1Container {
+    margin-left: 120px;
+    margin-top: 110px;
+
+    h1 {
+      font-size: 64px;
+      font-weight: 700;
+      width: 500px;
+    }
+
+    a {
+      width: 200px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      border: 3px solid var(--acid-green);
+      color: var(--acid-green);
+      font-size: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      line-height: 156%;
+      margin-top: 60px;
+    }
+
+    a:hover {
+      background-color: var(--acid-green);
+      color: var(--black);
+    }
+  }
+
+  .MacbookContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 120px;
+    margin-top: 340px;
+
+    .H2Container {
+      h2 {
+        font-size: 48px;
+        font-weight: 700;
+        width: 500px;
+      }
+
+      a {
+        width: 200px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        border: 3px solid var(--acid-green);
+        color: var(--acid-green);
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        line-height: 156%;
+        margin-top: 60px;
+      }
+
+      a:hover {
+        background-color: var(--acid-green);
+        color: var(--black);
+      }
+
+      p {
+        width: 600px;
+        font-size: 24px;
+        line-height: 38px;
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .LessonsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 140px;
+
+    h3 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    a {
+      color: var(--white);
+      padding-top: 30px;
+      padding-left: 40px;
+      background: rgba(50, 50, 50, 0.57);
+      height: 320px;
+      border-radius: 20px;
+      text-decoration: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    h4 {
+      font-size: 32px;
+      font-weight: 700;
+      width: 300px;
+      line-height: 40px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 32px;
+      margin-top: 14px;
+    }
+
+    .ArrowIcon {
+      background-image: image-url('ArrowIcon');
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      width: 37px;
+      height: 24px;
+
+      margin-top: 24px;
+
+      left: 40px;
+      top: 272px;
+    }
+
+    .firstRow {
+      display: flex;
+      justify-content: space-between;
+      width: 1200px;
+
+      p {
+        width: 308px;
+      }
+
+      a {
+        width: 388px;
+      }
+    }
+
+    .secondRow {
+      display: flex;
+      justify-content: space-between;
+      width: 1200px;
+      margin-top: 18px;
+
+      h4 {
+        width: 351px;
+      }
+
+      p {
+        width: 510px;
+      }
+      a {
+        width: 591px;
+      }
+    }
+  }
+
+  .PinkRod {
+    background-image: image-url('PinkRod');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 0px;
+    left: -218px;
+    z-index: -101;
+
+    width: 597px;
+    height: 596px;
+  }
+
+  .GreenRod {
+    background-image: image-url('GreenRod');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 439px;
+    right: -235px;
+
+    width: 489px;
+    height: 803px;
+  }
+
+  footer {
+    background-color: var(--dark-grey);
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    z-index: -3;
+    .FooterContainer {
+      width: 1200px;
+      font-size: 16px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+
+      ul {
+        display: flex;
+        font-weight: 700;
+
+        a {
+          margin-left: 30px;
+          font-weight: 400;
+
+          color: var(--white);
+          text-decoration: none;
+
+          &:hover {
+            color: #b6b6b6;
+          }
+        }
+      }
+
+      .LoodoPromoteContainer {
+        margin-top: 40px;
+        background: linear-gradient(337.89deg, #6a11cb -2.38%, #2575fc 114.87%);
+        border-radius: 20px;
+        padding: 26px 90px 26px 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Circe';
+        position: relative;
+
+        .BubblesFutter {
+          background-image: image-url('BubblesFutter');
+          background-repeat: no-repeat;
+          background-size: contain;
+          border-radius: 20px 0px 0px 0px;
+          width: 917px;
+          height: 100%;
+          position: absolute;
+          z-index: 2;
+          opacity: 0.8;
+          left: 0px;
+        }
+
+        a {
+          color: var(--black);
+          font-size: 18px;
+          font-weight: 700;
+          text-decoration: none;
+          line-height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 189px;
+          height: 50px;
+          background-color: var(--white);
+          border-radius: 10px;
+        }
+
+        p {
+          font-size: 20px;
+          font-weight: 400;
+          margin-top: 12px;
+          line-height: 24px;
+          width: 276px;
+        }
+
+        .DescriptionContainer {
+          z-index: 99;
+          .HeadingContainer {
+            display: flex;
+            align-items: baseline;
+            z-index: 100;
+
+            h5 {
+              font-size: 24px;
+              font-weight: 700;
+              line-height: 28px;
+            }
+
+            .LoodoWhiteIcon {
+              background-image: image-url('LoodoWhiteIcon');
+              background-repeat: no-repeat;
+              background-size: contain;
+
+              width: 113px;
+              height: 16px;
+
+              margin-left: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .BottomContainer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+
+      a {
+        color: var(--white);
+        text-decoration: none;
+
+        margin-left: 30px;
+
+        &:first-of-type {
+          margin-left: 0px;
+        }
+
+        &:hover {
+          color: #b6b6b6;
+        }
+      }
+    }
+  }
+}

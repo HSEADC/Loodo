@@ -21,3 +21,15 @@
   src: asset-url('PT_Root_UI_Regular') format('truetype');
   font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Circe';
+  src: asset-url('Circe_Bold') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: asset-url('Circe_Regular') format('truetype');
+  font-weight: 400;
+}

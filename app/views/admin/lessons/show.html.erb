@@ -1,12 +1,21 @@
 <%
   props = {
+    name: @lesson.name,
+    description: @lesson.description,
     elementsUrl: admin_lesson_lesson_elements_url(@lesson)
   }
 %>
 
-<% if user_signed_in? %>
-  <%= link_to 'Edit', edit_admin_lesson_path(@lesson) %>
-<% end %>
+<div class="PreviewContainer">
+  <div class="PreviewHeader">
+    Предпросмотр урока
+  </div>
+  <% if user_signed_in? %>
+    <%= link_to 'Перейти в редактор', edit_admin_lesson_path(@lesson) %>
+  <% end %>
+</div>
+
+
 
 <%= javascript_pack_tag 'lesson_viewer' %>
 <div id="viewer" data-props="<%= props.to_json %>"></div>

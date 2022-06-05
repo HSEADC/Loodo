@@ -4,6 +4,9 @@
   position: fixed;
   width: 100%;
   background-color: white;
+  top: 0px;
+  z-index: 100;
+
   .Logo {
     background-image: image-url('LogoColor.svg');
     width: 77px;

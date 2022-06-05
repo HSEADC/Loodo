@@ -1,0 +1,35 @@
+.LessonMenuDialog {
+  position: absolute;
+  right: -870px;
+  top: 0px;
+  background-color: var(--editor-white);
+  border-radius: 8px;
+  border: 0px;
+  box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.12);
+  cursor: default;
+
+  a {
+    outline: none;
+    display: block;
+    color: var(--editor-dark-grey);
+    font-weight: 500;
+    text-decoration: none;
+    cursor: default;
+    margin-bottom: 10px;
+
+    &:hover {
+      color: var(--editor-black);
+      cursor: pointer;
+    }
+  }
+
+  .SettingsButton {
+    color: var(--editor-active-red);
+    font-weight: 500;
+
+    &:hover {
+      color: var(--editor-hover-red);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,101 +1,57 @@
-.LessonsListItem {
-  .name {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--editor-black);
-  }
-  .description {
-    margin-top: 6px;
-    line-height: 20px;
-    font-size: 16px;
-    color: var(--editor-dark-grey);
-  }
-  display: block;
+.onDragContainer {
+}
 
-  text-decoration: none;
-  min-height: 66px;
-  width: 700px;
-  padding: 12px 16px 12px 16px;
-  background-color: var(--editor-sheep-white);
-  border-radius: 12px;
-  margin-top: -20px;
+.onDropContainer {
 }
 
 .LessonsListItemContainer {
+  display: flex;
+  position: relative;
+  width: 700px;
+  margin-top: 20px;
+  padding: 12px 0px 12px 16px;
+  background-color: var(--editor-sheep-white);
+  border-radius: 12px;
+  min-height: 66px;
   width: 700px;
 
-  margin-top: 20px;
-}
+  .LessonsListItem {
+    width: 100%;
+    display: block;
+    text-decoration: none;
 
-.LessonsMenuSelect {
-  .KebabMenuIcon {
-    width: 9px;
-    height: 15px;
-    background-image: image-url('KebabMenuDefault');
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+    .name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--editor-black);
+    }
 
-  &:hover {
-    cursor: pointer;
-    .KebabMenuIcon {
-      background-image: image-url('KebabMenuHover');
-      background-repeat: no-repeat;
-      background-size: contain;
+    .description {
+      margin-top: 6px;
+      line-height: 20px;
+      font-size: 16px;
+      width: 500px;
+      color: var(--editor-dark-grey);
     }
   }
 
-  display: flex;
-
-  height: 20px;
-
-  position: relative;
-
-  left: 676px;
-  top: 16px;
-}
-
-.OptionsSelectContainer {
-  height: fit-content;
-  border-radius: 8px;
-  padding: 16px 16px 16px 16px;
-  box-shadow: 0px 4px 11px 0px #0000001f;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-
-  width: fit-content;
-  font-size: 16px;
-  font-weight: 400;
-
-  display: none;
-
-  &.on {
-    display: block;
-  }
-
-  a:first-of-type {
-    margin-top: 0px;
-  }
-
-  a:hover {
-    color: var(--editor-black);
-  }
-
-  a {
-    color: var(--editor-dark-grey);
-    text-decoration: none;
-    display: block;
-    width: fit-content;
-    margin-top: 10px;
-  }
-
-  div {
-    color: var(--editor-active-red);
-    margin-top: 10px;
-  }
-
-  div:hover {
-    color: var(--editor-hover-red);
+  .SettingsIconContainer {
+    width: 24px;
+    background-color: var(--editor-sheep-white);
+    height: 100%;
+    margin-top: 4px;
+    .KebabMenuIcon {
+      width: 9px;
+      height: 15px;
+      background-image: image-url('KebabMenuDefault');
+      background-repeat: no-repeat;
+      background-size: contain;
+      &:hover {
+        cursor: pointer;
+        background-image: image-url('KebabMenuHover');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
   }
 }

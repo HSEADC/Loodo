@@ -12,7 +12,8 @@ export default class LessonsEditor extends PureComponent {
 
     this.state = {
       lessons: [],
-      draggedPosition: null
+      draggedPosition: null,
+      openedDialog: null
     }
   }
 
@@ -151,11 +152,37 @@ export default class LessonsEditor extends PureComponent {
   }
 
   handleDragLesson = (position) => {
+    const { openedDialog } = this.state
     let newDraggedPosition = position
 
+    openedDialog.close()
+
     this.setState({
-      draggedPosition: newDraggedPosition
+      draggedPosition: newDraggedPosition,
+      openedDialog: null
     })
+  }
+
+  handleOpenLessonMenuDialog = (dialogToOpen) => {
+    const { openedDialog } = this.state
+
+    if (openedDialog !== dialogToOpen && openedDialog !== null) {
+      dialogToOpen.show()
+      openedDialog.close()
+      this.setState({
+        openedDialog: dialogToOpen
+      })
+    } else if (openedDialog === null) {
+      dialogToOpen.show()
+      this.setState({
+        openedDialog: dialogToOpen
+      })
+    } else if (openedDialog === dialogToOpen) {
+      dialogToOpen.close()
+      this.setState({
+        openedDialog: null
+      })
+    }
   }
 
   renderLessons = () => {
@@ -168,6 +195,7 @@ export default class LessonsEditor extends PureComponent {
         <LessonsListItem
           {...lesson}
           handleDeleteLesson={this.handleDeleteLesson}
+          handleOpenLessonMenuDialog={this.handleOpenLessonMenuDialog}
           lessonsUrl={lessonsUrl}
           handleDropLesson={this.handleDropLesson}
           handleDragLesson={this.handleDragLesson}

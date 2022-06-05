@@ -3,19 +3,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 48px;
 
   .LessonsEditorHeading {
     font-size: 32px;
     font-weight: 700;
     width: 700px;
-    margin-top: 20px;
-  }
-
-  .LessonsListItemContainer:first-of-type {
-    margin-top: 0px;
-  }
-
-  .LessonsListItemContainer {
     margin-top: 20px;
   }
 

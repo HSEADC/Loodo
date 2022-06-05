@@ -45,6 +45,22 @@ export default class Viewer extends PureComponent {
   }
 
   render() {
-    return <div className="Viewer">{this.renderElements()}</div>
+    const { name, description } = this.props
+
+    return (
+      <div className="Viewer">
+        <div className="CourseHeaderContainer">
+          <div className="NameContainer">
+            <h5>Название урока</h5>
+            <div>{name}</div>
+          </div>
+          <div className="DescriptionContainer">
+            <h5>Описание</h5>
+            <div>{description}</div>
+          </div>
+        </div>
+        {this.renderElements()}
+      </div>
+    )
   }
 }

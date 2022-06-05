@@ -19,8 +19,6 @@ export default class InteractiveModuleDownloadDialog extends PureComponent {
       handleCloseInteractiveModuleDownloadDialog
     } = this.props
 
-    console.log(text)
-
     return (
       <dialog className="InteractiveModuleDownloadDialog" id={styleId}>
         <div className="InteractiveModuleDownloadContainer">

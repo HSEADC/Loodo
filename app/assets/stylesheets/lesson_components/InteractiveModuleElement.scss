@@ -1,0 +1,99 @@
+.InteractiveModuleElement {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+
+  .AddModuleDialog {
+    top: 33px;
+  }
+
+  .ElementSettingsDialog {
+    position: absolute;
+    top: 30px;
+    left: -482px;
+  }
+
+  .InteractiveModuleSettingsContainer {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .CompositionBlock {
+    width: 44px;
+  }
+
+  .InteractiveModuleSettings {
+    display: flex;
+    justify-content: center;
+
+    margin-right: 4px;
+
+    .IconButtonContainer {
+      transition: opacity 0.3s;
+      opacity: 0;
+
+      .PlusIcon {
+        margin-top: 10px;
+      }
+
+      .DragIcon {
+        margin-top: 12px;
+      }
+    }
+
+    .FileChange {
+      color: var(--editor-active-blue);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .FileChange:hover {
+      color: var(--editor-hover-blue);
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      margin-right: 6px;
+      color: var(--editor-grey);
+
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    input {
+      border: none;
+      outline: none;
+      width: 44px;
+      font-size: 16px;
+      padding: 0px;
+      font-weight: 500;
+    }
+
+    span:last-of-type {
+      margin-left: 20px;
+    }
+  }
+
+  &:hover {
+    .InteractiveModuleSettings {
+      display: flex;
+
+      .IconButtonContainer {
+        opacity: 1;
+
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

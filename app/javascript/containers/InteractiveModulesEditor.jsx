@@ -106,7 +106,10 @@ export default class InteractiveModulesEditor extends PureComponent {
           Интерактивные модули
         </div>
         {this.renderInteractiveModules()}
-        <a>Добавить интерактивный модуль</a>
+        <a className="UploadModule">
+          <div className="UploadIcon"> </div>
+          <div className="UploadModuleText">Загрузить интерактивный модуль</div>
+        </a>
       </div>
     )
   }

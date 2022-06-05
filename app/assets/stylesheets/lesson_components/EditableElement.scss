@@ -84,6 +84,14 @@
     .ModuleSettings {
       margin-top: 10px;
     }
+
+    .AddModuleDialog {
+      left: -381px;
+      top: 62px;
+      background-color: white;
+      color: red;
+      z-index: 200;
+    }
   }
 
   &.heading3 {

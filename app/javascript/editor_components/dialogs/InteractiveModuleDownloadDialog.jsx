@@ -19,12 +19,14 @@ export default class InteractiveModuleDownloadDialog extends PureComponent {
       handleCloseInteractiveModuleDownloadDialog
     } = this.props
 
+    console.log(text)
+
     return (
       <dialog className="InteractiveModuleDownloadDialog" id={styleId}>
         <div className="InteractiveModuleDownloadContainer">
           <div className="Description">
             <div className="Header">Название модуля</div>
-            <input className="DescriptionInput" />
+            <input className="DescriptionInput" value="Тригер" />
           </div>
           <div className="File">
             <div className="Header">Файл модуля</div>

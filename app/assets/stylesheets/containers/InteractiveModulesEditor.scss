@@ -1,0 +1,58 @@
+.InteractiveModulesEditor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 48px;
+
+  .InteractiveModulesEditorHeading {
+    font-size: 32px;
+    font-weight: 700;
+    width: 700px;
+    margin-top: 20px;
+  }
+
+  .LessonsListItemContainer:first-of-type {
+    margin-top: 0px;
+  }
+
+  .LessonsListItemContainer {
+    margin-top: 20px;
+  }
+
+  .UploadModule {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 60px;
+
+    &:hover {
+      cursor: pointer;
+      .UploadIcon {
+        background-image: image-url('UploadIconHover');
+      }
+
+      .UploadModuleText {
+        color: var(--editor-hover-blue);
+      }
+    }
+
+    .UploadIcon {
+      background-image: image-url('UploadIconDefault');
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      width: 22px;
+      height: 22px;
+    }
+
+    .UploadModuleText {
+      color: var(--editor-active-blue);
+      font-weight: 700;
+      margin-left: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+    }
+  }
+}

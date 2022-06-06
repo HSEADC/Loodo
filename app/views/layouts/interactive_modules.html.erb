@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="interactive_modules_<%= action_name %> <%= @interactive_module && @interactive_module.persisted? ? 'interactive_module_body_' + @interactive_module.id.to_s : '' %>">
+  <body class="Modules interactive_modules_<%= action_name %> <%= @interactive_module && @interactive_module.persisted? ? 'interactive_module_body_' + @interactive_module.id.to_s : '' %>">
     <%= yield %>
   </body>
 </html>

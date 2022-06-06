@@ -1,18 +1,79 @@
-.FourthLesson {
-  background-color: #2d2d2d;
+.Lessons {
+  background-color: var(--background-grey);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .MenuBar {
+    background-color: #000;
+    color: #fff;
+    height: 54px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .LogoMenubarContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .LeftMenubarPart {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .MenuButton {
+      width: 24px;
+      height: 16px;
+      background-image: image-url('MenuButton.svg');
+    }
+
+    span {
+      height: 22px;
+      // margin-top: 16px;
+      // margin-left: 44px;
+    }
+
+    span:first-of-type {
+      vertical-align: Center;
+      font-size: 16px;
+      font-weight: 700;
+      margin-left: 20px;
+    }
+
+    span:last-of-type {
+      vertical-align: Center;
+      font-weight: 400;
+      margin-left: 20px;
+    }
+
+    .LogoADC {
+      width: 55px;
+      height: 18px;
+      background-image: image-url('LogoADC.svg');
+    }
+  }
 
   .LessonHeader {
-    width: 100%;
+    width: 600px;
     background-color: #2d2d2d;
-    padding-left: 420px;
-    padding-right: 420px;
-    padding-top: 94px;
+    // padding-left: 420px;
+    // padding-right: 420px;
+    padding-top: 50px;
 
     .LessonHeaderContainer {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       width: 600px;
+      margin-bottom: 32px;
+      padding-top: 32px;
     }
 
     .LessonName {
@@ -20,13 +81,14 @@
 
       span {
         line-height: 16px;
-        font-size: 12px;
-        color: #868686;
+        font-size: 14px;
+        color: var(--medium-grey);
         font-weight: 600;
+        margin-top: 4px;
       }
 
       h1 {
-        line-height: 30px;
+        line-height: 38px;
         margin-top: 6px;
         font-size: 24px;
         color: #fff;
@@ -38,13 +100,15 @@
 
       span {
         line-height: 16px;
-        font-size: 12px;
-        color: #868686;
+        font-size: 14px;
+        color: var(--medium-grey);
+
         font-weight: 600;
       }
 
       h5 {
-        line-height: 21px;
+        margin-top: 18px;
+        line-height: 20px;
         font-size: 14px;
         color: #fff;
       }
@@ -61,7 +125,6 @@
   .BigHeaderBlock {
     padding-left: 420px;
     padding-top: 40px;
-    padding-bottom: 20px;
     padding-right: 420px;
 
     background-color: #2d2d2d;
@@ -72,116 +135,78 @@
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 27px;
     color: #fff;
-    line-height: 33px;
+    line-height: 38px;
     font-weight: 700;
+    width: 600px;
+    margin-top: 40px;
   }
 
-  h1 {
-    font-size: 20px;
+  h3 {
+    font-size: 24px;
     color: #fff;
-    line-height: 33px;
+    line-height: 36px;
     font-weight: 700;
+    width: 600px;
+    margin-top: 30px;
+  }
+
+  h4 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+    font-weight: 700;
+    width: 600px;
+    margin-top: 22px;
   }
 
   p {
     font-size: 18px;
     font-weight: 400;
-
     color: #fff;
     line-height: 28px;
-  }
-
-  h4 {
-    font-size: 20px;
-    color: #fff;
-    font-weight: 700;
-  }
-
-  .MediumHeaderBlock {
-    padding-left: 420px;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    padding-right: 420px;
-
-    background-color: #2d2d2d;
+    width: 600px;
+    margin-top: 14px;
   }
 
   .InteractiveBlock {
-    background-color: #232323;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    background-color: var(--background-grey);
+
     margin-top: 40px;
     margin-bottom: 40px;
+    width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .InteractiveBlockSequencer {
-    background-color: #232323;
-    padding-top: 40px;
-    padding-bottom: 40px;
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
   }
 
-  .SepparatorCodeModule {
-    margin-top: 40px;
-  }
-
-  .InteractiveBlockSampler {
-    background-color: #232323;
-    padding-top: 40px;
-    padding-bottom: 40px;
+  .InteractiveBlockChaning {
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+  }
 
-    .SupportContainer {
-      width: 600px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row;
-      margin-bottom: 40px;
+  .InteractiveBlockMakeSequence {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      .SupportHeader {
-        width: 320px;
-      }
-
-      .SuccessBlock {
-        border-radius: 12px;
-        font-weight: 500;
-        padding: 16px 20px 16px 20px;
-        color: #79ff39;
-      }
-
-      h3 {
-        font-size: 20px;
-        color: #fff;
-        font-weight: 700;
-        margin-bottom: 20px;
-      }
-
-      span {
-        color: #757575;
-        font-size: 14px;
-        font-weight: 500;
-        height: 20px;
-      }
-
-      p {
-        margin-top: 8px;
-        font-size: 18px;
+    iframe {
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
   }

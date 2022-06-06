@@ -19,5 +19,19 @@ class LessonsController < ApplicationController
     unless previous_lesson_id < first_lesson_id
       @previous_lesson = Lesson.find(previous_lesson_id)
     end
+
+    if @lesson.id === 1
+      render 'lesson_1'
+    elsif @lesson.id === 2
+      render 'lesson_2'
+    elsif @lesson.id === 3
+      render 'lesson_3'
+    elsif @lesson.id === 4
+      render 'lesson_4'
+    elsif @lesson.id === 5
+      render 'lesson_5'
+    else
+      render :show
+    end
   end
 end

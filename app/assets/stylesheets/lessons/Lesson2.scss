@@ -1,62 +1,6 @@
 .SecondLesson {
   background-color: #2d2d2d;
 
-  .MenuBar {
-    background-color: #000;
-    color: #fff;
-    height: 54px;
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    .LogoMenubarContainer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .LeftMenubarPart {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-
-    .MenuButton {
-      width: 24px;
-      height: 16px;
-      background-image: image-url('MenuButton.svg');
-    }
-
-    span {
-      height: 22px;
-      // margin-top: 16px;
-      // margin-left: 44px;
-    }
-
-    span:first-of-type {
-      vertical-align: Center;
-      font-size: 16px;
-      font-weight: 700;
-      margin-left: 20px;
-    }
-
-    span:last-of-type {
-      vertical-align: Center;
-      font-weight: 400;
-      margin-left: 20px;
-    }
-
-    .LogoADC {
-      width: 55px;
-      height: 18px;
-      background-image: image-url('LogoADC.svg');
-    }
-  }
-
   .LessonHeader {
     width: 100%;
     background-color: #2d2d2d;

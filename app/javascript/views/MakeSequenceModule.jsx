@@ -50,15 +50,15 @@ export default class MakeSequenceModule extends PureComponent {
 
         if (type === 'AutoFilter') {
           instrumentModuleElements.push(
-            <div>
-              <div className="Arrow"></div>
+            <div className="AutoFilter">
+              <div className="ArrowHorizontal"></div>
               <ComponentType
                 id={id}
                 name={name}
                 node={node}
                 settings={settings}
                 handlePropertyValueChange={handlePropertyValueChange}
-                key={i}
+                key={id}
               />
             </div>
           )
@@ -77,7 +77,7 @@ export default class MakeSequenceModule extends PureComponent {
       })
 
       instrumentElements.push(
-        <div>
+        <div className={'InstrumentContainer_' + i}>
           <div className="moduleHeaderButton">
             <div className="headerButton">
               <PlayButton

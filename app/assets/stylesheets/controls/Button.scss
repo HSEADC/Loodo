@@ -14,3 +14,9 @@
     filter: brightness(90%);
   }
 }
+
+.playButton {
+  &:hover {
+    cursor: pointer;
+  }
+}

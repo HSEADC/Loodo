@@ -76,14 +76,22 @@
   <h2>Нотная нотация</h2>
   <p>Тут все как в музыкальной теории</p>
   <p>C = До <br> C# = До Диез  <br>D = Ре <br>D# = Ре Диез <br>E = Ми <br>F = Фа <br>F# = Фа Диез <br>G = Соль <br>G# = Соль Диез <br>A = Ля <br>A# = Ля Диез <br>B = Си</p>
+
   <div class="InteractiveBlock">
     <iframe src="<%= interactive_module_url(InteractiveModule.find(23)) %>" width="100%" height="586px"></iframe>
   </div>
 
+  <h2>Заключение</h2>
+  <p>Вы познакомились с основами устройства звука в браузере. В следующем уроке мы разберем время и ноты в Тоне.</p>
+
   <div class="NextLessonControl">
     <div class="NextLessonControlContainer">
-      <%= link_to 'Назад', @previous_lesson %>
-      <%= link_to 'Следующий урок', @next_lesson %>
+      <div class="BackButton">
+        <%= link_to 'Назад', @previous_lesson %>
+      </div>
+      <div class="NextButton">
+        <%= link_to 'Следующий урок', @next_lesson %>
+      </div>
     </div>
   </div>
 </div>

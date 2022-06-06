@@ -26,6 +26,12 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      span {
+        display: flex;
+        justify-content: center;
+        line-height: 24px;
+      }
     }
 
     .MenuButton {
@@ -48,7 +54,7 @@
     }
 
     span:last-of-type {
-      vertical-align: Center;
+      align-items: center;
       font-weight: 400;
       margin-left: 20px;
     }
@@ -234,6 +240,40 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
+
+    .BackButton {
+      position: relative;
+      a {
+        padding: 0px;
+        background-color: var(--background-grey);
+        border-radius: 0px;
+        color: var(--light-grey);
+      }
+
+      &::before {
+        position: absolute;
+        top: 2px;
+        left: -12px;
+        content: image-url('LeftGreyArrow');
+      }
+
+      a:hover {
+        background-color: var(--background-grey);
+        color: var(--medium-grey);
+        cursor: ponter;
+      }
+    }
+
+    .NextButton {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        top: 3px;
+        left: 137px;
+        content: image-url('RightBlackArrow');
+      }
+    }
 
     a {
       font-size: 12px;

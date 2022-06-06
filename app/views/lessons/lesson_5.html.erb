@@ -3,7 +3,6 @@
     <div class="LeftMenubarPart">
       <div class="MenuButton"></div>
       <span>Пятый урок</span>
-      <!-- <span>Баллы</span> -->
     </div>
     <div class="LogoMenubarContainer">
       <div class="LogoADC"></div>
@@ -21,15 +20,26 @@
         <h5>В этом уроке мы расскажем, как устроены каналы в Tone.js. Как объединять несколько сигналов в один микшер и управлять исходящим звуком. </h5>
       </div>
     </div>
-
-
-      <div class="Divider"> </div>
   </div>
+
+  <h2>Что такое каналы?</h2>
+  <p>Инструменты и эффекты передают свои сигналы в каналы. В одном канале может быть любое количество инструментов и эффектов. Каналы нужны для того, чтобы сводить (микшировать) музыку. </p>
+
+  <h3>Что такое сведение или микширование?</h3>
+  <p>Стадия создания из отдельных записанных треков конечной записи. Иногда нужно выделить какой-нибудь инструмент в отдельный канал, чтобы сделать его громче или тише. </p>
+    <iframe loading="auto" src="<%= interactive_module_url(InteractiveModule.find(45)) %>" width="840px;" height="376px"></iframe>
+  <h3>Возможности</h3>
+  <p>Теперь, вы знаете как работать в Tone.js.</p>
+  <p>Для дальнейшего обучения вы можете воспользоваться официальной доккументацией.</p>
+
 
   <div class="NextLessonControl">
     <div class="NextLessonControlContainer">
-      <%= link_to 'Назад', @previous_lesson %>
-      <%= link_to 'Следующий урок', @next_lesson %>
+      <div class="BackButton">
+        <%= link_to 'Назад', @previous_lesson %>
+      </div>
+      <div class="EndCourse">
+      </div>
     </div>
   </div>
 </div>

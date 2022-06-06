@@ -176,7 +176,7 @@ export default class BPMSynthContainer extends PureComponent {
     const codeTest = `    // Создали синтезатор
     const melodySynthNode = new Tone.Synth(melodySynthSettings).toDestination()
 
-    // Создали сиквенцию
+    // Создали секвенцию
     const seq = new Tone.Sequence(
       (time, note) => {
         instruments[0].node.triggerAttackRelease(note, 0.8, time)

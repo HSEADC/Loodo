@@ -3,6 +3,11 @@
   justify-content: center;
   align-items: center;
 
+  .mainContainer {
+    display: flex;
+    align-items: start;
+  }
+
   .ButtonContainer {
     display: flex;
     flex-direction: row;

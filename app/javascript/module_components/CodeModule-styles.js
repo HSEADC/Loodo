@@ -2,7 +2,7 @@ const styles = {
   hljs: {
     display: 'block',
     overflowX: 'hidden',
-    padding: '20px 20px 20px 0px',
+    padding: '20px 20px 20px 24px',
     color: '#abb2bf',
     background: '#232323',
     width: 'fit-content',

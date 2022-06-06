@@ -90,7 +90,8 @@
       h1 {
         line-height: 38px;
         margin-top: 6px;
-        font-size: 24px;
+        font-size: 27px;
+        font-weight: 700;
         color: #fff;
       }
     }
@@ -170,6 +171,15 @@
     margin-top: 14px;
   }
 
+  a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 28px;
+    width: 600px;
+    margin-top: 14px;
+  }
+
   .InteractiveBlock {
     background-color: var(--background-grey);
 
@@ -226,12 +236,16 @@
     padding-bottom: 40px;
 
     a {
+      font-size: 12px;
+      line-height: 16px;
       padding: 16px 40px 16px 40px;
-      background-color: #e1e1e1;
+      background-color: var(--light-grey);
       border-radius: 6px;
-      color: #000;
+      color: var(--dark-grey);
       text-decoration: none;
       font-weight: 600;
+      width: auto;
+      margin-top: 0px;
     }
 
     a:hover {

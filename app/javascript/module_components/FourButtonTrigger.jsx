@@ -15,13 +15,13 @@ export default class FourButtonTrigger extends PureComponent {
         <div className="ButtonContainer">
           <div className="TopButtonContainer">
             <GreenButton
-              text={'4n = quarter note'}
+              text={'4n = четверть'}
               handleClick={() => {
                 this.props.handlePlayNote('C4', '4n')
               }}
             />
             <GreenButton
-              text={'8t = eighth note triplet'}
+              text={'8t = Восьмая'}
               handleClick={() => {
                 this.props.handlePlayNote('C4', '8t')
               }}
@@ -29,13 +29,13 @@ export default class FourButtonTrigger extends PureComponent {
           </div>
           <div className="LowButtonContainer">
             <GreenButton
-              text={'2m = two measures'}
+              text={'2m = Две целых'}
               handleClick={() => {
                 this.props.handlePlayNote('C4', '2m')
               }}
             />
             <GreenButton
-              text={'8n. = dotted-eighth note'}
+              text={'8n. = Пунктирная восьмая нота'}
               handleClick={() => {
                 this.props.handlePlayNote('C4', '8n.')
               }}

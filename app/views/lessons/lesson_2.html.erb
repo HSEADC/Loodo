@@ -3,7 +3,6 @@
     <div class="LeftMenubarPart">
       <div class="MenuButton"></div>
       <span>Второй урок</span>
-      <!-- <span>Баллы</span> -->
     </div>
     <div class="LogoMenubarContainer">
       <div class="LogoADC"></div>
@@ -14,56 +13,55 @@
     <div class="LessonHeaderContainer">
       <div class="LessonName">
         <span>Второй урок</span>
-        <h1>Время и ноты в Тоне</h1>
+        <h1>Время и ноты в Tone.js</h1>
       </div>
       <div class="LessonDescription">
         <span>Описание</span>
-        <h5>Из последних уроков вы узнали, как организуются ноты в гаммы. А теперь давайте посмотрим, как организуются ноты в аккорды. Аккорд – это группа звуков разной высоты, звучащих одновременно.</h5>
+        <h5>В этом уроке мы расскажем вам про то, какие есть инструменты в тоне. Покажем как устроены синтезаторы и как работает семплер </h5>
       </div>
     </div>
-
-
-      <div class="Divider"> </div>
   </div>
 
-  <div class="BigHeaderBlock">
-    <h2>Длительность звука</h2>
-    <p>У любой ноты есть продолжительность. Указать продолжительность можно с помощью множества разных способов. С помощью секунд, музыкальной длительности или же с помощью специального языка длительности, который используется в Тоне. </p>
-  </div>
+
+  <h2>Длительность звука</h2>
+  <p>У любой ноты есть продолжительность. Указать продолжительность можно с помощью множества разных способов. С помощью секунд, музыкальной длительности или же с помощью специального языка длительности, который используется в Тоне. </p>
+  <h3>Немузыкальная длительность</h3>
+  <h4>Числа </h4>
+  <p>Числовые значения переводятся в секунды</p>
+  <p>1.2 = 1.2 секунда</p>
+  <p>"3" = 3 секунды</p>
+  <h4>Частоты</h4>
+  <p>Можно передовать значения в герцах</p>
+  <p>"1hz" = 1 секунда</p>
+  <p>"5hz" = 0.2 секунды</p>
 
   <div class="InteractiveBlock">
-    <div class="support_module"></div>
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(14)) %>" width="100%" height="50px"></iframe>
+  <iframe src="<%= interactive_module_url(InteractiveModule.find(12)) %>" width="100%" height="284px"></iframe>
   </div>
 
-  <div class="MediumHeaderBlock">
-    <h1>Что такое BPM?</h1>
-    <p>У каждого музыкального произведения есть единый параметр скорости — Beats Per Minute. Например вальс играется в скорости 70 BPM, а хаус использует 100 BPM. </p>
-  </div>
-
-  <div class="InteractiveBlock">
-    <div class="support_module"></div>
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(16)) %>" width="100%" height="150px"></iframe>
-  </div>
-
-
-
-  <div class="MediumHeaderBlock">
-    <h1>Время в музыкальной теории</h1>
-    <p>В музыке есть и свое разделение времени. Оно делится на четверти, восьмые, целые и шестнадцатые.</p>
-  </div>
+  <h3>Время в музыке</h3>
+  <p>В музыке есть и свое разделение времени. Оно делится на четверти, восьмые, целые и шестнадцатые. Каждое деление изображает разную длительность и имеет свое названия, для того, чтобы музыканты могли легче понимать друг-друга.</p>
+  <a href="https://ru.wikipedia.org/wiki/Длительность_(музыка)">Здесь можно подробнее прочитать про то, как устроено время в музыке</a>
 
   <div class="InteractiveBlockSequencer">
-    <div class="support_module"></div>
-    <iframe src="<%= interactive_module_url(InteractiveModule.find(15)) %>" width="100%" height="100px"></iframe>
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(14)) %>" width="1000px" height="42"></iframe>
   </div>
 
-  <div class="BigHeaderBlock">
-    <h2>Тайминги в Тоне</h2>
-    <p>После того, как мы узнали про время, можно создавать секвенции и мелодии.</p>
+  <h3>Тайминги в Тоне</h3>
+  <h4>Что такое BPM?</h4>
+  <p>У каждого музыкального произведения есть единый параметр скорости — Beats Per Minute. Например вальс играется в скорости 70 BPM, а хаус использует 100 BPM, хардкор-техно играет со скоростью от 200 BPM.</p>
+
+  <div class="InteractiveBlock">
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(13)) %>" width="700px" height="498"></iframe>
   </div>
 
-  <div class="InteractiveBlockSampler">
+  <h4>Время относительно BPM (Transport time)</h4>
+  <p>Чтобы создавать секвенции и мелодии в мелодии есть Transport Time. Также можно оперировать делением на такт, четверть и шестнадцатые.</p>
+  <p>"32:0:0" = Начало 32 такта</p>
+  <p>"4:3:2" = 4 такт + 3 четверть + 2 шестнадцатых.</p>
+  <p>"1:2" = 1 такт + 2 четверть (шестнадцатая может быть пропущена)</p>
+
+  <!-- <div class="InteractiveBlockSampler">
     <div class="SupportContainer">
       <div class="SupportHeader">
         <h3>Задание №1</h3>
@@ -73,13 +71,19 @@
       <div class="support_module"></div>
    </div>
     <iframe src="<%= interactive_module_url(InteractiveModule.find(8)) %>" width="100%" height="490"></iframe>
+  </div> -->
+
+  <h2>Нотная нотация</h2>
+  <p>Тут все как в музыкальной теории</p>
+  <p>C = До <br> C# = До Диез  <br>D = Ре <br>D# = Ре Диез <br>E = Ми <br>F = Фа <br>F# = Фа Диез <br>G = Соль <br>G# = Соль Диез <br>A = Ля <br>A# = Ля Диез <br>B = Си</p>
+  <div class="InteractiveBlock">
+    <iframe src="<%= interactive_module_url(InteractiveModule.find(23)) %>" width="100%" height="586px"></iframe>
   </div>
 
   <div class="NextLessonControl">
     <div class="NextLessonControlContainer">
-
-      <%= link_to 'Previous lesson', @previous_lesson %>
-      <%= link_to 'Next lesson', @next_lesson %>
+      <%= link_to 'Назад', @previous_lesson %>
+      <%= link_to 'Следующий урок', @next_lesson %>
     </div>
   </div>
 </div>

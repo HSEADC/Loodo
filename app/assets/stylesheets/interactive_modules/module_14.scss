@@ -1,17 +1,25 @@
 .interactive_module_14 {
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  .SynthContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   .ButtonContainer {
-    width: 600px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 40px;
+
+    .TopButtonContainer {
+      display: flex;
+    }
+    .LowButtonContainer {
+      display: flex;
+      margin-left: 22px;
+    }
+  }
+
+  .GreenButton {
+    margin-left: 22px;
+  }
+
+  .GreenButton:first-of-type {
+    margin-left: 0px;
   }
 }
